@@ -92,5 +92,33 @@ mutates the list returned by this generic function.
   </tr>
 </table>
 
+<P><B>Remarks:</B></P>
+
+<p>
+This generic function exists to allow user extensions which alter
+method lookup rules, but which base the new rules only on the classes
+of the required arguments, to take advantage of the class-based method
+lookup memoization found in many implementations.  (There is of course
+no requirement for an implementation to provide this optimization.)
+</p>
+
+<p>
+Such an extension can be implemented by two methods, one on this
+generic function and one on 
+<a href="compute-applicable-methods.html">compute-applicable-methods</a>.
+Whenever the user extension is in effect, the first method will return
+a second value of true.  This should allow the implementation to
+absorb these cases into its own memoization scheme.
+</p>
+
+<p>
+To get appropriate performance, other kinds of extensions may require methods
+on
+<a href="compute-discriminating-function.html">
+  compute-discriminating-function</a> which implement their own
+memoization scheme.
+</p>
+
 </BODY>
 </HTML>
+
