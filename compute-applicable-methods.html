@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="compute-applicable-methods"><I>Generic Function</I> <B>COMPUTE-APPLICABLE-METHODS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>compute-applicable-methods</B>
+<I>generic-function</I> <I>arguments</I> =&gt; <I>methods</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>generic-function</I> -- A generic function metaobject.</P>
+
+<P><I>arguments</I> -- A list of objects.</P>
+
+<P><I>methods</I> -- A (possibly empty) list of method metaobjects.</P>
+
+<P><B>Description:</B></P>
+
+<p>
+This generic function determines the method applicability of a generic
+function given a list of required arguments.  The returned list of
+method metaobjects is sorted by precedence order with the most
+specific method appearing first.  If no methods are applicable to the
+supplied arguments the empty list is returned.
+</p>
+
+<p>
+When a generic function is invoked, the discriminating function must
+determine the ordered list of methods applicable to the arguments.
+Depending on the generic function and the arguments, this is done in
+one of three ways: using a memoized value; calling 
+<a href="compute-applicable-methods-using-classes.html">
+compute-applicable-methods-using-classes</a>; or calling 
+<B>compute-applicable-methods</B>.  (Refer to the description of
+<a href="compute-discriminating-function.html">
+compute-discriminating-function</a> for the details of this process.)
+</p>
+
+<p>
+The <I>arguments</I> argument is permitted to contain more elements
+than the generic function accepts required arguments; in these cases
+the extra arguments will be ignored.  An error is signaled
+if <I>arguments</I> contains fewer elements than the generic function
+accepts required arguments.
+</p>
+
+<p>
+The list returned by this generic function will not be mutated by the
+implementation.  The results are undefined if a portable program
+mutates the list returned by this generic function.
+</p>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="compute-applicable-methods-standard-generic-function.html">
+	<B>compute-applicable-methods</B>
+	(<I>generic-function</I> standard-generic-function) 
+	<I>arguments</I></a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>

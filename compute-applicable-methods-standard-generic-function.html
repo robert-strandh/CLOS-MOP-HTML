@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="compute-applicable-methods"><I>Method</I> <B>COMPUTE-APPLICABLE-METHODS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>compute-applicable-methods</B> <I>(generic-function</I>
+  standard-generic-function) <I>arguments</I> =&gt; <I>methods</I>
+
+<P><B>Description:</B></P>
+
+<p>
+This method signals an error if any method of the generic function has
+a specializer which is neither a class metaobject nor an <B>eql</B>
+specializer metaobject.
+</p>
+
+<p>
+Otherwise, this method computes the sorted list of applicable methods
+according to the rules described in the section of the CLOS
+Specification called 
+<a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node283.html#SECTION003217000000000000000">
+``Method Selection and Combination.''</a>
+</p>
+
+<p>
+This method can be overridden.  Because of the consistency requirements
+between this generic function and
+<a href="compute-applicable-methods-using-classes.html">
+compute-applicable-methods-using-classes</a>, doing so may require also
+overriding
+<a href="compute-applicable-methods-using-classes-standard-generic-function.html">
+compute-applicable-methods-using-classes (standard-generic-function t)</a>.
+</p>
+
+</BODY>
+</HTML>
