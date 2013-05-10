@@ -1,0 +1,44 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="compute-applicable-methods-using-classes"><I>Method</I> <B>COMPUTE-APPLICABLE-METHODS-USING-CLASSES</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>compute-applicable-methods-using-classes</B> <I>(generic-function</I>
+  standard-generic-function) <I>classes</I> =&gt; <I>methods</I>, <I>ok</I>
+
+<P><B>Description:</B></P>
+
+<p>
+If any method of the generic function has a specializer which is
+neither a class metaobject nor an <B>eql</B> specializer metaobject,
+this method signals an error.
+</p>
+
+<p>
+In cases where the generic function has no methods with <B>eql</B>
+specializers, or has no methods with <B>eql</B> specializers that
+could be applicable to arguments of the supplied classes, this method
+returns the ordered list of applicable methods as its first value and
+true as its second value.
+</p>
+
+<p>
+Otherwise this method returns an unspecified first value and false as
+its second value.
+</p>
+
+<p>
+This method can be overridden. Because of the consistency requirements
+between this generic function and 
+<a href="compute-applicable-methods.html">compute-applicable-methods</a> 
+doing so may require also overriding
+<a href="compute-applicable-methods-standard-generic-function.html">
+compute-applicable-methods (standard-generic-function t)</a>
+</p>
+
+</BODY>
+</HTML>

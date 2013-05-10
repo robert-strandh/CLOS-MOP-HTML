@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="compute-applicable-methods-using-classes"><I>Generic Function</I> <B>COMPUTE-APPLICABLE-METHODS-USING-CLASSES</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>compute-applicable-methods-using-classes</B>
+<I>generic-function</I> <I>classes</I> =&gt; <I>methods</I>, <I>ok</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>generic-function</I> -- A generic function metaobject.</P>
+
+<P><I>classes</I> -- A list of class metaobjects.</P>
+
+<P><I>methods</I> -- A (possibly empty) list of method metaobjects.</P>
+
+<P><I>ok</I> -- A generalized boolean.
+
+<P><B>Description:</B></P>
+
+<p>
+This generic function is called to attempt to determine the method
+applicability of a generic function given only the classes of the required
+arguments.
+</p>
+
+<p>
+If it is possible to completely determine the ordered list of
+applicable methods based only on the supplied classes, this generic
+function returns that list as its first value and true as its second
+value.  The returned list of method metaobjects is sorted by
+precedence order, the most specific method coming first.  If no
+methods are applicable to arguments with the specified classes, the
+empty list and true are returned.
+</p>
+
+<p>
+If it is not possible to completely determine the ordered list of
+applicable methods based only on the supplied classes, this generic
+function returns an unspecified first value and false as its second
+value.
+</p>
+
+<p>
+When a generic function is invoked, the discriminating function must
+determine the ordered list of methods applicable to the arguments.
+Depending on the generic function and the arguments, this is done in
+one of three ways: using a memoized value; calling 
+<B>compute-applicable-methods-using-classes</B> or calling
+<a href="compute-applicable-methods.html">
+  compute-applicable-methods</a>.
+(Refer to the description of
+<a href="compute-discriminating-function.html">
+  compute-discriminating-function</a> for the details of this
+  process.)
+</p>
+
+<p>
+The following consistency relationship between
+<B>compute-applicable-methods-using-classes</B> and
+<a href="compute-applicable-methods.html">
+  compute-applicable-methods</a> must be maintained: for any given
+generic function and set of arguments, if
+<B>compute-applicable-methods-using-classes</B> returns a second value of
+true, the first value must be equal to the value that would be
+returned by a corresponding call to
+<a href="compute-applicable-methods.html">
+  compute-applicable-methods</a>.  The results are undefined if a
+portable method on either of these generic functions causes this
+consistency to be violated.
+</p>
+
+<p>
+The list returned by this generic function will not be mutated by the
+implementation.  The results are undefined if a portable program
+mutates the list returned by this generic function.
+</p>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="compute-applicable-methods-using-classes-standard-generic-function.html">
+	<B>compute-applicable-methods-using-classes</B>
+	(<I>generic-function</I> standard-generic-function) 
+	<I>arguments</I></a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>
