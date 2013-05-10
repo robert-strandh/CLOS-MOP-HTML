@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="compute-class-precedence-list"><I>Generic Function</I> <B>COMPUTE-CLASS-PRECEDENCE-LIST</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>compute-class-precedence-list</B> <I>class</I> =&gt; 
+<I>precedence-list</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>class</I> -- A class metaobject.</P>
+
+<P><I>precedence-list</I> -- List of class metaobjects.</P>
+
+<P><B>Description:</B></P>
+
+<p>
+This generic-function is called to determine the class precedence list
+of a class.
+</p>
+
+<p>
+The result is a list which contains each of <I>class</I> and its
+superclasses once and only once.  The first element of the list is
+<I>class</I> and the last element is the class named <B>t</B>.
+</p>
+
+<p>
+All methods on this generic function must compute the class precedence
+list as a function of the ordered direct superclasses of the
+superclasses of <I>class</I>.  The results are undefined if the rules
+used to compute the class precedence list depend on any other factors.
+</p>
+
+<p>
+When a class is finalized,
+<a href="finalize-inheritance.html">finalize-inheritance</a>
+calls this generic
+function and associates the returned value with the class metaobject.
+The value can then be accessed by calling
+<a href="class-precedence-list.html">class-precedence-list</a>.
+</p>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="compute-class-precedence-list-class.html">
+	<B>compute-class-precedence-list</B> (<I>class</I> class)</a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>
