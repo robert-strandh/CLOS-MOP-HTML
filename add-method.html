@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="add-method"><I>Generic Function</I> <B>ADD-METHOD</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>add-method</B> <I>generic-function</I> <I>method</I> =&gt; 
+<I>generic-function</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>generic-function</I> -- A generic function metaobject.</P>
+
+<P><I>method</I> -- A method metaobject.</P>
+
+<P><B>Description:</B></P>
+
+<p>
+This generic function associates an unattached method with a generic
+function. 
+</p>
+
+<p>
+An error is signaled if the lambda list of the method is not congruent with
+the lambda list of the generic function.  An error is also signaled if the
+method is already associated with some other generic function.
+</p>
+
+<p>
+If the given method agrees with an existing method of the generic function on
+parameter specializers and qualifiers, the existing method is removed by
+calling 
+<a href="remove-method.html"><B>remove-method</B></a>
+before the new method is added.  See the section
+of the CLOS Specification called 
+<a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node280.html#SECTION003216300000000000000">
+``Agreement on Parameter Specializers and Qualifiers'' </a>
+for a definition of agreement in this context.
+</p>
+
+<p>
+
+Associating the method with the generic function then proceeds in four steps:
+
+<ol>
+  <li>add <I>method</I> to the set returned by 
+    <a href="generic-function-methods.html">generic-function-methods</a>
+    arrange for
+    <a href="method-generic-function.html">method-generic-function</a>
+    to return <I>generic-function</I>;
+  </li>
+  <li>
+    call <a href="add-direct-method.html">add-direct-method</a> for
+    each of the method's specializers;
+  </li>
+  <li>
+    call 
+    <a href="compute-discriminating-function.html">compute-discriminating-function</a>
+    and install its result with 
+    <a href="set-funcallable-instance-function.html">set-funcallable-instance-function</a>; and
+  </li>
+  <li>
+    update the dependents of the generic function.
+  </li>
+</ol>
+
+</p>
+
+<p>
+The generic function <B>add-method</B> can be called by the user or the
+implementation.
+</p>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="add-method-standard-generic-function-standard-method.html">
+	<B>add-method</B> (<I>generic-function</I> standard-generic-function)
+	(<I>method</I> standard-method)</a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>

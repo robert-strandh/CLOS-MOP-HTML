@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="add-dependent"><I>Generic Function</I> <B>ADD-DEPENDENT</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>add-dependent</B> <I>metaobject</I> <I>dependent</I> =&gt; 
+<I>unspecified</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>metaobject</I> -- A class or a generic function metaobject.</P>
+
+<P><I>dependent</I> -- An object.</P>
+
+<P><B>Description:</B></P>
+
+<p>
+This generic function adds <I>dependent</I> to the dependents of 
+<I>metaobject</I>.  If <I>dependent</I> is already in the set of
+dependents it is not added again (no error is signaled).
+</p>
+
+<p>
+The generic function
+<a href="map-dependents.html">map-dependents</a> can be called to
+access the set of dependents of a class or generic function.  The
+generic function
+<a href="remove-dependent.html">remove-dependent</a>
+can be called to remove an object from the set of
+dependents of a class or generic function.  The effect of calling 
+<B>add-dependent</B> or
+<a href="remove-dependent.html">remove-dependent</a>
+while a call to 
+<a href="map-dependents.html">map-dependents</a>
+on the same class or generic function is in progress is
+unspecified.
+</p>
+
+<p>
+The situations in which <B>add-dependent</B> is called are not specified.
+</p>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="add-dependent-standard-class.html">
+	<B>add-dependent</B> (<I>class</I> standard-class) 
+	<I>method</I></a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="add-dependent-funcallable-standard-class.html">
+	<B>add-dependent</B> (<I>class</I> funcallable-standard-class) 
+	<I>method</I></a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="add-dependent-standard-generic-function.html">
+	<B>add-dependent</B> (<I>generic-function</I> standard-generic-function) 
+	<I>method</I></a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>

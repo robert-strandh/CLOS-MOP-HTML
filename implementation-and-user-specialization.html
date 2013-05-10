@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<TITLE>Implementation and User Specialization</TITLE>
+</HEAD>
+<BODY>
+  <H1>Implementation and User Specialization</H1>
+
+<p>
+The purpose of the Metaobject Protocol is to provide users with a
+powerful mechanism for extending and customizing the basic behavior of
+the Common Lisp Object System.  As an object-oriented description of
+the basic CLOS behavior, the Metaobject Protocol makes it possible to
+create these extensions by defining specialized subclasses of existing
+metaobject classes.
+</p>
+
+<p>
+The Metaobject Protocol provides this capability without interfering
+with the implementor's ability to develop high-performance
+implementations.  This balance between user extensibility and
+implementor freedom is mediated by placing explicit restrictions on
+each.  Some of these restrictions are general---they apply to the
+entire class graph and the applicability of all methods.  These are
+presented in this section.
+</p>
+
+<p>
+The following additional terminology is used to present these
+restrictions:
+</p>
+
+<ul>
+<li> Metaobjects are divided into three categories.  Those defined
+in this document are called <I>specified</I>; those defined by an
+implementation but not mentioned in this document are called
+<I>implementation-specific</I>; and those defined by a portable
+program are called <I>portable</I>.
+
+<li> A class <I>I</I> is <I>interposed</I> between two other classes
+<I>C<sub>1</sub></I> and <I>C<sub>2</sub></I> if and only if there is
+some path, following direct superclasses, from the
+class <I>C<sub>1</sub></I> to the class <I>C<sub>2</sub></I> which
+includes <I>I</I>. </li>
+
+<li> A method is <I>specialized</I> a class if and only if that
+class is in the list of specializers associated with the method; and the
+method is in the list of methods associated with some generic function.
+
+<li> In a given implementation, a specified method is said to have been
+<I>promoted</I> if and only if the specializers of the method, 
+<I>S<sub>1</sub></I> ... <I>S<sub>n</sub></I>
+are defined in this specification as the classes 
+<I>C<sub>1</sub></I> ... <I>C<sub>n</sub></I>, but in the
+implementation, one or more of the specializers <I>S<sub>i</sub></I>,
+is a superclass of the class given in the
+specification <I>C<sub>i</sub></I>.
+
+<li> For a given generic function and set of  arguments, a method <I>M<sub>2</sub></I>
+<I>extends</I> a method <I>M<sub>1</sub></I> if and only if:</li>
+
+<ol type="i">
+<li><I>M<sub>1</sub></I> and <I>M<sub>2</sub></I>
+are both associated with the given generic
+function,</li>
+
+<li><I>M<sub>1</sub></I> and <I>M<sub>2</sub></I> are both applicable
+to the given arguments,</li>
+
+<li>the specializers and qualifiers of the methods are such that when
+the generic function is called, <I>M<sub>2</sub></I> is executed before <I>M<sub>1</sub></I>,</li>
+
+<li><I>M<sub>1</sub></I> will be executed if and only if <B>call-next-method</B>
+is invoked from within the body of <I>M<sub>2</sub></I> and</li>
+
+<li><B>call-next-method</B> is invoked from within the body of <I>M<sub>2</sub></I>,
+thereby causing <I>M<sub>1</sub></I> to be executed.</li>
+</ol>
+
+<li> For a given generic function and set of arguments, a method <I>M<sub>2</sub></I>
+<I>overrides</I> a method <I>M<sub>1</sub></I> if and only if conditions i through iv
+above hold and</li>
+
+<ul>
+<li><B>call-next-method</B> is not invoked from within the body
+of <I>M<sub>2</sub></I>, thereby preventing <I>M<sub>1</sub></I> from
+being executed.</li>
+</ul>
+</ul>
+
+</BODY>
+</HTML>

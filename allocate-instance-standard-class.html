@@ -1,0 +1,23 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="allocate-instance"><I>Method</I> <B>ALLOCATE-INSTANCE</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>allocate-instance</B> <I>(class</I>
+  standard-class) <I><TT>&amp;rest</TT></I> <I>initargs</I> =&gt; 
+<I>instance</I>
+
+<P><B>Description:</B></P>
+
+<p>
+This method allocates storage in the instance for each slot with allocation
+<TT>:instance</TT>.  These slots are unbound.  Slots with any other allocation
+are ignored by this method (no error is signaled).
+</p>
+
+</BODY>
+</HTML>

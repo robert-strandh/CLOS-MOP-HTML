@@ -1,0 +1,61 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="class-direct-subclasses"><I>Generic Function</I> <B>CLASS-DIRECT-SUBCLASSES</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>class-direct-subclasses</B> <I>class</I> =&gt; 
+<I>subclasses</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>class</I> -- A class metaobject.</P>
+
+<P><I>subclasses</I> -- List of class metaobjects.
+
+<P><B>Description:</B></P>
+
+<p>
+Returns a set of the direct subclasses of <I>class</I>. The elements
+of this set are class metaobjects that all mention this class among
+their direct superclasses.  The empty set is returned if <I>class</I>
+has no direct subclasses.  This value is maintained by the generic
+functions
+<a href="add-direct-subclass.html">add-direct-subclass</a> and
+<a href="remove-direct-subclass.html">remove-direct-subclass</a>.
+</p>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="class-direct-subclasses-standard-class.html">
+	<B>class-direct-subclasses</B> (<I>class</I> standard-class) 
+	<I>method</I></a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="class-direct-subclasses-funcallable-standard-class.html">
+	<B>class-direct-subclasses</B> (<I>class</I> funcallable-standard-class) 
+	<I>method</I></a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="class-direct-subclasses-forward-reference-class.html">
+	<B>class-direct-subclasses</B> (<I>class</I> forward-reference-class) 
+	<I>method</I></a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="class-direct-subclasses-built-in-class.html">
+	<B>class-direct-subclasses</B> (<I>class</I> built-in-class) 
+	<I>method</I></a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>

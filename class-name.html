@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="class-name"><I>Generic Function</I> <B>CLASS-NAME</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>class-name</B> <I>class</I> =&gt; 
+<I>name</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>class</I> -- A class metaobject.</P>
+
+<P><I>name</I> -- An object.</P>
+
+<P><B>Description:</B></P>
+
+<p>
+Returns the name of <I>class</I>.  This value can be any Lisp object,
+but is usually a symbol, or <TT>nil</TT> if the class has no name.
+This is the defaulted value of the <TT>:name</TT> initialization
+argument that was associated with the class during initialization or
+reinitialization.  (Also see 
+<a href="setf-class-name.html">(setf class-name)</a>
+</p>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="class-name-standard-class.html">
+	<B>class-name</B> (<I>class</I> standard-class) 
+	<I>method</I></a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="class-name-funcallable-standard-class.html">
+	<B>class-name</B> (<I>class</I> funcallable-standard-class) 
+	<I>method</I></a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="class-name-forward-reference-class.html">
+	<B>class-name</B> (<I>class</I> forward-reference-class) 
+	<I>method</I></a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="class-name-built-in-class.html">
+	<B>class-name</B> (<I>class</I> built-in-class) 
+	<I>method</I></a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>

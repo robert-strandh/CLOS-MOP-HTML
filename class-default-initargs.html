@@ -1,0 +1,72 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="class-default-initargs"><I>Generic Function</I> <B>CLASS-DEFAULT-INITARGS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>class-default-initargs</B> <I>class</I> =&gt; 
+<I>initargs</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>class</I> -- A class metaobject.</P>
+
+<P><I>initargs</I> -- List of initialization arguments. 
+
+<P><B>Description:</B></P>
+
+<p>
+Returns a list of the default initialization arguments for <I>class</I>.
+Each element of this list is a canonicalized default initialization
+argument.  The empty list is returned if <I>class</I> has no default
+initialization arguments.
+</p>
+
+<p>
+During finalization 
+<a href="finalize-inheritance.html">finalize-inheritance</a> calls
+<a href="compute-default-initargs.html">compute-default-initargs</a>
+to compute the default initialization arguments for the class.  That
+value is associated with the class metaobject and is returned
+by <B>class-default-initargs</B>.
+</p>
+
+<p>
+This generic function signals an error if <I>class</I> has not been
+finalized. 
+</p>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="class-default-initargs-standard-class.html">
+	<B>class-default-initargs</B> (<I>class</I> standard-class) 
+	<I>method</I></a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="class-default-initargs-funcallable-standard-class.html">
+	<B>class-default-initargs</B> (<I>class</I> funcallable-standard-class) 
+	<I>method</I></a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="class-default-initargs-forward-reference-class.html">
+	<B>class-default-initargs</B> (<I>class</I> forward-reference-class) 
+	<I>method</I></a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="class-default-initargs-built-in-class.html">
+	<B>class-default-initargs</B> (<I>class</I> built-in-class) 
+	<I>method</I></a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>

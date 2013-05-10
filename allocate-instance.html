@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="allocate-instance"><I>Generic Function</I> <B>ALLOCATE-INSTANCE</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>allocate-instance</B> <I>class</I> <I><TT>&amp;rest</TT></I> <I>initargs</I> =&gt; 
+<I>instance</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>class</I> -- A class metaobject.</P>
+
+<P><I>initargs</I> -- A list of alternating initialization argument
+names and values.
+</P>
+
+<P><I>instance</I> -- A newly allocated instance of <I>class</I>.</P>
+
+<P><B>Description:</B></P>
+
+<p>
+This generic function is called to create a new, uninitialized
+instance of a class.  The interpretation of the concept of an
+``uninitialized'' instance depends on the class metaobject class.
+</p>
+
+<p>
+Before allocating the new instance,
+<a href="class-finalized-p.html">class-finalized-p</a> is called to
+see if <I>class</I> has been finalized.  If it has not been finalized,
+<a href="finalize-inheritance.html">finalize-inheritance</a> is called
+before the new instance is allocated.
+</p>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="allocate-instance-standard-class.html">
+	<B>allocate-instance</B> (<I>class</I> standard-class) 
+	<I><TT>&amp;rest</TT></I> <I>initargs</I>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="allocate-instance-funcallable-standard-class.html">
+	<B>allocate-instance</B> (<I>class</I> funcallable-standard-class) 
+	<I><TT>&amp;rest</TT></I> <I>initargs</I>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="allocate-instance-standard-generic-function.html">
+	<B>allocate-instance</B> (<I>class</I> built-in-class) 
+	<I><TT>&amp;rest</TT></I> <I>initargs</I>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>

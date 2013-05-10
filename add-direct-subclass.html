@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="add-direct-subclass"><I>Generic Function</I> <B>ADD-DIRECT-SUBCLASS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>add-direct-subclass</B> <I>superclass</I> <I>subclass</I> =&gt; 
+<I>unspecified</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>superclass</I> -- A class metaobject.</P>
+
+<P><I>subclass</I> -- A class metaobject.</P>
+
+<P><B>Description:</B></P>
+
+<p>
+
+This generic function is called to maintain a set of backpointers from
+a class to its direct subclasses.  This generic function adds
+<I>subclass</I> to the set of direct subclasses of <I>superclass</I>.
+
+</p>
+
+<p>
+When a class is initialized, this generic function is called once for each
+direct superclass of the class.
+</p>
+
+<p>
+When a class is reinitialized, this generic function is called once for each
+added direct superclass of the class.  The generic function
+<a href="remove-direct-subclass.html"><B>remove-direct-subclass</B></a>
+is called once for each deleted direct superclass of
+the class.
+</p>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="add-direct-subclass-class-class.html">
+	<B>add-direct-subclass</B> (<I>superclass</I> class)
+	(<I>subclass</I> class)</a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>

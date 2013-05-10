@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="class-slots"><I>Generic Function</I> <B>CLASS-SLOTS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>class-slots</B> <I>class</I> =&gt; 
+<I>slots</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>class</I> -- A class metaobject.</P>
+
+<P><I>slots</I> -- List of effective slot definition metaobjects.</P>
+
+<P><B>Description:</B></P>
+
+<p>
+Returns a possibly empty set of the slots accessible in instances of
+<I>class</I>.  The elements of this set are effective slot definition
+metaobjects.
+</p>
+
+<p>
+During class finalization 
+<a href="finalize-inheritance.html">finalize-inheritance</a> calls
+<a href="compute-slots.html">compute-slots</a> to compute the slots of
+the class.  That value is associated with the class metaobject and is
+returned by <B>class-slots</B>.
+</p>
+
+<p>
+This generic function signals an error if <I>class</I> has not been
+finalized.
+</p>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="class-slots-standard-class.html">
+	<B>class-slots</B> (<I>class</I> standard-class) 
+	<I>method</I></a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="class-slots-funcallable-standard-class.html">
+	<B>class-slots</B> (<I>class</I> funcallable-standard-class) 
+	<I>method</I></a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="class-slots-forward-reference-class.html">
+	<B>class-slots</B> (<I>class</I> forward-reference-class) 
+	<I>method</I></a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="class-slots-built-in-class.html">
+	<B>class-slots</B> (<I>class</I> built-in-class) 
+	<I>method</I></a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>

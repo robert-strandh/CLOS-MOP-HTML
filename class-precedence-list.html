@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="class-precedence-list"><I>Generic Function</I> <B>CLASS-PRECEDENCE-LIST</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>class-precedence-list</B> <I>class</I> =&gt; 
+<I>precedence-list</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>class</I> -- A class metaobject.</P>
+
+<P><I>precedence-list</I> -- List of class metaobjects.</P>
+
+<P><B>Description:</B></P>
+
+<p>
+Returns the class precedence list of <I>class</I>.  The elements of
+this list are class metaobjects.
+</p>
+
+<p>
+During class finalization 
+<a href="finalize-inheritance.html">finalize-inheritance</a> calls
+<a href="compute-class-precedence-list.html">compute-class-precedence-list</a>
+calls to compute the class precedence list of the class.  That value
+is associated with the class metaobject and is returned by
+<B>class-precedence-list</B>.
+</p>
+
+<p>
+This generic function signals an error if <I>class</I> has not been
+finalized. 
+</p>
+
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="class-precedence-list-standard-class.html">
+	<B>class-precedence-list</B> (<I>class</I> standard-class) 
+	<I>method</I></a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="class-precedence-list-funcallable-standard-class.html">
+	<B>class-precedence-list</B> (<I>class</I> funcallable-standard-class) 
+	<I>method</I></a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="class-precedence-list-forward-reference-class.html">
+	<B>class-precedence-list</B> (<I>class</I> forward-reference-class) 
+	<I>method</I></a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="class-precedence-list-built-in-class.html">
+	<B>class-precedence-list</B> (<I>class</I> built-in-class) 
+	<I>method</I></a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>
