@@ -1,0 +1,35 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="compute-default-initargs"><I>Method</I> <B>COMPUTE-DEFAULT-INITARGS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>compute-default-initargs</B> <I>(class</I>
+  standard-class) =&gt; <I>initargs</I>
+
+<P><B>Description:</B></P>
+
+<p>
+This method computes the default initialization arguments according to
+the rules described in the section of the CLOS Specification called
+<a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node295.html#SECTION003219300000000000000">``Defaulting of Initialization Arguments.''</a>
+</p>
+
+<p>
+This method signals an error if <I>class</I> or any of its superclasses is a
+forward referenced class.
+</p>
+
+<p>
+This method can be overridden.
+</p>
+
+<P><B>Issues:</B></P>
+
+<P>How can <I>class</I> be a forward reference class?</P>
+
+</BODY>
+</HTML>

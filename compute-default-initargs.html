@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="compute-default-initargs"><I>Generic Function</I> <B>COMPUTE-DEFAULT-INITARGS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>compute-default-initargs</B> <I>class</I> =&gt; 
+<I>initargs</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>class</I> -- A class metaobject.</P>
+
+<P><I>initargs</I> -- List of canonicalized default initialization arguments. 
+
+<P><B>Description:</B></P>
+
+<p>
+This generic-function is called to determine the default initialization
+arguments for a class.
+</p>
+
+<p>
+The result is a list of canonicalized default initialization arguments, with
+no duplication among initialization argument names.
+</p>
+
+<p>
+All methods on this generic function must compute the default initialization
+arguments as a function of only: (i) the class precedence list of <I>class</I>,
+and (ii) the direct default initialization arguments of each class in that
+list.  The results are undefined if the rules used to compute the default
+initialization arguments depend on any other factors.
+</p>
+
+<p>
+When a class is finalized, 
+<a href="finalize-inheritance.html">finalize-inheritance</a> calls
+this generic function and associates the returned value with the class
+metaobject.  The value can then be accessed by calling
+<a href="class-default-initargs.html">class-default-initargs</a>.
+</p>
+
+<p>
+The list returned by this generic function will not be mutated by the
+implementation.  The results are undefined if a portable program
+mutates the list returned by this generic function.
+</p>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="compute-default-initargs-standard-class.html">
+	<B>compute-default-initargs</B> (<I>class</I> standard-class)</a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="compute-default-initargs-funcallable-standard-class.html">
+	<B>compute-default-initargs</B> (<I>class</I> funcallable-standard-class)</a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>
