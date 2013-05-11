@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="compute-effective-method"><I>Generic Function</I> <B>COMPUTE-EFFECTIVE-METHOD</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>compute-effective-method</B> 
+<I>generic-function</I> <I>method-combination</I> <I>methods</I>
+=&gt; <I>effective-method</I>, <I>options</I>,
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>generic-function</I> -- A generic function metaobject.</P>
+
+<P><I>method-combination</I> -- A method combination metaobject. </P>
+
+<P><I>methods</I> -- A list of method metaobjects. </P>
+
+<P><I>effective-method</I> -- An effective method. </P>
+
+<P><I>options</I> -- A list of effective method options. </P>
+
+<P><B>Description:</B></P>
+
+<p>
+This generic function is called to determine the effective method from
+a sorted list of method metaobjects.
+</p>
+
+<p>
+An effective method is a form that describes how the applicable
+methods are to be combined.  Inside of effective method forms are 
+<a href="call-method.html">call-method</a> forms which indicate that a
+particular method is to be called.  The arguments to the 
+<a href="call-method.html">call-method</a>
+form indicate exactly how the method function of the
+method should be called.  (See 
+<a href="make-method-lamba.html">make-method-lamba</a> for more
+details about method functions.)
+</p>
+
+<p>
+An effective method option has the same interpretation and syntax as
+either the <TT>:arguments</TT> or the <TT>:generic-function</TT>
+option in the long form of
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defi_4.htm#define-method-combination">define-method-combination</a>.
+</p>
+
+<p>
+More information about the form and interpretation of effective methods and
+effective method options can be found under the description of the
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defi_4.htm#define-method-combination">define-method-combination</a>
+macro in the CLOS specification.
+</p>
+
+<p>
+This generic function can be called by the user or the implementation.
+It is called by discriminating functions whenever a sorted list of
+applicable methods must be converted to an effective method.
+</p>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="compute-effective-method-standard-generic-function.html">
+	<B>compute-effective-method</B> (<I>generic-function</I>
+	standard-generic-function) <I>method-combination</I> <I>methods</I></a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>
