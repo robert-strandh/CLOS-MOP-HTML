@@ -1,0 +1,105 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="compute-discriminating-function"><I>Generic Function</I> <B>COMPUTE-DISCRIMINATING-FUNCTION</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>compute-discriminating-function</B> <I>generic-function</I> =&gt; 
+<I>function</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>generic-function</I> -- A generic function metaobject.</P>
+
+<P><I>function</I> -- A function. 
+
+<P><B>Description:</B></P>
+
+<p>
+This generic function is called to determine the discriminating
+function for a generic function.  When a generic function is called,
+the <I>installed</I> discriminating function is called with the full
+set of arguments received by the generic function, and must implement
+the behavior of calling the generic function: determining the ordered
+set of applicable methods, determining the effective method, and
+running the effective method.
+</p>
+
+<p>
+To determine the ordered set of applicable methods, the discriminating
+function first calls 
+<a href="compute-applicable-methods-using-classes.html">
+compute-applicable-methods-using-classes</a>.  If
+<a href="compute-applicable-methods-using-classes.html">
+compute-applicable-methods-using-classes</a> returns a second value of
+false, the discriminating function then calls
+<a href="compute-applicable-methods.html">
+compute-applicable-methods</a>.
+</p>
+
+<p>
+When 
+<a href="compute-applicable-methods-using-classes.html">
+compute-applicable-methods-using-classes</a>
+returns a second value of
+true, the discriminating function is permitted to memoize the first returned
+value as follows.  The discriminating function may reuse the list of
+applicable methods without calling 
+<a href="compute-applicable-methods-using-classes.html">
+compute-applicable-methods-using-classes</a>
+again provided that:
+</p>
+
+<ol type="i">
+<li> the generic function is being called again with required arguments
+which are instances of the same classes,</li>
+
+<li> the generic function has not been reinitialized,</li>
+
+<li> no method has been added to or removed from the generic function,</li>
+
+<li> for all the specializers of all the generic function's methods
+which are classes, their class precedence lists have not changed and</li>
+
+<li> for any such memoized value, the class precedence list of the class
+of each of the required arguments has not changed.</li>
+</ol>
+
+<p>
+Determination of the effective method is done by calling
+<a href="compute-effective-method.html">compute-effective-method</a>
+When the effective method is run, each method's
+function is called, and receives as arguments: (i) a list of the arguments to
+the generic function, and (ii) whatever other arguments are specified in the
+<a href="call-method.html">call-method</a>
+form indicating that the method should be called.  (See 
+<a href="make-method-lambda.html">make-method-lambda</a> for more
+information about how method functions are called.)
+</p>
+
+<p>
+The generic function 
+<a href="compute-discriminating-function.html">compute-discriminating-function</a> 
+is called, and its
+result installed, by 
+<a href="add-method.html">add-method</a>,
+<a href="remove-method.html">remove-method</a>,
+<a href="initialize-instance.html">initialize-instance</a>, and
+<a href="reinitialize-instance.html">reinitialize-instance</a>.
+</p>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="compute-discriminating-function-standard-generic-function.html">
+	<B>compute-discriminating-function</B> (<I>generic-function</I> standard-generic-function)</a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>
