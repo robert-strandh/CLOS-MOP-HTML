@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="compute-effective-slot-definition"><I>Generic Function</I>
+  <B>COMPUTE-EFFECTIVE-SLOT-DEFINITION</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>compute-effective-slot-definition</B> 
+<I>class</I> <I>name</I> <I>direct-slot-definitions</I>
+=&gt; <I>effective-slot-definition</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I></I> -- A class metaobject.</P>
+
+<P><I>name</I> -- A slot name. </P>
+
+<P><I>direct-slot-definitions</I> -- An ordered list of direct slot
+definition metaobjects.  The most specific direct slot definition
+metaobject appears first in the list.</P>
+
+<P><I>effective-slot-definition</I> -- An effective slot definition metaobject. </P>
+
+<P><B>Description:</B></P>
+
+<p>
+This generic function determines the effective slot definition for a slot in a
+class.  It is called by 
+<a href="compute-slots.html">compute-slots</a> once for each slot accessible in
+instances of <I>class</I>.
+</p>
+
+<p>
+This generic function uses the supplied list of direct slot definition
+metaobjects to compute the inheritance of slot properties for a single
+slot.  The returned effective slot definition represents the result of
+computing the inheritance.  The name of the new effective slot
+definition is the same as the name of the direct slot definitions
+supplied.
+</p>
+
+<p>
+The class of the effective slot definition metaobject is determined by calling
+<a href="effective-slot-definition-class.html">
+  effective-slot-definition-class</a>.
+The effective slot definition is then created by calling
+<a href="make-instance.html">make-instance</a>  
+The initialization arguments passed in this call
+to <a href="make-instance.html">make-instance</a>  
+are used to initialize the new effective slot
+definition metaobject.  See
+<a href="initialization-of-slot-definition-metaobjects.html">
+``Initialization of Slot Definition Metaobjects''</a>
+for details.
+</p>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="compute-effective-slot-definition-standard-class.html">
+	<B>compute-effective-slot-definition</B> (<I>class</I>
+	standard-class) <I>name</I> <I>direct-slot-definitions</I></a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="compute-effective-slot-definition-funcallable-standard-class.html">
+	<B>compute-effective-slot-definition</B> (<I>class</I>
+	funcallable-standard-class) <I>name</I> <I>direct-slot-definitions</I></a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>

@@ -1,0 +1,34 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="compute-effective-slot-definition"><I>Method</I> <B>COMPUTE-EFFECTIVE-SLOT-DEFINITION</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>compute-effective-slot-definition</B> <I>(class</I>
+  funcallable-standard-class) <I>name</I> <I>direct-slot-definitions</I>
+  =&gt; <I>effective-slot-definition</I>
+
+<P><B>Description:</B></P>
+
+<p>
+This method implements the inheritance and defaulting of slot options
+following the rules described in the
+<a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node270.html#SECTION003213200000000000000">``Inheritance
+  of Slots and Options''</a>
+section of the CLOS Specification.
+</p>
+
+<p>
+This method can be extended, but the value returned by the extending
+method must be the value returned by this method.
+</p>
+
+<p>
+This method can be overridden.
+</p>
+
+</BODY>
+</HTML>
