@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="compute-slots"><I>Generic Function</I>
+  <B>COMPUTE-SLOTS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>compute-slots</B> 
+<I>class</I> =&gt; <I>effective-slot-definitions</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>class</I> -- A class metaobject.</P>
+
+<P><I>effective-slot-definitions/I> -- 
+A list of effective slot definition metaobjects. </P>
+
+<P><B>Description:</B></P>
+
+<p>
+This generic function computes a set of effective slot definition
+metaobjects for the class <I>class</I>.  The result is a list of
+effective slot definition metaobjects: one for each slot that will be
+accessible in instances of <I>class</I>.
+</p>
+
+<p>
+This generic function proceeds in 3 steps:
+</p>
+
+<ol>
+  <li>The first step collects the full set of direct slot definitions from the
+    superclasses of <I>class</I>.</li>
+
+  <li>The direct slot definitions are then collected into individual
+    lists, one list for each slot name associated with any of the
+    direct slot definitions.  The slot names are compared with {\bf
+    eql}.  Each such list is then sorted into class precedence list
+    order.  Direct slot definitions coming from classes earlier in the
+    class precedence list of <I>class</I> appear before those coming
+    from classes later in the class precedence list.  For each slot
+    name, the generic function 
+    <a href="compute-effective-slot-definition.html">
+      compute-effective-slot-definition</a>
+    is called to compute an effective slot definition.  The result of
+    {\bf compute-slots} is a list of these effective slot definitions,
+    in unspecified order.</li>
+
+  <li>In the final step, the location for each effective slot
+    definition is set.  This is done by specified around-methods;
+    portable methods cannot take over this behavior. For more
+    information on the slot definition locations, see the section
+    <a href="instance-structure-protocol.html">
+      ``Instance Structure Protocol.''</a></li>
+</ul>
+
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="compute-slots-standard-class.html">
+	<B>compute-slots</B> (<I>class</I> standard-class)</a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="compute-slots-funcallable-standard-class.html">
+	<B>compute-slots</B> (<I>class</I> funcallable-standard-class)</a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="compute-slots-around-standard-class.html">
+	<B>compute-slots</B> <TT>:around</TT> (<I>class</I> standard-class)</a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="compute-slots-around-funcallable-standard-class.html">
+	<B>compute-slots</B> <TT>:around</TT> (<I>class</I> funcallable-standard-class)</a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>
