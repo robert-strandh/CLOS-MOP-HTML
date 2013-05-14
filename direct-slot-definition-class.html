@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="direct-slot-definition-class"><I>Generic Function</I> <B>DIRECT-SLOT-DEFINITION-CLASS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>direct-slot-definition-class</B>
+  <I>class</I> <TT>&amp;rest</TT> <I>initargs</I>
+  =&gt; <I>slot-definition-class</I>
+
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>class</I> -- A class metaobject.</P>
+
+<P><I>initargs</I> -- List of initialization arguments and values.</P>
+
+<P><I>slot-definition-class</I> -- A class metaobject.
+
+<P><B>Description:</B></P>
+
+<p>
+The value returned is a subclass of the class
+<a href="direct-slot-definition.html">direct-slot-definition</a>.
+</p>
+
+<p>
+When a class is initialized, each of the canonicalized slot
+specifications must be converted to a direct slot definition
+metaobject.  This generic function is called to determine the class of
+that direct slot definition metaobject.
+</p>
+
+<p>
+The <I>initargs</I> argument is simply the canonicalized slot
+specification for the slot.
+</p>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="direct-slot-definition-class-standard-class.html">
+	<B>direct-slot-definition-class</B> (<I>class</I> standard-class)</a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="direct-slot-definition-class-funcallable-standard-class.html">
+	<B>direct-slot-definition-class</B> (<I>class</I> funcallable-standard-class)</a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>
