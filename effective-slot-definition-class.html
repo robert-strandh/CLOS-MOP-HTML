@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="effective-slot-definition-class"><I>Generic Function</I> <B>EFFECTIVE-SLOT-DEFINITION-CLASS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>effective-slot-definition-class</B>
+  <I>class</I> <TT>&amp;rest</TT> <I>initargs</I>
+  =&gt; <I>slot-definition-class</I>
+
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>class</I> -- A class metaobject.</P>
+
+<P><I>initargs</I> -- List of initialization arguments and values.</P>
+
+<P><I>slot-definition-class</I> -- A class metaobject.
+
+<P><B>Description:</B></P>
+
+<p>
+The value returned is a subclass of the class
+<a href="effective-slot-definition.html">effective-slot-definition</a>.
+</p>
+
+<p>
+This generic function is called by
+<a href="compute-effective-slot-definition.html">
+  compute-effective-slot-definition</a> 
+to determine the class of the resulting effective slot definition
+metaobject.  The <I>initargs</I> argument is the set of initialization
+arguments and values that will be passed to
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ins.htm#make-instance">
+  make-instance</a>
+when the effective slot definition metaobject is created.
+</p>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="effective-slot-definition-class-standard-class.html">
+	<B>effective-slot-definition-class</B>
+	(<I>class</I> standard-class) <TT>&amp;rest</TT> <I>initargs</I></a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="effective-slot-definition-class-funcallable-standard-class.html">
+	<B>effective-slot-definition-class</B>
+	(<I>class</I> funcallable-standard-class) <TT>&amp;rest</TT> <I>initargs</I></a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>
