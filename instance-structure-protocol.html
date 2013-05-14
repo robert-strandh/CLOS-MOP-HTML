@@ -1,0 +1,174 @@
+<HTML>
+<HEAD>
+<TITLE>Instance Structure Protocol
+</TITLE>
+</HEAD>
+<BODY>
+  <H1>Instance Structure Protocol</H1>
+
+<p>
+The instance structure protocol is responsible for implementing the behavior
+of the slot access functions like
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_slt_va.htm#slot-value">slot-value</a>
+and
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_slt_va.htm#slot-value">
+(setf slot-value)</a>.
+</p>
+
+<p>
+For each CLOS slot access function other than
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_slt_ex.htm#slot-exists-p">slot-exists-p</a>, there is a
+corresponding generic function which actually provides the behavior of the
+function.  When called, the slot access function finds the pertinent effective
+slot definition metaobject, calls the corresponding generic function and
+returns its result.  The arguments passed on to the generic function include
+one additional value, the class of the <I>object</I> argument, which always
+immediately precedes the <I>object</I> argument.
+</p>
+
+<p>
+The correspondences between slot access function and underlying slot access
+generic function are as follows:
+</p>
+
+<table>
+  <tr>
+    <td>
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_slt_bo.htm#slot-boundp">slot-boundp</a>
+    </td>
+    <td>
+      <a href="slot-boundp-using-class.html">slot-boundp-using-class</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_slt_ma.htm#slot-makunbound">slot-makunbound</a>
+    </td>
+    <td>
+      <a href="slot-makunbound-using-class.html">slot-makunbound-using-class</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_slt_va.htm#slot-value">slot-value</a>
+    </td>
+    <td>
+      <a href="slot-value-using-class.html">slot-value-using-class</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_slt_va.htm#slot-value">
+	(setf slot-value)</a>
+    </td>
+    <td>
+      <a href="setf-slot-value-using-class.html">(setf slot-value-using-class)</a>
+    </td>
+  </tr>
+</table>
+
+<p>
+At the lowest level, the instance structure protocol provides only limited
+mechanisms for portable programs to control the implementation of instances
+and to directly access the storage associated with instances without going
+through the indirection of slot access.  This is done to allow portable
+programs to perform certain commonly requested slot access optimizations.
+</p>
+
+<p>
+In particular, portable programs can control the implementation of,
+and obtain direct access to, slots with allocation <TT>:instance</TT>
+and type <B>t</B>.  These are called <I>directly accessible slots</I>.
+</p>
+
+<p>
+The relevant specified around-method on
+<a href="compute-slots.html">compute-slots</a>
+determines the
+implementation of instances by deciding how each slot in the instance will be
+stored.  For each directly accessible slot, this method allocates a
+<I>location</I> and associates it with the effective slot definition metaobject.
+The location can be accessed by calling the
+<a href="slot-definition-location.html">slot-definition-location</a>
+generic function.  Locations are non-negative integers.  For a given class,
+the locations increase consecutively, in the order that the directly
+accessible slots appear in the list of effective slots.  (Note that here, the
+next paragraph, and the specification of this around-method are the only
+places where the value returned by
+<a href="compute-slots.html">compute-slots</a>
+is described as a list rather than a set.)
+</p>
+
+<p>
+Given the location of a directly accessible slot, the value of that slot in an
+instance can be accessed with the appropriate accessor.  For 
+<a href="standard-class.html">standard-class</a>, 
+this accessor is the function
+<a href="standard-instance-access.html">standard-instance-access</a>.
+For
+<a href="funcallable-standard-class.html">funcallable-standard-class</a>,
+this accessor is the function
+<a href="funcallable-standard-instance-access.html">
+  funcallable-standard-instance-access</a>.
+In each case, the arguments to the
+accessor are the instance and the slot location, in that order.  See the
+definition of each accessor for additional restrictions
+on the use of these function.
+</p>
+
+<H3>Example:</H3>
+
+<p>
+The following example shows the use of this mechanism to implement a
+new class metaobject class, <TT>ordered-class</TT> and class
+option <TT>:slot-order</TT>.  This option provides control over the
+allocation of slot locations.  In this simple example implementation,
+the <TT>:slot-order</TT> option is not inherited by subclasses; it
+controls only instances of the class itself.
+</p>
+
+<pre>
+(defclass ordered-class (standard-class)
+     ((slot-order :initform ()
+                  :initarg :slot-order
+                  :reader class-slot-order)))
+
+(defmethod compute-slots ((class ordered-class))
+  (let ((order (class-slot-order class)))
+    (sort (copy-list (call-next-method))
+          #'(lambda (a b)
+              (< (position (slot-definition-name a) order)
+                 (position (slot-definition-name a) order))))))
+</pre>
+
+<p>
+Following is the source code the user of this extension would write.
+ Note that because the code above doesn't implement inheritance of the
+<TT>:slot-order</TT> option, the function <TT>distance</TT> must not
+be called on instances of subclasses of <TT>point</TT>; it can only be
+called on instances of <TT>point</TT> itself.
+</p>
+
+<pre>
+(defclass point ()
+     ((x :initform 0)
+      (y :initform 0))
+  (:metaclass ordered-class)
+  (:slot-order x y))
+
+(defun distance (point)
+  (sqrt (/ (+ (expt (standard-instance-access point 0) 2)
+              (expt (standard-instance-access point 1) 2))
+           2.0)))
+</pre>
+
+<p>
+In more realistic uses of this mechanism, the calls to the low-level
+instance structure accessors would not actually appear textually in
+the source program, but rather would be generated by a meta-level
+analysis program run during the process of compiling the source
+program.
+</p>
+
+</BODY>
+</HTML>
