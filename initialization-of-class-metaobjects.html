@@ -1,0 +1,72 @@
+<HTML>
+<HEAD>
+<TITLE>Initialization of Class Metaobjects
+</TITLE>
+</HEAD>
+<BODY>
+<H1>Initialization of Class Metaobjects</H1>
+
+<p>
+Class metaobjects created with
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ins.htm#make-instance">make-instance</a>
+are usually <I>anonymous</I>; that is, they have no proper name.  An
+anonymous class metaobject can be given a proper name using 
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_find_c.htm#find-class">
+(setf find-class)</a> and 
+<a href="setf-class-name.html">(setf class-name)</a>.
+</p>
+
+<p>
+When a class metaobject is created with
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ins.htm#make-instance">make-instance</a>,
+it is initialized in the usual way.  The initialization arguments
+passed to 
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ins.htm#make-instance">make-instance</a>
+are use to establish the definition of the class.  Each initialization
+argument is checked for errors and associated with the class
+metaobject.  The initialization arguments correspond roughly to the
+arguments accepted by the 
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defcla.htm#defclass">
+defclass</a>
+macro, and more closely to the arguments accepted by the
+<a href="ensure-class.html">ensure-class</a>
+function.
+</p>
+
+<p>
+Some class metaobject classes allow their instances to be redefined.  When
+permissible, this is done by calling
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_reinit.htm#reinitialize-instance">
+reinitialize-instance</a>.  This is discussed in the next section.
+</p>
+
+<p>
+An example of creating an anonymous class directly using
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ins.htm#make-instance">make-instance</a>
+follows:
+</p>
+
+<pre>
+(flet ((zero () 0)
+       (propellor () *propellor*))
+  (make-instance 'standard-class
+    :name '(my-class foo)
+    :direct-superclasses (list (find-class 'plane)
+                              \em another-anonymous-class\tt)
+    :direct-slots `((:name x
+                     :initform 0
+                     :initfunction ,#'zero
+                     :initargs (:x)
+                     :readers (position-x)
+                     :writers ((setf position-x)))
+                    (:name y
+                     :initform 0
+                     :initfunction ,#'zero
+                     :initargs (:y)
+                     :readers (position-y)
+                     :writers ((setf position-y))))
+    :direct-default-initargs `((:engine *propellor* ,#'propellor))))
+</pre>
+
+</BODY>
+</HTML>
