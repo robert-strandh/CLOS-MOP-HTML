@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="ensure-class"><I>Function</I>
+  <B>ENSURE-CLASS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>ensure-class</B> 
+<I>name</I> <TT>&key</TT> <TT>&allow-other-keys</TT>
+=&gt; <I>class</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>name</I> -- A symbol.</P>
+
+<P><I>class</I> -- A class metaobject.</P>
+
+<P><B>Description:</B></P>
+
+<p>
+Some of the keyword arguments accepted by this function are actually
+processed by
+<a href="ensure-class-using-class.html">ensure-class-using-class</a>,
+others are processed during initialization of the class metaobject (as
+described in the section called
+<a href="initialization-of-class-metaobjects.html">
+``Initialization of Class Metaobjects''</a>).
+</p>
+
+<p>
+This function is called to define or redefine a class with the
+specified name, and can be called by the user or the implementation.
+It is the functional equivalent of
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defcla.htm#defclass">
+defclass</a>, and is called by the expansion of the
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defcla.htm#defclass">
+defclass</a> macro.
+</p>
+
+<p>
+The behavior of this function is actually implemented by the generic
+function 
+<a href="ensure-class-using-class.html">ensure-class-using-class</a>.
+When <B>ensure-class</B> is
+called, it immediately calls
+<a href="ensure-class-using-class.html">ensure-class-using-class</a>
+and returns that result as its own.
+</p>
+
+</BODY>
+</HTML>
