@@ -1,0 +1,150 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="ensure-class-using-class"><I>Generic Function</I> <B>ENSURE-CLASS-USING-CLASS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>ensure-class-using-class</B>
+  <I>class</I> <I>name</I> <TT>&amp;key</TT> 
+  <TT>:direct-default-initargs</TT>
+  <TT>:direct-slots</TT>
+  <TT>:direct-superclasses</TT>
+  <TT>:name</TT>
+  <TT>:metaclass</TT>
+  =&gt; <I>resulting-class</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>class</I> -- A class metaobject or <TT>NIL</TT>.</P>
+
+<P><I>name</I> -- A class name.</P>
+
+<P><TT>:metaclass</TT> -- A class metaobject class or a class
+  metaobject class name. If this argument is not supplied, it defaults
+  to the class named <TT>standard-class</TT>.  If a class name is
+  supplied, it is interpreted as the class with that name.  If a class
+  name is supplied, but there is no such class, an error is
+  signaled.</P>
+
+<P><TT>:direct-superclasses</TT> -- A list of which each element is a
+class metaobject or a class name.  An error is signaled if this
+argument is not a proper list.</P>
+
+For the interpretation of additional keyword arguments,
+see <a href="initialization-of-class-metaobjects.html"> Initialization
+of Class Metaobjects</a>.
+
+<P><B>Description:</B></P>
+
+<P>
+The value returned is a class metaobject.
+</P>
+
+<P>
+This generic function is called to define or modify the definition of
+a named class.  It is called by the <TT>ensure-class</TT> function.
+It can also be called directly.
+</P>
+
+<P>
+The first step performed by this generic function is to compute the
+set of initialization arguments which will be used to create or
+reinitialize the named class.  The initialization arguments are
+computed from the full set of keyword arguments received by this
+generic function as follows:
+</P>
+
+<UL>
+  <LI> The <TT>:metaclass</TT> argument is not included in the
+  initialization arguments.</LI>
+
+  <LI> If the <TT>:direct-superclasses</TT> argument was received by
+  this generic function, it is converted into a list of class
+  metaobjects.  This conversion does not affect the structure of the
+  supplied <TT>:direct-superclasses</TT> argument.  For each element in
+  the <TT>:direct-superclasses</TT> argument:
+
+    <UL>
+      <LI>If the element is a class metaobject, that class metaobject
+	is used.</LI>
+      
+      <LI>If the element names a class, that class metaobject is
+	used.</LI>
+
+      <LI>Otherwise an instance of the
+	class <TT>forward-referenced-class</TT> is created and used.
+	The proper name of the newly created forward referenced class
+	metaobject is set to <I>name</I>.
+
+    </UL>
+  </LI>
+  
+  <LI>All other keyword arguments are included directly in the
+    initialization arguments.</LI>
+
+</UL>
+
+<P>
+If the <I>class</I> argument is <TT>nil</TT>, a new class metaobject is
+created by calling the <TT>make-instance</TT> generic function with the
+value of the <TT>:metaclass</TT> argument as its first argument, and the
+previously computed initialization arguments.  The proper name of the
+newly created class metaobject is set to <I>name</I>.  The newly
+created class metaobject is returned.
+</P>
+
+<P>
+If the <I>class</I> argument is a forward referenced
+class, <TT>change-class</TT> is called to change its class to the value
+specified by the <TT>:metaclass</TT> argument.  The class metaobject is
+then reinitialized with the previously initialization arguments.
+(This is a documented violation of the general constraint
+that <TT>change-class</TT> not be used with class metaobjects.)
+</P>
+
+<P>
+If the class of the <I>class</I> argument is not the same as the
+class specified by the <TT>:metaclass</TT> argument, an error is signaled.
+</P>
+
+<P>
+Otherwise, the class metaobject <I>class</I> is redefined by calling
+the <TT>reinitialize-instance</TT> generic function with <I>class</I>
+and the initialization arguments.  The <I>class</I> argument is then
+returned.
+</P>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><A HREF="ensure-class-using-class-class.html">
+	<B>ensure-class-using-class</B>
+	(<I>class</I> class) <I>name</I> <TT>&amp;key</TT>
+	<TT>:metaclass</TT> <TT>:direct-superclasses</TT>
+	<TT>&amp;allow-other-keys</TT></A>
+    </td>
+  </tr>
+  <tr>
+    <td><A HREF="ensure-class-using-class-forward-reference-class.html">
+	<B>ensure-class-using-class</B>
+	(<I>class</I> forward-reference-class) <I>name</I> <TT>&amp;key</TT>
+	<TT>:metaclass</TT> <TT>:direct-superclasses</TT>
+	<TT>&amp;allow-other-keys</TT></A>
+    </td>
+  </tr>
+  <tr>
+    <td><A HREF="ensure-class-using-class-null.html">
+	<B>ensure-class-using-class</B>
+	(<I>class</I> null) <I>name</I> <TT>&amp;key</TT>
+	<TT>:metaclass</TT> <TT>:direct-superclasses</TT>
+	<TT>&amp;allow-other-keys</TT></A>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>
