@@ -8,7 +8,7 @@
 
 <p>
 Class metaobjects created with
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ins.htm#make-instance">make-instance</a>
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ins.htm#make-instance" id="make-instance-1">make-instance</a>
 are usually <I>anonymous</I>; that is, they have no proper name.  An
 anonymous class metaobject can be given a proper name using 
 <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_find_c.htm#find-class">
@@ -52,7 +52,7 @@ follows:
   (make-instance 'standard-class
     :name '(my-class foo)
     :direct-superclasses (list (find-class 'plane)
-                              \em another-anonymous-class\tt)
+                               <I>another-anonymous-class</I>)
     :direct-slots `((:name x
                      :initform 0
                      :initfunction ,#'zero
