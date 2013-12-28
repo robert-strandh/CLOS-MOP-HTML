@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="ensure-generic-function"><I>Function</I>
+  <B>ENSURE-GENERIC-FUNCTION</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>ensure-generic-function</B> 
+<I>function-name</I> <TT>&key</TT> <TT>&allow-other-keys</TT>
+=&gt; <I>generic function</I>
+
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>function-name</I> -- A symbol or a list of the form <TT>(setf <I>symbol</I>)</TT>.</P>
+
+<P><I>class</I> -- A class metaobject.</P>
+
+<P><I>generic function</I> -- A generic function metaobject.</P>
+
+<P>
+Some of the keyword arguments accepted by this function are actually
+processed
+by <a href="ensure-generic-function-using-class.html">ensure-generic-function-using-class</a>,
+others are processed during initialization of the generic function
+metaobject (as described in the section
+called <a href="initialization-of-generic-function-metaobjects.html">``Initialization
+of Generic Function Metaobjects''</a>).
+<p>
+
+<P><B>Description:</B></P>
+
+<p>
+This function is called to define a globally named generic function or to
+specify or modify options and declarations that pertain to a globally named
+generic function as a whole.  It can be called by the user or the
+implementation.
+</p>
+
+<p>
+It is the functional equivalent
+of <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defgen.htm#defgeneric">defgeneric</a>, and is called by the
+expansion of the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defgen.htm#defgeneric">defgeneric</a>
+and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defmet.htm#defmethod">defmethod</a> macros.
+</p>
+
+<p>
+The behavior of this function is actually implemented by the generic function
+<a href="ensure-generic-function-using-class..html">ensure-generic-function-using-class</a>.
+When <a href="ensure-generic-function.html">ensure-generic-function</a>
+is called, it immediately
+calls <a href="ensure-generic-function-using-class.html">ensure-generic-function-using-class</a>
+and returns that result as its own.
+</p>
+
+<p>
+The first argument
+to <a href="ensure-generic-function-using-class.html">ensure-generic-function-using-class</a>
+is computed as follows:
+</p>
+
+<UL>
+<LI>
+If <I>function-name</I> names a non-generic function, a macro, or a
+special form, an error is signaled.
+</LI>
+
+<LI>If <I>function-name</I> names a generic function, that generic function
+metaobject is used.
+</LI>
+
+<LI>
+Otherwise, <TT>nil</TT> is used.
+</LI>
+
+</UL>
+
+<p>
+The second argument is <I>function-name</I>.  The remaining arguments
+are the complete set of keyword arguments received
+by <a href="ensure-generic-function..html">ensure-generic-function</a>.
+</p>
+</BODY>
+</HTML>

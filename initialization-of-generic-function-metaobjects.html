@@ -1,0 +1,328 @@
+<HTML>
+<HEAD>
+<TITLE>Initialization of Generic Function Metaobjects
+</TITLE>
+</HEAD>
+<BODY>
+<H1>Initialization of Generic Function Metaobjects</H1>
+
+
+<p>
+A generic function metaobject can be created by
+calling <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ins.htm#make-instance">
+make-instance</a>.  The initialization arguments establish the
+definition of the generic function.  A generic function metaobject can
+be redefined by
+calling <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_reinit.htm#reinitialize-instance">
+reinitialize-instance</a>.
+Some classes of generic function metaobject do not support
+redefinition; in these
+cases, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_reinit.htm#reinitialize-instance">
+reinitialize-instance</a>
+signals an error.
+</p>
+
+<p>
+Initialization of a generic function metaobject must be done by
+calling <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ins.htm#make-instance">make-instance</a> and allowing it
+to call <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_init_i.htm#initialize-instance">initialize-instance</a>.
+Reinitialization of a generic-function metaobject must be done by
+calling <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_reinit.htm#reinitialize-instance">
+reinitialize-instance</a>.
+Portable programs must not
+call <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_init_i.htm#initialize-instance">initialize-instance</a>
+directly to initialize a generic function metaobject.  Portable
+programs must not
+call <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_shared.htm#shared-initialize">shared-initialize</a> directly
+to initialize or reinitialize a generic function metaobject.  Portable
+programs must not
+call <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_chg_cl.htm#change-class">
+change-class</a> to change the class of any generic function
+metaobject or to turn a non-generic-function object into a generic
+function metaobject.
+</p>
+
+<p>
+Since metaobject classes may not be redefined, no behavior is
+specified for the result of calls
+to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_upda_1.htm#update-instance-for-redefined-class">update-instance-for-redefined-class</a>
+on generic function metaobjects.  Since the class of a generic
+function metaobject may not be changed, no behavior is specified for
+the results of calls
+to <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_update.htm#update-instance-for-different-class">update-instance-for-different-class</a>
+on generic function metaobjects.
+</p>
+
+<p>
+During initialization or reinitialization, each initialization
+argument is checked for errors and then associated with the generic
+function metaobject.  The value can then be accessed by calling the
+appropriate accessor as shown in the table below. (FIXME:insert anchor).
+</p>
+
+<p>
+This section begins with a description of the error checking and
+processing of each initialization argument.  This is followed by a
+table showing the generic functions that can be used to access the
+stored initialization arguments. The section ends with a set of
+restrictions on portable methods affecting generic function metaobject
+initialization and reinitialization.
+</p>
+
+<p>
+In these descriptions, the phrase ``this argument defaults to <I>value</I>''
+means that when that initialization argument is not supplied, initialization
+or reinitialization is performed as if <I>value</I> had been supplied.  For
+some initialization arguments this could be done by the use of default
+initialization arguments, but whether it is done this way is not specified.
+Implementations are free to define default initialization arguments for
+specified generic function metaobject classes.  Portable programs are free
+to define default initialization arguments for portable subclasses of the
+class <a href="generic-function.html">generic-function</a>.
+</p>
+
+<p>
+Unless there is a specific note to the contrary, then during reinitialization,
+if an initialization argument is not supplied, the previously stored value is
+left unchanged.
+</p>
+
+<UL>
+<LI>
+<p>
+The <TT>:argument-precedence-order</TT> argument is a list of symbols.
+</p>
+
+<p>
+An error is signaled if this argument appears but
+the <TT>:lambda-list</TT> argument does not appear.  An error is
+signaled if this value is not a proper list or if this value is not a
+permutation of the symbols from the required arguments part of
+the <TT>:lambda-list</TT> initialization argument.
+</p>
+
+<p>
+When the generic function is being initialized or reinitialized, and this
+argument is not supplied, but the <TT>:lambda-list</TT> argument is supplied,
+this value defaults to the symbols from the required arguments part of the
+<TT>:lambda-list</TT> argument, in the order they appear in that argument.  If
+neither argument is supplied, neither are initialized (see the description of
+<TT>:lambda-list</TT>.)
+</p>
+
+<LI>
+<p>
+The <TT>:declarations</TT> argument is a list of declarations.
+</p>
+
+<p>
+An error is signaled if this value is not a proper list or if each of its
+elements is not a legal declaration.
+</p>
+
+<p>
+When the generic function is being initialized, and this argument is not
+supplied, it defaults to the empty list.
+</p>
+</LI>
+
+<LI>
+<p>
+The <TT>:documentation</TT> argument is a string or <TT>nil</TT>.
+</p>
+
+<p>
+An error is signaled if this value is not a string or <TT>nil</TT>.
+</p>
+
+<p>
+If the generic function is being initialized, this argument defaults to <TT>nil</TT>.
+</p>
+</LI>
+
+<LI>
+<p>
+The <TT>:lambda-list</TT> argument is a lambda list.
+</p>
+
+<p>
+An error is signaled if this value is not a proper generic function lambda
+list.
+</p>
+
+<p>
+When the generic function is being initialized, and this argument is not
+supplied, the generic function's lambda list is not initialized.  The
+lambda list will be initialized later, either when the first method is
+added to the generic function, or a later reinitialization of the
+generic function.
+</p>
+</LI>
+
+<LI>The <TT>:method-combination</TT> argument is a method combination
+metaobject.
+</LI>
+
+<LI>
+<p>
+The <TT>:method-class</TT> argument is a class metaobject.
+</p>
+
+<p>
+An error is signaled if this value is not a subclass of the class <a href="method.html">method</a>.
+</p>
+
+<p>
+When the generic function is being initialized, and this argument is not
+supplied, it defaults to the class <a href="standard-method.html">standard-method</a>.
+</p>
+</LI>
+
+<LI>
+<p>
+The <TT>:name</TT> argument is an object.
+</p>
+
+<p>
+If the generic function is being initialized, this argument defaults to <TT>nil</TT>.
+</p>
+</LI>
+</UL>
+
+<p>
+After the processing and defaulting of initialization arguments described
+above, the value of each initialization argument is associated with the
+generic function metaobject.  These values can then be accessed by calling the
+corresponding generic function.  The correspondences are as follows:
+</p>
+
+<table>
+  <tr>
+    <td>
+      <B>Initialization Argument</B>
+    </td>
+    <td>
+      <B>Generic Function</B>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <TT>:argument-precedence-order</TT>
+    </td>
+    <td>
+      <a href="generic-function-argument-precedence-order.html">
+	generic-function-argument-precedence-order</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <TT>:declarations</TT>
+    </td>
+    <td>
+      <a href="generic-function-declarations.html">
+	generic-function-declarations</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <TT>:documentation</TT>
+    </td>
+    <td>
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_docume.htm#documentation">
+	documentation</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <TT>:lambda-list</TT>
+    </td>
+    <td>
+      <a href="generic-function-lambda-list.html">
+	generic-function-lambda-list</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <TT>:method-combination</TT>
+    </td>
+    <td>
+      <a href="generic-function-method-combination.html">
+	generic-function-method-combination</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <TT>:method-class</TT>
+    </td>
+    <td>
+      <a href="generic-function-method-class.html">
+	generic-function-method-class</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <TT>:name</TT>
+    </td>
+    <td>
+      <a href="generic-function-name.html">
+	generic-function-name</a>
+    </td>
+  </tr>
+</table>
+
+<H2>Methods</H2>
+
+<p>
+It is not specified which methods provide the initialization and
+reinitialization behavior described above.  Instead, the information
+needed to allow portable programs to specialize this behavior is
+presented as a set of restrictions on the methods a portable program
+can define.  The model is that portable initialization methods have
+access to the generic function metaobject when either all or none of
+the specified initialization has taken effect.
+</p>
+
+<p>
+These restrictions govern the methods that a portable program can
+define on the generic
+functions <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_init_i.htm#initialize-instance">initialize-instance</a>,
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_reinit.htm#reinitialize-instance">
+reinitialize-instance</a>,
+and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_shared.htm#shared-initialize">
+shared-initialize</a>.  These
+restrictions apply only to methods on these generic functions for
+which the first specializer is a subclass of the
+class <a href="generic-function.html">generic-function</a>.  Other
+portable methods on these generic functions are not affected by these
+restrictions.
+</p>
+
+<UL>
+<LI>Portable programs must not define methods
+on <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_shared.htm#shared-initialize">shared-initialize</a>.</LI>
+
+<LI>For <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_init_i.htm#initialize-instance">initialize-instance</a>
+and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_reinit.htm#reinitialize-instance">
+reinitialize-instance</a>:
+
+<UL>
+
+<LI>Portable programs must not define primary methods.</LI>
+
+<LI>Portable programs may define around-methods, but these must be
+extending, not overriding methods.</LI>
+
+<LI> Portable before-methods must assume that when they are run, none
+of the initialization behavior described above has been completed.</LI>
+
+<LI>Portable after-methods must assume that when they are run, all of
+the initialization behavior described above has been completed.</LI>
+
+</UL>
+</LI>
+
+</UL>
+
+<p>
+The results are undefined if any of these restrictions are violated.
+</p>
