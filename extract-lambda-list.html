@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="extract-lambda-list"><I>Function</I>
+  <B>EXTRACT-LAMBDA-LIST</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>extract-lambda-list</B> 
+<I>specialized-lambda-list</I>
+=&gt; <I>lambda-list</I></P>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>specialized-lambda-list</I> -- 
+A specialized lambda list as accepted by <TT>defmethod</TT>.</P>
+
+<P><I>lambda-list</I> -- An unspecialized lambda list.</P>
+
+<P><B>Description:</B></P>
+
+<p>
+This function takes a specialized lambda list and returns the lambda list with
+the specializers removed.  This is a non-destructive operation.  Whether the
+result shares any structure with the argument is unspecified.
+</p>
+
+<p>
+If the <I>specialized-lambda-list</I> argument does not have legal syntax, an
+error is signaled.  This syntax checking does not check the syntax of the
+actual specializer names, only the syntax of the lambda list and where the
+specializers appear.
+</p>
+
+<P><B>Examples:</B></P>
+
+<PRE>
+(extract-lambda-list '((p position)))             ==> (P)
+
+(extract-lambda-list '((p position) x y))         ==> (P X Y)
+
+(extract-lambda-list '(a (b (eql x)) c &rest i))  ==> (A B C &OPTIONAL I)
+</PRE>
+
+<P><B>Comments and remarks:</B></P>
+
+<p>
+The last example in the previous section is surprising, because there
+is no explanation for it.  
+</p>
+
+</BODY>
+</HTML>
