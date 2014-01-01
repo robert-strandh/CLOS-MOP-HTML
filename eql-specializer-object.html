@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="eql-specializer-object"><I>Function</I>
+  <B>EQL-SPECIALIZER-OBJECT</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>eql-specializer-object</B> 
+<I>eql-specializer</I>
+=&gt; <I>object</I></P>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>eql-specializer</I> -- An <TT>eql</TT> specializer object.</P>
+
+<P><I>class</I> -- A class metaobject.</P>
+
+<P><I>object</I> -- An object.</P>
+
+<P><B>Description:</B></P>
+
+<p>
+This function returns the object associated with <I>eql-specializer</I> during
+initialization.  The value is guaranteed to be <TT>eql</TT> to the value
+originally passed to 
+<a href="intern-eql-specializer.html">intern-eql-specializer</a>,
+but it is not necessarily
+<TT>eq</TT> to that value.
+</p>
+
+<p>
+This function signals an error if <I>eql-specializer</I> is not an <TT>eql</TT>
+specializer.
+</p>
+
+</BODY>
+</HTML>
