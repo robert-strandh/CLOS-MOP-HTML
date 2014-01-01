@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="extract-specializer-names"><I>Function</I>
+  <B>EXTRACT-SPECIALIZER-NAMES</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>extract-specializer-names</B> 
+<I>specialized-lambda-list</I>
+=&gt; <I>specializer-names</I></P>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>specialized-lambda-list</I> -- 
+A specialized lambda list as accepted by <TT>defmethod</TT>.</P>
+
+<P><I>specializer-names</I> -- A list of specializer names.</P>
+
+<P><B>Description:</B></P>
+
+<p>
+This function takes a specialized lambda list and returns its specializer
+names.  This is a non-destructive operation.  Whether the result shares
+structure with the argument is unspecified.  The results are undefined if the
+result of this function is modified.
+</p>
+
+<p>
+The result of this function will be a list with a number of elements equal to
+the number of required arguments in <I>specialized-lambda-list</I>.
+Specializers are defaulted to the symbol <TT>t</TT>.
+</p>
+
+<p>
+If the <I>specialized-lambda-list</I> argument does not have legal syntax, an
+error is signaled.  This syntax checking does not check the syntax of the
+actual specializer names, only the syntax of the lambda list and where the
+specializers appear.
+</p>
+
+<P><B>Examples:</B></P>
+
+<PRE>
+(extract-specializer-names '((p position)))            ==> (POSITION)
+
+(extract-specializer-names '((p position) x y))        ==> (POSITION T T)
+
+(extract-specializer-names '(a (b (eql x)) c &rest i)) ==> (T (EQL X) T)
+</PRE>
+
+</BODY>
+</HTML>
