@@ -1,0 +1,61 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="finalize-inheritance"><I>Generic Function</I> <B>FINALIZE-INHERITANCE</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>finalize-inheritance</B>
+  <I>class</I>
+  =&gt; <I>unspecified</I></P>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>class</I> -- A class metaobject.</P>
+
+<P><B>Description:</B></P>
+
+<P>
+This generic function is called to finalize a class metaobject.  This is
+described in 
+<a href="class-finalization-protocol.html"> the Section named ``Class Finalization Protocol.''</a>
+</P>
+
+<P>
+After <a href="finalize-inheritance.html">finalize-inheritance</a>
+returns, the class metaobject is finalized and the result of calling
+<a href="class-finalized-p.html">class-finalized-p</a> on the class
+metaobject will be true.
+</P>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><A HREF="finalize-inheritance-standard-class.html">
+	<B>finalize-inheritance</B>
+	(<I>class</I> standard-class)</A>
+    </td>
+  </tr>
+  <tr>
+    <td><A HREF="finalize-inheritance-funcallable-standard-class.html">
+	<B>finalize-inheritance</B>
+	(<I>class</I> funcallable-standard-class)</A>
+    </td>
+  </tr>
+  <tr>
+    <td><A HREF="finalize-inheritance-forward-reference-class.html">
+	<B>finalize-inheritance</B>
+	(<I>class</I> forward-reference-class)</A>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>
+
+
+
+
