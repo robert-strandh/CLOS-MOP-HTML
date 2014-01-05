@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<TITLE>Class finalization protocol
+</TITLE>
+</HEAD>
+<BODY>
+<H1>Class finalization protocol</H1>
+
+<P>
+Class <I>finalization</I> is the process of computing the information
+a class inherits from its superclasses and preparing to actually
+allocate instances of the class.  The class finalization process
+includes computing the class's class precedence list, the full set of
+slots accessible in instances of the class and the full set of default
+initialization arguments for the class.  These values are associated
+with the class metaobject and can be accessed by calling the
+appropriate reader.  In addition, the class finalization process makes
+decisions about how instances of the class will be implemented.
+</P>
+
+<P>
+To support forward-referenced superclasses, and to account for the fact that
+not all classes are actually instantiated, class finalization is not done as
+part of the initialization of the class metaobject.  Instead, finalization is
+done as a separate protocol, invoked by calling the generic function
+<a href="finalize-inheritance.html">finalize-inheritance</a>.  The
+exact point at
+which <a href="finalize-inheritance.html">finalize-inheritance</a> is
+called depends on the class of the class metaobject; for
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_cl.htm#standard-class">
+   standard-class</a>
+it is called sometime after all the classes
+superclasses are defined, but no later than when the first instance of
+the class is allocated
+(by <a href="allocate-instance.html">allocate-instance</a>).
+</P>
+
+<P>
+The first step of class finalization is computing the class precedence list.
+Doing this first allows subsequent steps to access the class precedence list.
+This step is performed by calling the generic function
+<a href="compute-class-precedence-list.html">compute-class-precedence-list</a>.
+The value returned from this call is associated with the class
+metaobject and can be accessed by calling the
+<a href="class-precedence-list.html">class-precedence-list</a> generic function.
+</P>
+
+<P>
+The second step is computing the full set of slots that will be
+accessible in instances of the class.  This step is performed by
+calling the generic
+function <a href="compute-slots.html">compute-slots</a>.  The result
+of this call is a list of effective slot definition metaobjects.  This
+value is associated with the class metaobject and can be accessed by
+calling the <a href="class-slots.html">class-slots</a> generic
+function.
+</P>
+
+<P>
+The behavior of <a href="compute-slots.html">compute-slots</a> is
+itself layered, consisting of calls 
+to <a href="effective-slot-definition-class.html">effective-slot-definition-class</a>
+and <a href="compute-effective-slot-definition.html">compute-effective-slot-definition</a>.
+</P>
+
+<P>
+The final step of class finalization is computing the full set of
+initialization arguments for the class.  This is done by calling the
+generic
+function <a href="compute-default-initargs.html">compute-default-initargs</a>.
+The value returned by this generic function is associated with the
+class metaobject and can be accessed by
+calling <a href="class-default-initargs.html">class-default-initargs</a>.
+</P>
+
+<P>
+If the class was previously finalized, <a href="finalize-inheritance.html">finalize-inheritance</a> may call
+<a href="make-instances-obsolete.html">make-instances-obsolete</a>.
+The circumstances under which this happens are describe in 
+<a href="http://www.cs.cmu.edu/Groups/AI/html/cltl/clm/node300.html#SECTION0032110000000000000000">
+the section of the CLOS specification called ``Redefining Classes.''</a>
+</P>
+
+<P>
+Forward-referenced classes, which provide a temporary definition for a
+class which has been referenced but not yet defined, can never be
+finalized.  An error is signalled
+if <a href="finalize-inheritance.html">finalize-inheritance</a> is
+called on a forward-referenced class.
+</P>
+
+</BODY>
+</HTML>
