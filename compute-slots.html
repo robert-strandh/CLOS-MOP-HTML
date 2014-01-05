@@ -37,8 +37,9 @@ This generic function proceeds in 3 steps:
 
   <li>The direct slot definitions are then collected into individual
     lists, one list for each slot name associated with any of the
-    direct slot definitions.  The slot names are compared with {\bf
-    eql}.  Each such list is then sorted into class precedence list
+    direct slot definitions.  The slot names are compared with
+    <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_eql.htm">
+      eql</a>.  Each such list is then sorted into class precedence list
     order.  Direct slot definitions coming from classes earlier in the
     class precedence list of <I>class</I> appear before those coming
     from classes later in the class precedence list.  For each slot
@@ -46,8 +47,8 @@ This generic function proceeds in 3 steps:
     <a href="compute-effective-slot-definition.html">
       compute-effective-slot-definition</a>
     is called to compute an effective slot definition.  The result of
-    {\bf compute-slots} is a list of these effective slot definitions,
-    in unspecified order.</li>
+    <a href="compute-slots.html">compute-slots</a> is a list of these
+    effective slot definitions, in unspecified order.</li>
 
   <li>In the final step, the location for each effective slot
     definition is set.  This is done by specified around-methods;
