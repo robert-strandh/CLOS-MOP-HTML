@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="generic-function-declarations"><I>Generic Function</I> <B>GENERIC-FUNCTION-DECLARATIONS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>generic-function-declarations</B> <I>generic-function</I> 
+=&gt; <I>declarations</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>generic-function</I> -- A generic function metaobject.</P>
+
+<P><I>declarations</I> -- A (possibly empty) list of declarations.</P>
+
+<P><B>Description:</B></P>
+
+<P>
+This generic function returns a possibly empty list of the
+declarations of the generic function.  The elements of this list are
+declarations.  This list is the defaulted value of the 
+<TT>:declarations</TT> initialization argument that was associated with the
+generic function metaobject during initialization or reinitialization.
+</P>
+
+<P>
+This generic function can be called by the user or the implementation.
+</P>
+
+<P>
+An error is signaled if the argument <I>generic-function</I> is not a
+generic function metaobject.  An error is also signaled if the generic
+function metaobject has not been initialized.
+</P>
+
+<P>
+The list returned by this generic function will not be mutated by the
+implementation.  The results are undefined if a portable program
+mutates the list returned by this generic function.
+</P>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="generic-function-declarations-standard-generic-function.html">
+	<B>generic-function-declarations</B> (<I>generic-function</I> standard-generic-function)</a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>

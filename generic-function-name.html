@@ -1,0 +1,51 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="generic-function-name"><I>Generic Function</I> <B>GENERIC-FUNCTION-NAME</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>generic-function-name</B> <I>generic-function</I> 
+=&gt; <I>name</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>generic-function</I> -- A generic function metaobject.</P>
+
+<P><I>name</I> -- A function name or <TT>nil</TT>.</P>
+
+<P><B>Description:</B></P>
+
+<P>
+This generic function returns the name of the generic function, or
+<TT>nil</TT> if the generic function has no name.  This is the defaulted
+value of the <TT>:name</TT> initialization argument that was associated
+with the generic function metaobject during initialization or
+reinitialization.  (Also see 
+<a href="setf-generic-function-name.html">(setf generic-function-name)</a>.)
+</P>
+
+<P>
+This generic function can be called by the user or the implementation.
+</P>
+
+<P>
+An error is signaled if the argument <I>generic-function</I> is not a
+generic function metaobject.  An error is also signaled if the generic
+function metaobject has not been initialized.
+</P>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="generic-function-name-standard-generic-function.html">
+	<B>generic-function-name</B> (<I>generic-function</I> standard-generic-function)</a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>

@@ -1,0 +1,57 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="generic-function-methods"><I>Generic Function</I> <B>GENERIC-FUNCTION-METHODS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>generic-function-methods</B> <I>generic-function</I> 
+=&gt; <I>symbols</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>generic-function</I> -- A generic function metaobject.</P>
+
+<P><I>methods</I> -- A list of method metaobjects.</P>
+
+<P><B>Description:</B></P>
+
+<P>
+This generic function returns the set of methods currently connected
+to the generic function.  This is a set of method metaobjects.  This
+value is maintained by the generic functions 
+<a href="add-method.html"> add-method</a> and
+<a href="remove-method.html"> remove-method</a>.
+</P>
+
+<P>
+This generic function can be called by the user or the implementation.
+</P>
+
+<P>
+An error is signaled if the argument <I>generic-function</I> is not a
+generic function metaobject.  An error is also signaled if the generic
+function metaobject has not been initialized.
+</P>
+
+<P>
+The list returned by this generic function will not be mutated by the
+implementation.  The results are undefined if a portable program
+mutates the list returned by this generic function.
+</P>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="generic-function-methods-standard-generic-function.html">
+	<B>generic-function-methods</B> (<I>generic-function</I> standard-generic-function)</a>
+    </td>
+  </tr>
+</table>
+
+
+</BODY>
+</HTML>
