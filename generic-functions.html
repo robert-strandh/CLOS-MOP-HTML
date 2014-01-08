@@ -1,0 +1,54 @@
+<HTML>
+  <HEAD><TITLE>Generic functions</TITLE></HEAD>
+  <BODY>
+    <P><a href="table-of-contents.html"> Up to table of contents</a></P>
+    <P><a href="metaobjects.html"> Up to section <I>Metaobjects</I></a></P>
+    <H3>Generic functions</H3>
+
+    <P>
+      A <I>generic function metaobject</I> contains information about
+      a generic function over and above the information associated
+      with each of the generic function's methods.
+    </P>
+
+    <UL>
+
+      <LI><P>The name is available as a function name.</P></LI>
+
+      <LI><P>The methods associated with the generic function are
+	  available as a list of method metaobjects.</P></LI>
+
+      <LI><P>The default class for this generic function's method
+	  metaobjects is available as a class metaobject.</P></LI>
+
+      <LI><P>The lambda list is available as a list.</P></LI>
+
+      <LI><P>The method combination is available as a method
+	  combination metaobject.</P></LI>
+
+      <LI><P>The documentation is available as a string
+	  or <TT>nil</TT>.</P></LI>
+
+      <LI><P>The argument precedence order is available as a
+	  permutation of those symbols from the lambda list which name
+	  the required arguments of the generic function.</P></LI>
+
+      <LI><P>The declarations are available as a list of
+	  declarations.</P>
+
+	<P>
+	  There is some ambiguity in Common Lisp about the terms used to
+	  identify the various parts of
+	  <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_declar.htm#declare">declare</a>
+	  special forms.  In this document, the
+	  term <I>declaration</I> is used to refer to an object that
+	  could be an argument to a 
+	  <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_declar.htm#declare">declare</a>
+	  special form.  For example, in the special form <TT>(declare
+	  (special *g1*))</TT>, the list <TT>(special *g1*)</TT> is a
+	  declaration.
+	</P>
+      </LI>
+    </UL>
+  </BODY>
+</HTML>

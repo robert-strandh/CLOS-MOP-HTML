@@ -1,0 +1,39 @@
+<HTML>
+  <HEAD><TITLE>Methods</TITLE></HEAD>
+  <BODY>
+    <P><a href="table-of-contents.html"> Up to table of contents</a></P>
+    <P><a href="metaobjects.html"> Up to section <I>Metaobjects</I></a></P>
+    <H3>Methods</H3>
+
+    <P>
+      A <I>method metaobject</I> contains information about a specific
+      method.
+    </P>
+
+    <UL>
+
+      <LI><P>The qualifiers are available as a list of of non-null
+	  atoms.</P></LI>
+
+      <LI><P>The lambda list is available as a list.</P></LI>
+
+      <LI><P>The specializers are available as a list of specializer
+	  metaobjects.</P></LI>
+
+      <LI><P>The function is available as a function.  This function
+	  can be applied to arguments and a list of next methods using
+	  <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_apply.htm#apply">apply</a>
+	  or
+	  <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_funcal.htm#funcall">funcall</a>.</P></LI>
+
+      <LI><P>When the method is associated with a generic function,
+	  that generic function metaobject is available.  A method can
+	  be associated with at most one generic function at a
+	  time.</P></LI>
+
+      <LI><P>The documentation is available as a string
+	  or <TT>nil</TT>.</P></LI>
+
+    </UL>
+  </BODY>
+</HTML>
