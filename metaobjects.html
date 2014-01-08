@@ -1,0 +1,58 @@
+<HTML>
+  <HEAD><TITLE>Metaobjects</TITLE></HEAD>
+  <BODY>
+    <a href="table-of-contents.html">Up to table of contents</a>
+    <H2>Metaobjects</H2>
+
+    <P>
+      For each kind of program element there is a corresponding
+      <I>basic metaobject class</I>.  These are the classes: 
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_class.htm#class">class</a>,
+      <TT>slot-definition</TT>, 
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_generi.htm#generic-function">generic-function</a>,
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_method.htm#me
+thod">method</a>, and
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_meth_1.htm">
+	method-combination</a>.  A <I>metaobject class</I> is a
+      subclass of exactly one of these classes.  The results are
+      undefined if an attempt is made to define a class that is a
+      subclass of more than one basic metaobject class.  A
+      <I>metaobject</I> is an instance of a metaobject class.
+    </P>
+
+    <P>
+      Each metaobject represents one program element.  Associated with
+      each metaobject is the information required to serve its role.
+      This includes information that might be provided directly in a
+      user interface macro such as
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defcla.htm#defclass">defclass</a>
+      or
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defcla.htm#defmethod">defmethod</a>.
+      It also includes information computed indirectly from other
+      metaobjects such as that computed from class inheritance or the
+      full set of methods associated with a generic function.
+    </P>
+
+    <P>
+      Much of the information associated with a metaobject is in the
+      form of connections to other metaobjects.  This interconnection
+      means that the role of a metaobject is always based on that of
+      other metaobjects.  As an introduction to this interconnected
+      structure, this section presents a partial enumeration of the
+      kinds of information associated with each kind of metaobject.
+      More detailed information is presented later.
+    </P>
+
+    <UL>
+      <LI><a href="classes.html">Classes</a></LI>
+      <LI><a href="slot-definitions.html">Slot definitions</a></LI>
+      <LI><a href="generic-functions.html">Generic functions</a></LI>
+      <LI><a href="methods.html">Methods</a></LI>
+      <LI><a href="specializers.html">Specializers</a></LI>
+      <LI><a href="method-combinations.html">Method
+	  combinations</a></LI>
+    </UL>
+
+  </BODY>
+</HTML>
+  

@@ -1,0 +1,36 @@
+<HTML>
+  <HEAD><TITLE>Classes</TITLE></HEAD>
+  <BODY>
+    <P><a href="table-of-contents.html"> Up to table of contents</a></P>
+    <P><a href="metaobjects.html"> Up to section <I>Metaobjects</I></a></P>
+    <H3>Classes</H3>
+
+    <P>
+      A <I>class metaobject</I> determines the structure and the
+      default behavior of its instances.  The following information is
+      associated with class metaobjects:
+    </P>
+
+    <UL>
+      <LI><P>The name, if there is one, is available as an
+	  object.</P></LI>
+
+      <LI><P>The direct subclasses, direct superclasses and class
+	  precedence list are available as lists of class
+	  metaobjects.</P></LI>
+
+      <LI><P>The slots defined directly in the class are available as
+	  a list of direct slot definition metaobjects.  The slots
+	  which are accessible in instances of the class are available
+	  as a list of effective slot definition metaobjects.</P></LI>
+
+      <LI><P>The documentation is available as a string
+	  or <TT>nil</TT>.</P></LI>
+
+      <LI><P>The methods which use the class as a specializer, and the
+	  generic functions associated with those methods are
+	  available as lists of method and generic function
+	  metaobjects respectively.</P></LI>
+    </UL>
+  </BODY>
+</HTML>
