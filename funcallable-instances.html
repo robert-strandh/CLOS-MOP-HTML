@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<TITLE>Funcallable Instances
+</TITLE>
+</HEAD>
+<BODY>
+  <H1>Funcallable Instances</H1>
+
+<P>
+Instances of classes which are themselves instances of
+<TT>funcallable-standard-class</TT> or one of its subclasses are
+called <I>funcallable instances</I>.  Funcallable instances can only be
+created by 
+<a href="allocate-instance-funcallable-standard-class.html">
+  allocate-instance (class funcallable-standard-class)</a>.
+</P>
+
+<P>
+Like standard instances, funcallable instances have slots with the normal
+behavior.  They differ from standard instances in that they can be used as
+functions as well; that is, they can be passed to
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_funcal.htm#funcall">funcall</a> and
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_apply.htm#apply">
+apply</a>, and they can be stored as the definition of a function name.
+Associated with each funcallable instance is the function which it runs when
+it is called.  This function can be changed with
+<a href="set-funcallable-instance-function.html">set-funcallable-instance-function</a> 
+</P>
+
+<H3>Example</H3>
+
+<P>
+The following simple example shows the use of funcallable instances to create
+a simple, 
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defstr.htm#defstruct">defstruct</a>-like
+facility.  (Funcallable instances are useful when a program needs to
+construct and maintain a set of functions and information about those
+functions.  They make it possible to maintain both as the same object
+rather than two separate objects linked, for example, by hash tables.)
+</P>
+
+<PRE>
+(defclass constructor ()
+     ((name :initarg :name :accessor constructor-name)
+      (fields :initarg :fields :accessor constructor-fields))
+  (:metaclass funcallable-standard-class))
+
+(defmethod initialize-instance :after ((c constructor) &key)
+  (with-slots (name fields) c
+    (set-funcallable-instance-function
+      c
+      #'(lambda ()
+          (let ((new (make-array (1+ (length fields)))))
+            (setf (aref new 0) name)
+            new)))))
+
+(setq c1 (make-instance 'constructor
+                        :name 'position :fields '(x y)))
+#&lt;CONSTRUCTOR 262437>
+
+(setq p1 (funcall c1))
+#&lt;ARRAY 3 263674>
+</PRE>
+</BODY>
+</HTML>
+
