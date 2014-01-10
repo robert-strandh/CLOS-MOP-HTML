@@ -23,7 +23,362 @@
     <H2>Inheritance structure of metaobject classes</H2>
 
     <P>
-      This page has not been written yet.
+    The inheritance structure of the specified metaobject classes is shown in
+    the table below (FIXME: insert anchor).
+    </P>
+
+    <table border="1">
+      <caption>
+	<P>
+	  Direct superclass relationships among the specified metaobject
+	  classes.  The class of every class shown is
+	  <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_cl.htm#standard-class">standard-class</a>
+	  except for the class <TT>t</TT> which is an instance of the class
+	  <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_built_.htm#built-in-class">built-in-class</a>
+	  and the classes
+	  <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_generi.htm#generic-function">generic-function</a> and
+	  <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_ge.htm#standard-generic-function">standard-generic-function</a>
+	  which are instances of the class <TT>funcallable-standard-class</TT>.
+	<P>
+      </caption>
+      <tr>
+	<td>
+	</td>
+	<th>Metaobject Class</th>
+	<th>Direct Superclasses</th>
+      </tr>
+      <tr>
+	<td>
+	</td>
+	<td>
+	  <TT>standard-object</TT>
+	</td>
+	<td>
+	  <TT>(t)</TT>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	</td>
+	<td>
+	  <TT>funcallable-standard-object</TT>
+	</td>
+	<td>
+	  <TT>(standard-object function)</TT>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  *
+	</td>
+	<td>
+	  <TT>metaobject</TT>
+	</td>
+	<td>
+	  <TT>(standard-object)</TT>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  *
+	</td>
+	<td>
+	  <TT>generic-function</TT>
+	</td>
+	<td>
+	  <TT>(metaobject funcallable-standard-object)</TT>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	</td>
+	<td>
+	  <TT>standard-generic-function</TT>
+	</td>
+	<td>
+	  <TT>(generic-function)</TT>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  *
+	</td>
+	<td>
+	  <TT>method</TT>
+	</td>
+	<td>
+	  <TT>(metaobject)</TT>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	</td>
+	<td>
+	  <TT>standard-method</TT>
+	</td>
+	<td>
+	  <TT>(method)</TT>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  *
+	</td>
+	<td>
+	  <TT>standard-accessor-method</TT>
+	</td>
+	<td>
+	  <TT>(standard-method)</TT>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	</td>
+	<td>
+	  <TT>standard-reader-method</TT>
+	</td>
+	<td>
+	  <TT>(standard-accessor-method)</TT>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	</td>
+	<td>
+	  <TT>standard-writer-method</TT>
+	</td>
+	<td>
+	  <TT>(standard-accessor-method)</TT>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  *
+	</td>
+	<td>
+	  <TT>method-combination</TT>
+	</td>
+	<td>
+	  <TT>(metaobject)</TT>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  *
+	</td>
+	<td>
+	  <TT>slot-definition</TT>
+	</td>
+	<td>
+	  <TT>(metaobject)</TT>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  *
+	</td>
+	<td>
+	  <TT>direct-slot-definition</TT>
+	</td>
+	<td>
+	  <TT>(slot-definition)</TT>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  *
+	</td>
+	<td>
+	  <TT>effective-slot-definition</TT>
+	</td>
+	<td>
+	  <TT>(slot-definition)</TT>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  *
+	</td>
+	<td>
+	  <TT>standard-slot-definition</TT>
+	</td>
+	<td>
+	  <TT>(slot-definition)</TT>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	</td>
+	<td>
+	  <TT>standard-direct-slot-definition</TT>
+	</td>
+	<td>
+	  <TT>(standard-slot-definition direct-slot-definition)</TT>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	</td>
+	<td>
+	  <TT>standard-effective-slot-definition</TT>
+	</td>
+	<td>
+	  <TT>(standard-slot-definition effective-slot-definition)</TT>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  *
+	</td>
+	<td>
+	  <TT>specializer</TT>
+	</td>
+	<td>
+	  <TT>(metaobject)</TT>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	</td>
+	<td>
+	  <TT>eql-specializer</TT>
+	</td>
+	<td>
+	  <TT>(specializer)</TT>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	  *
+	</td>
+	<td>
+	  <TT>class</TT>
+	</td>
+	<td>
+	  <TT>(specializer)</TT>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	</td>
+	<td>
+	  <TT>built-in-class</TT>
+	</td>
+	<td>
+	  <TT>(class)</TT>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	</td>
+	<td>
+	  <TT>forward-referenced-class</TT>
+	</td>
+	<td>
+	  <TT>(class)</TT>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	</td>
+	<td>
+	  <TT>standard-class</TT>
+	</td>
+	<td>
+	  <TT>(class)</TT>
+	</td>
+      </tr>
+      <tr>
+	<td>
+	</td>
+	<td>
+	  <TT>funcallable-standard-class</TT>
+	</td>
+	<td>
+	  <TT>(class)</TT>
+	</td>
+      </tr>
+    </table>
+
+    <P>
+      Each class marked with a ``*'' is an <I>abstract class</I>
+      and is not intended to be instantiated.  The results are
+      undefined if an attempt is made to make an instance of one of
+      these classes with
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ins.htm#make-instance">make-instance</a>.
+    </P>
+
+    <P>
+      The classes
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_cl.htm#standard-class">standard-class</a>,
+      <TT>standard-direct-slot-definition</TT>,
+      <TT>standard-effective-slot-definition</TT>,
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_me.htm#standard-method">standard-method</a>,
+      <TT>standard-reader-method</TT>,
+      <TT>standard-writer-method</TT>, and
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_ge.htm#standard-generic-function">standard-generic-function</a>
+      are called <I>standard metaobject classes</I>.
+      For each kind of metaobject, this is the class the
+      user interface macros presented in the CLOS Specification use by
+      default.  These are also the classes on which user
+      specializations are normally
+      based.
+    </P>
+
+    <P>
+      The classes 
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_built_.htm#built-in-class">built-in-class</a>,
+      <TT>funcallable-standard-class</TT> and <TT>forward-referenced-class</TT>
+      are special-purpose class metaobject classes.  Built-in classes
+      are instances of the class
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_built_.htm#built-in-class">built-in-class</a>.  The class
+      <TT>funcallable-standard-class</TT> provides a special kind of instances
+      described in the section called ``Funcallable Instances.''  When
+      the definition of a class references another class which has not
+      yet been defined, an instance of <TT>forward-referenced-class</TT>
+      is used as a stand-in until the class is actually defined.
+    </P>
+
+    <P>
+      The class
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_ob.htm#standard-object">standard-object</a> is the <I>default direct
+      superclass</I> of the class
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_cl.htm#standard-class">standard-class</a>.
+      When an
+      instance of the class
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_cl.htm#standard-class">standard-class</a>
+      is created, and no
+      direct superclasses are explicitly specified, it defaults to the
+      class
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_ob.htm#standard-object">standard-object</a>.
+      In this way, any behavior
+      associated with the class 
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_ob.htm#standard-object">standard-object</a>
+      will be
+      inherited, directly or indirectly, by all instances of the class
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_cl.htm#standard-class">standard-class</a>.      
+      A subclass of
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_cl.htm#standard-class">standard-class</a>
+      may
+      have a different class as its default direct superclass, but
+      that class must be a subclass of the class
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_ob.htm#standard-object">standard-object</a>.
+    </P>
+
+    <P>
+      The same is true for <TT>funcallable-standard-class</TT> and
+      <TT>funcallable-standard-object</TT>.
+    </P>
+
+    <P>
+      The class <TT>specializer</TT> captures only the most basic
+      behavior of method specializers, and is not itself intended to
+      be instantiated.  The class
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_class.htm#class">class</a>
+      is a direct subclass of
+      <TT>specializer</TT> reflecting the property that classes by
+      themselves can be used as method specializers.  The class
+      <TT>eql-specializer</TT> is used for <TT>eql</TT> specializers.
     </P>
 
     <UL>
