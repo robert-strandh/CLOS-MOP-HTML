@@ -150,12 +150,12 @@ an error if the list contains more than one element.</P>
 <P>When the class metaobject is being initialized, and this argument is either
 not supplied or is the empty list, this argument defaults as follows:  if the
 class is an instance of 
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_cl.htm#standard-class">standard-class</a> or one of its subclasses the
+<a href="class-standard-class.html">standard-class</a> or one of its subclasses the
 default value is a list of the class 
 <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_ob.htm#standard-object">standard-object</a>; if the class is an
-instance of <TT>funcallable-standard-class</TT> or one of its subclasses the
+instance of <a href="class-funcallable-standard-class.html">funcallable-standard-class</a> or one of its subclasses the
 default value is list of the class
-<TT>funcallable-standard-object</TT>.</P>
+<a href="class-funcallable-standard-object.html">funcallable-standard-object</a>.</P>
 
 <P>After any defaulting of the value, the generic function
 <a href="add-direct-subclass.html">add-direct-subclass</a> is called
@@ -234,9 +234,9 @@ Initialization arguments and accessors for class metaobjects.
 
 <P>
 Instances of the class
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_cl.htm#standard-class">standard-class</a>
+<a href="class-standard-class.html">standard-class</a>
 support multiple inheritance and reinitialization.  Instances of the
-class <TT>funcallable-standard-class</TT> support multiple inheritance
+class <a href="class-funcallable-standard-class.html">funcallable-standard-class</a> support multiple inheritance
 and reinitialization.  For forward referenced classes, all of the
 initialization arguments default to <TT>nil</TT>.
 </P>
@@ -250,7 +250,7 @@ or
 reinitialize-instance</a>
 are called to initialize or reinitialize a derived instance of the
 class
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_built_.htm#built-in-class">built-in-class</a>.
+<a href="class-built-in-class.html">built-in-class</a>.
 </P>
 
 <H2>Methods</H2>

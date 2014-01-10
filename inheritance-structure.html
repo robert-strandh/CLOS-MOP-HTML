@@ -32,13 +32,13 @@
 	<P>
 	  Direct superclass relationships among the specified metaobject
 	  classes.  The class of every class shown is
-	  <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_cl.htm#standard-class">standard-class</a>
+	  <a href="class-standard-class.html">standard-class</a>
 	  except for the class <TT>t</TT> which is an instance of the class
-	  <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_built_.htm#built-in-class">built-in-class</a>
+	  <a href="class-built-in-class.html">built-in-class</a>
 	  and the classes
-	  <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_generi.htm#generic-function">generic-function</a> and
-	  <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_ge.htm#standard-generic-function">standard-generic-function</a>
-	  which are instances of the class <TT>funcallable-standard-class</TT>.
+	  <a href="class-generic-function.html">generic-function</a> and
+	  <a href="class-standard-generic-function.html">standard-generic-function</a>
+	  which are instances of the class <a href="class-funcallable-standard-class.html">funcallable-standard-class</a>.
 	<P>
       </caption>
       <tr>
@@ -310,13 +310,13 @@
 
     <P>
       The classes
-      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_cl.htm#standard-class">standard-class</a>,
+      <a href="class-standard-class.html">standard-class</a>,
       <TT>standard-direct-slot-definition</TT>,
       <TT>standard-effective-slot-definition</TT>,
       <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_me.htm#standard-method">standard-method</a>,
       <TT>standard-reader-method</TT>,
       <TT>standard-writer-method</TT>, and
-      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_ge.htm#standard-generic-function">standard-generic-function</a>
+      <a href="class-standard-generic-function.html">standard-generic-function</a>
       are called <I>standard metaobject classes</I>.
       For each kind of metaobject, this is the class the
       user interface macros presented in the CLOS Specification use by
@@ -327,12 +327,12 @@
 
     <P>
       The classes 
-      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_built_.htm#built-in-class">built-in-class</a>,
-      <TT>funcallable-standard-class</TT> and <TT>forward-referenced-class</TT>
+      <a href="class-built-in-class.html">built-in-class</a>,
+      <a href="class-funcallable-standard-class.html">funcallable-standard-class</a> and <TT>forward-referenced-class</TT>
       are special-purpose class metaobject classes.  Built-in classes
       are instances of the class
-      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_built_.htm#built-in-class">built-in-class</a>.  The class
-      <TT>funcallable-standard-class</TT> provides a special kind of instances
+      <a href="class-built-in-class.html">built-in-class</a>.  The class
+      <a href="class-funcallable-standard-class.html">funcallable-standard-class</a> provides a special kind of instances
       described in the section called ``Funcallable Instances.''  When
       the definition of a class references another class which has not
       yet been defined, an instance of <TT>forward-referenced-class</TT>
@@ -343,10 +343,10 @@
       The class
       <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_ob.htm#standard-object">standard-object</a> is the <I>default direct
       superclass</I> of the class
-      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_cl.htm#standard-class">standard-class</a>.
+      <a href="class-standard-class.html">standard-class</a>.
       When an
       instance of the class
-      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_cl.htm#standard-class">standard-class</a>
+      <a href="class-standard-class.html">standard-class</a>
       is created, and no
       direct superclasses are explicitly specified, it defaults to the
       class
@@ -356,9 +356,9 @@
       <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_ob.htm#standard-object">standard-object</a>
       will be
       inherited, directly or indirectly, by all instances of the class
-      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_cl.htm#standard-class">standard-class</a>.      
+      <a href="class-standard-class.html">standard-class</a>.      
       A subclass of
-      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_cl.htm#standard-class">standard-class</a>
+      <a href="class-standard-class.html">standard-class</a>
       may
       have a different class as its default direct superclass, but
       that class must be a subclass of the class
@@ -366,8 +366,8 @@
     </P>
 
     <P>
-      The same is true for <TT>funcallable-standard-class</TT> and
-      <TT>funcallable-standard-object</TT>.
+      The same is true for <a href="class-funcallable-standard-class.html">funcallable-standard-class</a> and
+      <a href="class-funcallable-standard-object.html">funcallable-standard-object</a>.
     </P>
 
     <P>
