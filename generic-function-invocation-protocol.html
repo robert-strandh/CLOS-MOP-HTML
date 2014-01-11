@@ -22,7 +22,72 @@
 
     <H3>Generic function invocation protocol</H3>
 
-    <P>This page has not been written yet.</P>
+    <P>
+      Associated with each generic function is its discriminating
+      function.  Each time the generic function is called, the
+      discriminating function is called to provide the behavior of the
+      generic function.  The discriminating function receives the full
+      set of arguments received by the generic function.  It must
+      lookup and execute the appropriate methods, and return the
+      appropriate values.
+    </P>
+
+    <P>
+      The discriminating function is computed by the highest layer of
+      the generic function invocation protocol,
+      <a href="compute-discriminating-function.html">
+	compute-discriminating-function</a>.
+      Whenever a generic function
+      metaobject is initialized, reinitialized, or a method is added
+      or removed, the discriminating function is recomputed.  The new
+      discriminating function is then stored with
+      <a href="set-funcallable-instance-function.html">
+	set-funcallable-instance-function</a>.
+    </P>
+
+    <P>
+      Discriminating functions call
+      <a href="compute-applicable-methods.html">
+	compute-applicable-methods</a>
+      and 
+      <a href="compute-applicable-methods-using-classes.html">
+	compute-applicable-methods-using-classes</a>
+      to compute
+      the methods applicable to the generic functions arguments.
+      Applicable methods are combined by
+      <a href="compute-effective-method.html">
+	compute-effective-method</a> to produce an <I>effective
+      method</I>.  Provisions are made to allow memoization of the
+      method applicability and effective methods computations.  (See
+      the description of
+      <a href="compute-discriminating-function.html">
+	compute-discriminating-function</a> for details.)
+    </P>
+      
+    <P>
+      The body of method definitions are processed by
+      <a href="make-method-lambda.html">
+	make-method-lambda</a>.  The result of this generic function
+      is a lambda expression which is processed by either
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_cmp.htm#compile">
+	compile</a> or the file compiler to produce a <I>method
+      function</I>.  The arguments received by the method function are
+      controlled by the
+      <a href="call-method.html">call-method</a>
+      forms appearing in the
+      effective methods.  By default, method functions accept two
+      arguments: a list of arguments to the generic function, and a
+      list of next methods.  The list of next methods corresponds to
+      the next methods argument to 
+      <a href="call-method.html">call-method</a>.  If 
+      <a href="call-method.html">call-method</a>
+      appears with additional arguments, these will be
+      passed to the method functions as well; in these cases,
+      <a href="make-method-lambda.html">
+	make-method-lambda</a>
+      must have created the method lambdas to
+      expect additional arguments.
+    </P>
 
   </BODY>
 </HTML>

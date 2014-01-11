@@ -22,7 +22,95 @@
 
     <H3>Dependent maintenance protocol</H3>
 
-    <P>This page has not been written yet.</P>
+    <P>
+      It is convenient for portable metaobjects to be able to memoize
+      information about other metaobjects, portable or otherwise.
+      Because class and generic function metaobjects can be
+      reinitialized, and generic function metaobjects can be modified
+      by adding and removing methods, a means must be provided to
+      update this memoized information.
+    </P>
+
+    <P>
+      The dependent maintenance protocol supports this by providing a
+      way to register an object which should be notified whenever a
+      class or generic function is modified.  An object which has been
+      registered this way is called a <I>dependent</I> of the class
+      or generic function metaobject.  The dependents of class and
+      generic function metaobjects are maintained with
+      <a href="add-dependent.html">add-dependent</a>
+      and
+      <a href="remove-dependent.html">remove-dependent</a>.
+      The dependents of a
+      class or generic function metaobject can be accessed with
+      <a href="map-dependents.html">map-dependents</a>.
+      Dependents are notified about a modification
+      by calling
+      <a href="update-dependent.html">update-dependent</a>.
+      (See the specification of
+      <a href="update-dependent.html">update-dependent</a> for
+      detailed description of the circumstances under which it is
+      called.)
+    </P>
+
+    <P>
+      To prevent conflicts between two portable programs, or between
+      portable programs and the implementation, portable code must not
+      register metaobjects themselves as dependents. Instead, portable
+      programs which need to record a metaobject as a dependent,
+      should encapsulate that metaobject in some other kind of object,
+      and record that object as the dependent.  The results are
+      undefined if this restriction is violated.
+    </P>
+
+    <P><B>Example:</B></P>
+    <P>
+      This example shows a general facility for encapsulating
+      metaobjects before recording them as dependents.  The facility
+      defines a basic kind of encapsulating object: an updater.
+      Specializations of the basic class can be defined with
+      appropriate special updating behavior.  In this way, information
+      about the updating required is associated with each updater
+      rather than with the metaobject being updated.
+    </P>
+
+    <P>
+      Updaters are used to encapsulate any metaobject which requires
+      updating when a given class or generic function is modified.
+      The function
+      <a href="record-updater.html">record-updater</a>
+      is called to both create an
+      updater and add it to the dependents of the class or generic
+      function.  Methods on the generic function
+      <a href="update-dependent.html">update-dependent</a>,
+      specialized to the specific class of updater do the appropriate
+      update work.
+    </P>
+
+<PRE>
+(defclass updater ()
+     ((dependent :initarg :dependent :reader dependent)))
+
+(defun record-updater (class dependee dependent &rest initargs)
+  (let ((updater (apply #'make-instance class :dependent dependent
+                                              initargs)))
+    (add-dependent dependee updater)
+    updater))
+</PRE>
+
+    <P>
+      A <TT>flush-cache-updater</TT> simply flushes the cache of the
+      dependent when it is updated.
+    </P>
+
+<PRE>
+(defclass flush-cache-updater (updater) ())
+
+(defmethod update-dependent (dependee (updater flush-cache-updater)
+                             &rest args)
+  (declare (ignore args))
+  (flush-cache (dependent updater)))
+</PRE>
 
   </BODY>
 </HTML>
