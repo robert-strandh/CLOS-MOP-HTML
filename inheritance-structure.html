@@ -310,13 +310,20 @@
 
     <P>
       The classes
-      <a href="class-standard-class.html">standard-class</a>,
-      <TT>standard-direct-slot-definition</TT>,
-      <TT>standard-effective-slot-definition</TT>,
-      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_me.htm#standard-method">standard-method</a>,
-      <TT>standard-reader-method</TT>,
-      <TT>standard-writer-method</TT>, and
-      <a href="class-standard-generic-function.html">standard-generic-function</a>
+      <a href="class-standard-class.html">
+	standard-class</a>,
+      <a href="class-standard-direct-slot-definition.html">
+	standard-direct-slot-definition</a>,
+      <a href="class-standard-effective-slot-definition.html">
+	standard-effective-slot-definition</a>,
+      <a href="class-standard-method.html">
+	standard-method</a>,
+      <a href="class-standard-reader-method.html">
+	standard-reader-method</a>,
+      <a href="class-standard-writer-method.html">
+	standard-writer-method</a>, and
+      <a href="class-standard-generic-function.html">
+	standard-generic-function</a>
       are called <I>standard metaobject classes</I>.
       For each kind of metaobject, this is the class the
       user interface macros presented in the CLOS Specification use by
@@ -327,8 +334,11 @@
 
     <P>
       The classes 
-      <a href="class-built-in-class.html">built-in-class</a>,
-      <a href="class-funcallable-standard-class.html">funcallable-standard-class</a> and <TT>forward-referenced-class</TT>
+      <a href="class-built-in-class.html">
+	built-in-class</a>,
+      <a href="class-funcallable-standard-class.html">
+	funcallable-standard-class</a> and
+      <TT>forward-referenced-class</TT>
       are special-purpose class metaobject classes.  Built-in classes
       are instances of the class
       <a href="class-built-in-class.html">built-in-class</a>.  The class
@@ -341,8 +351,9 @@
 
     <P>
       The class
-      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_ob.htm#standard-object">standard-object</a> is the <I>default direct
-      superclass</I> of the class
+      <a href="class-standard-object.html">
+	standard-object</a>
+      is the <I>default direct superclass</I> of the class
       <a href="class-standard-class.html">standard-class</a>.
       When an
       instance of the class
@@ -350,10 +361,10 @@
       is created, and no
       direct superclasses are explicitly specified, it defaults to the
       class
-      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_ob.htm#standard-object">standard-object</a>.
+      <a href="class-standard-object.html">standard-object</a>.
       In this way, any behavior
       associated with the class 
-      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_ob.htm#standard-object">standard-object</a>
+      <a href="class-standard-object.html">standard-object</a>
       will be
       inherited, directly or indirectly, by all instances of the class
       <a href="class-standard-class.html">standard-class</a>.      
@@ -362,23 +373,32 @@
       may
       have a different class as its default direct superclass, but
       that class must be a subclass of the class
-      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_std_ob.htm#standard-object">standard-object</a>.
+      <a href="class-standard-object.html">standard-object</a>.
     </P>
 
     <P>
-      The same is true for <a href="class-funcallable-standard-class.html">funcallable-standard-class</a> and
-      <a href="class-funcallable-standard-object.html">funcallable-standard-object</a>.
+      The same is true for
+      <a href="class-funcallable-standard-class.html">
+	funcallable-standard-class</a> and
+      <a href="class-funcallable-standard-object.html">
+	funcallable-standard-object</a>.
     </P>
 
     <P>
-      The class <TT>specializer</TT> captures only the most basic
+      The class
+      <a href="class-specializer.html">
+	specializer</a>
+      captures only the most basic
       behavior of method specializers, and is not itself intended to
       be instantiated.  The class
-      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/t_class.htm#class">class</a>
+      <a href="class-class.html">class</a>
       is a direct subclass of
-      <TT>specializer</TT> reflecting the property that classes by
+      <a href="class-specializer.html">
+	specializer</a>
+      reflecting the property that classes by
       themselves can be used as method specializers.  The class
-      <TT>eql-specializer</TT> is used for <TT>eql</TT> specializers.
+      <a href="class-eql-specializer.html">
+	eql-specializer</a> is used for <TT>eql</TT> specializers.
     </P>
 
     <UL>
