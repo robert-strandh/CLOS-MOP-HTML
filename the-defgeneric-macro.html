@@ -23,7 +23,79 @@
     <H3>The <TT>defgeneric</TT> macro</H3>
 
     <P>
-      This page has not been written yet.
+      The evaluation or execution of a <tt>defgeneric</TT> form results
+      in a call to the
+      <a href="ensure-generic-function.html">ensure-generic-function</a>
+      function. The arguments received by
+      <a href="ensure-generic-function.html">ensure-generic-function</a>
+      are derived from the <tt>defgeneric</TT> form in a defined way.
+      As with
+      <a href="the-defclass-macro.html">defclass</a> and
+      <a href="the-defmethod-macro.html">defmethod</a>, the exact
+      macro-expansion of the
+      <tt>defgeneric</TT> form is not defined, only the relationship
+      between the arguments to the macro and the arguments received by
+      <a href="ensure-generic-function.html">ensure-generic-function</a>.
+    </P>
+
+    <UL>
+
+      <LI>
+	<P>
+	  The <I>function-name</I> argument to <tt>defgeneric</TT>
+	  becomes the first argument to 
+	  <a href="ensure-generic-function.html">ensure-generic-function</a>.
+	  This is the only positional argument accepted by
+	  <a href="ensure-generic-function.html">ensure-generic-function</a>;
+	  all other arguments are keyword arguments.
+	<P>
+      </LI>
+
+      <LI>
+	<P>
+	  The <I>lambda-list</I> argument to <tt>defgeneric</TT>
+	  becomes the value of the <TT>:lambda-list</TT> keyword argument
+	  to 
+	  <a href="ensure-generic-function.html">ensure-generic-function</a>.
+	</P>
+      </LI>
+
+      <LI>
+	<P>
+	  For each of the options <TT>:argument-precedence-order</TT>,
+	  <TT>:documentation</TT>, <TT>:generic-function-class</TT> and
+	  <TT>:method-class</TT>, the value of the option becomes the
+	  value of the keyword argument with the same name.  If the
+	  option does not appear in the macro form, the keyword
+	  argument does not appear in the resulting call to
+	  <a href="ensure-generic-function.html">ensure-generic-function</a>.
+	</P>
+      </LI>
+
+      <LI>
+	<P>
+	  For the option <TT>declare</TT>, the list of declarations
+	  becomes the value of the <TT>:declarations</TT> keyword
+	  argument.  If the <TT>declare</TT> option does not appear in
+	  the macro form, the <TT>:declarations</TT> keyword argument
+	  does not appear in the call to
+	  <a href="ensure-generic-function.html">ensure-generic-function</a>.
+	</P>
+      </LI>
+
+      <LI>
+	<P>
+	  The handling of the <TT>:method-combination</TT> option is not
+	  specified.
+	</P>
+
+    </UL>
+
+    <P>
+      The result of the call to
+      <a href="ensure-generic-function.html">ensure-generic-function</a>
+      is returned as the result of evaluating or executing
+      the <tt>defgeneric</TT> form.
     </P>
 
   </BODY>

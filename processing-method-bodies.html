@@ -23,7 +23,77 @@
     <H3>Processing method bodies</H3>
 
     <P>
-      This page has not been written yet.
+      Before a method can be created, the list of forms comprising the
+      method body must be converted to a method function.  This
+      conversion is a two step process.
+    <P>
+
+    <P><B>Note:</B></P>
+    <P>
+      The body of methods can also appear in
+      the <TT>:initial-methods</TT> option of
+      <a href="the-defgeneric-macro.html">defgeneric</a> forms.
+      Initial methods are not considered by any of the protocols
+      specified in this document.
+    </P>
+
+    <P>
+      The first step occurs during macro-expansion of the macro form.
+      In this step, the method lambda list, declarations and body are
+      converted to a lambda expression called a <I>method lambda</I>.
+      This conversion is based on information associated with the
+      generic function definition in effect at the time the macro form
+      is expanded.
+    </P>
+
+    <P>
+      The generic function definition is obtained by calling
+      <a href="ensure-generic-function.html">ensure-generic-function</a>
+      with a first argument of the generic function name specified in
+      the macro form.  The <TT>:lambda-list</TT> keyword argument is
+      not passed in this call.
+    </P>
+
+    <P>
+      Given the generic function, production of the method lambda
+      proceeds by calling
+      <a href="make-method-lambda.html">make-method-lambda</a>.  The
+      first argument in this call is the generic function obtained as
+      described above.  The second argument is the result of calling
+      <a href="class-prototype.html">class-prototype</a> on the result
+      of calling
+      <a href="generic-function-method-class.html">
+	generic-function-method-class</a>
+      on the generic
+      function.  The third argument is a lambda expression formed from
+      the method lambda list, declarations and body.  The fourth
+      argument is the macro-expansion environment of the macro form;
+      this is the value of the <TT>&amp;environment</Tt> argument to
+      the
+      <a href="the-defmethod-macro.html">defmethod</a>
+      macro.
+    </P>
+
+    <P>
+      The generic function
+      <a href="make-method-lambda.html">make-method-lambda</a>
+      returns two
+      values.  The first is the method lambda itself.  The second is a
+      list of initialization arguments and values.  These are included
+      in the initialization arguments when the method is created.
+    </P>
+
+    <P>
+      In the second step, the method lambda is converted to a function
+      which properly captures the lexical scope of the macro form.
+      This is done by having the method lambda appear in the
+      macro-expansion as the argument of the
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_fn.htm">
+	function</a> special
+      form.  During the subsequent evaluation of the macro-expansion,
+      the result of the
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/s_fn.htm">
+	function</a> special form is the methodfunction.
     </P>
 
   </BODY>

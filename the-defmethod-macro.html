@@ -22,9 +22,98 @@
 
     <H3>The <TT>defmethod</TT> macro</H3>
 
-    <P>
-      This page has not been written yet.
-    </P>
+The evaluation or execution of a <TT>defmethod</TT> form requires first that the
+body of the method be converted to a method function.  This process is
+described in the next section. The result of this process is a method function
+and a set of additional initialization arguments to be used when creating the
+new method.  Given these two values, the evaluation or execution of a <TT>defmethod</TT> form proceeds in three steps.
+
+The first step ensures the existence of a generic function with the specified
+name.  This is done by calling the function
+<a href="ensure-generic-function.html">ensure-generic-function</a>.
+The
+first argument in this call is the generic function name specified in the <TT>defmethod</TT> form.
+
+The second step is the creation of the new method metaobject by
+calling
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ins.htm#make-instance">make-instance</a>.
+The class of the new method metaobject is determined by calling
+<a href="generic-function-method-class.html">
+generic-function-method-class</a> on the result of the call to
+<a href="ensure-generic-function.html">ensure-generic-function</a>
+from the first step.
+
+The initialization arguments received by the call to
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ins.htm#make-instance">make-instance</a>
+are as follows:
+
+<UL>
+
+<LI>The value of the <TT>qualifiers</TT> initialization argument is a list
+of the qualifiers which appeared in the <TT>defmethod</TT> form.  No special
+processing is done on these values.  The order of the elements of this list is
+the same as in the <TT>defmethod</TT> form.
+</LI>
+
+<LI> The value of the <TT>lambda-list</TT> initialization argument is the
+unspecialized lambda list from the <TT>defmethod</TT> form.
+</LI>
+
+<LI>The value of the <TT>specializers</TT> initialization argument is a list
+of the specializers for the method.  For specializers which are classes, the
+specializer is the class metaobject itself.  In the case of <TT>eql</TT>
+specializers, it will be an 
+<a href="class-eql-specializer.html">eql-specializer</a> metaobject
+obtained by calling
+<a href="intern-eql-specializer.html">intern-eql-specializer</a>
+on the result of
+evaluating the <TT>eql</TT> specializer form in the lexical
+environment of the <TT>defmethod</TT> form.
+</LI>
+
+<LI>The value of the <TT>function</TT> initialization argument is the method
+function.
+</LI>
+
+<LI>The value of the <TT>declarations</TT> initialization argument is a
+list of the declarations from the <TT>defmethod</TT> form.  If there are no
+declarations in the macro form, this initialization argument either doesn't
+appear, or appears with a value of the empty list.
+</LI>
+
+<LI>The value of the <TT>documentation</TT> initialization argument is the
+documentation string from the <TT>defmethod</TT> form.  If there is no
+documentation string in the macro form this initialization argument either
+doesn't appear, or appears with a value of false.
+</LI>
+
+<LI>Any other initialization argument produced in conjunction with the method
+function are also included.
+</LI>
+
+<LI>The implementation is free to include additional
+initialization arguments provided these are not symbols accessible in the
+<TT>common-lisp-user</TT> package, or exported by any package defined
+in the ANSI Common Lisp standard.
+</LI>
+
+</UL>
+
+In the third step, 
+<a href="add-method.html">add-method</a> is called to add the newly
+created method to the set of methods associated with the generic
+function metaobject.
+
+The result of the call to <a href="add-method.html">add-method</a> is
+returned as the result of evaluating or executing
+the <TT>defmethod</TT> form.
+
+An example showing a typical <TT>defmethod</TT> form and a sample expansion is
+shown in 
+<a href="fig-defmethod-1.html">this figure</a>.
+The processing of the method body for this
+method is shown in
+<a href="fig-defmethod-2.html">this figure</a>.
 
   </BODY>
 </HTML>

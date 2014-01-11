@@ -1,0 +1,27 @@
+<HTML>
+  <HEAD>
+    <TITLE><TT>defmethod</TT> expansion</TITLE>
+    <LINK rel="stylesheet" type="text/css" href="clos-mop.css">
+  </HEAD>
+  <BODY>
+<PRE>
+(let ((gf (ensure-generic-function 'move)))
+  (make-method-lambda
+    gf
+    (class-prototype (generic-function-method-class gf))
+    '(lambda (p l &optional (visiblyp t) &key color)
+       (set-to-origin p)
+       (when visiblyp (show-move p 0 color)))
+   <I>environment</I>))
+</PRE>
+<HR>
+
+<P>
+  During macro-expansion of the <TT>defmethod</TT> macro shown in
+  <a href="fig-defmethod-1.html">this figure</a>, code similar to this
+  would be run to produce the method lambda and additional initargs.
+  In this example, <I>environment</I> is the macroexpansion
+  environment of the <TT>defmethod</TT> macro form.
+</P>
+  </BODY>
+  </HTML>
