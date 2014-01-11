@@ -22,7 +22,20 @@
 
     <H3>Metaobject initialization protocols</H3>
 
-    <P>This page has not been written yet.</P>
+    <P>
+      Like other objects, metaobjects can be created by calling
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ins.htm#make-instance">make-instance</a>.
+      The initialization arguments passed to
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ins.htm#make-instance">make-instance</a>
+      are used to initialize the metaobject in the usual way.  The set
+      of legal initialization arguments, and their interpretation,
+      depends on the kind of metaobject being created.
+      Implementations and portable programs are free to extend the set
+      of legal initialization arguments.  Detailed information about
+      the initialization of each kind of metaobject are provided in
+      <a href="chapter-6.html">Chapter 6</a>; this section provides an
+      overview and examples of this behavior.
+    </P>
 
     <UL>
       <LI><a href="initialization-of-class-metaobjects.html">
