@@ -23,7 +23,301 @@
     <H3>The <TT>defclass</TT> macro</H3>
 
     <P>
-      This page has not been written yet.
+      The evaluation or execution of a <TT>defclass</TT> form results
+      in a call to the
+      <a href="ensure-class.html">ensure-class</a> function. The
+      arguments received by <a href="ensure-class.html">ensure-class</a> are derived from the
+      <TT>defclass</TT> form in a defined way.  The exact macro-expansion
+      of the <TT>defclass</TT> form is not defined, only the relationship
+      between the arguments to the <TT>defclass</TT> macro and the
+      arguments received by the <a href="ensure-class.html">ensure-class</a> function.  Examples
+      of typical <TT>defclass</TT> forms and sample expansions are shown
+      in the Figures below.
+    </P>
+
+
+<HR>
+<PRE>
+(defclass plane (moving-object graphics-object)
+     ((altitude :initform 0 :accessor plane-altitude)
+      (speed))
+  (:default-initargs :engine *jet*))
+
+(ensure-class 'plane
+  ':direct-superclasses '(moving-object graphics-object)
+  ':direct-slots (list (list ':name 'altitude
+                             ':initform '0
+                             ':initfunction #'(lambda () 0)
+                             ':readers '(plane-altitude)
+                             ':writers '((setf plane-altitude)))
+                       (list ':name 'speed))
+  ':direct-default-initargs (list (list ':engine
+                                        '*jet*
+                                        #'(lambda () *jet*))))
+</PRE>
+<HR>
+    <P>
+      A <TT>defclass</TT> form with standard slot and class options
+      and an expansion of it that would result in the proper call to
+      <a href="ensure-class.html">ensure-class</a>.
+    <P>
+
+<HR>
+<PRE>
+(defclass sst (plane)
+     ((mach mag-step 2
+            locator sst-mach
+            locator mach-location
+            :reader mach-speed
+            :reader mach))
+  (:metaclass faster-class)
+  (another-option foo bar))
+
+(ensure-class 'sst
+  ':direct-superclasses '(plane)
+  ':direct-slots (list (list ':name 'mach
+                             ':readers '(mach-speed mach)
+                             'mag-step '2
+                             'locator '(sst-mach mach-location)))
+  ':metaclass 'faster-class
+  'another-option '(foo bar))
+</PRE>
+<HR>
+    <P>
+      A <TT>defclass</TT> form with non-standard class and slot options, and an
+      expansion of it which results in the proper call to
+      <a href="ensure-class.html">ensure-class</a>.  Note that the
+      order of the slot options has not affected the order of the
+      properties in the canonicalized slot specification, but has
+      affected the order of the elements in the lists which are the
+      values of those properties.
+    </P>
+
+    <UL>
+
+      <LI>
+	<P>
+	  The <I>name</I> argument to <TT>defclass</TT> becomes the
+	  value of the first argument
+	  to <a href="ensure-class.html">ensure-class</a>.  This is
+	  the only positional argument accepted
+	  by <a href="ensure-class.html">ensure-class</a>; all other
+	  arguments are keyword arguments.
+	</P>
+      </LI>
+
+      <LI>
+	<P>
+	  The <I>direct-superclasses</I> argument to <TT>defclass</TT> becomes the
+	  value of the <TT>:direct-super-classes</TT> keyword argument to
+	  <a href="ensure-class.html">ensure-class</a>.
+	</P>
+      </LI>
+
+      <LI>
+	<P>
+	  The <I>direct slots</I> argument to <TT>defclass</TT>
+	  becomes the value of the <TT>:direct-slots</TT> keyword
+	  argument to <a href="ensure-class.html">ensure-class</a>.
+	  Special processing of this value is done to regularize the
+	  form of each slot specification and to properly capture the
+	  lexical scope of the initialization forms.  This is done by
+	  converting each slot specification to a property list called
+	  a <I>canonicalized slot specification</I>.  The resulting
+	  list of canonicalized slot specifications is the value of
+	  the <TT>:direct-slots</TT> keyword argument.
+	</P>
+
+	<P>
+	  Canonicalized slot specifications are later used as the keyword arguments to a
+	  generic function which will, in turn, pass them to
+	  <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ins.htm#make-instance">make-instance</a>
+	  for use as a set of initialization arguments. Each
+	  canonicalized slot specification is formed from the
+	  corresponding slot specification as follows:
+	</P>
+      </LI>
+
+      <UL>
+	<LI>
+	  <P>
+	    The name of the slot is the value of the <TT>:name</TT>
+	    property.  This property appears in every canonicalized
+	    slot specification.
+	  </P>
+	</LI>
+
+	<LI>
+	  <P>
+	    When the <TT>:initform</TT> slot option is present in the
+	    slot specification, then both the <TT>:initform</TT>
+	    and <TT>:initfunction</TT> properties are present in the
+	    canonicalized slot specification.  The value of
+	    the <TT>:initform</TT> property is the initialization
+	    form.  The value of the
+	    <TT>:initfunction</TT> property is a function of zero arguments which, when
+	    called, returns the result of evaluating the initialization form in its proper
+	    lexical environment.
+	  </P>
+
+	  <P>
+	    If the <TT>:initform</TT> slot option is not present in
+	    the slot specification, then either
+	    the <TT>:initfunction</TT> property will not appear, or
+	    its value will be false.  In such cases, the value of
+	    the <TT>:initform</TT> property, or whether it appears, is
+	    unspecified.
+	  </P>
+	</LI>
+
+	<LI>
+	  <P>
+	    The value of the <TT>:initargs</TT> property is a list of the
+	    values of each <TT>:initarg</TT> slot option.  If there are no
+	    <TT>:initarg</TT> slot options, then either
+	    the <TT>:initargs</TT> property will not appear or its
+	    value will be the empty list.
+	  </P>
+	</LI>
+
+	<LI>
+	  <P>
+	    The value of the <TT>:readers</TT> property is a list of
+	    the values of each <TT>:reader</TT> and <TT>:accessor</TT>
+	    slot option.  If there are no <TT>:reader</TT>
+	    or <TT>:accessor</TT> slot options, then either
+	    the <TT>:readers</TT> property will not appear or its
+	    value will be the empty list.
+	  </P>
+	</LI>
+
+	<LI>
+	  <P>
+	    The value of the <TT>:writers</TT> property is a list of
+	    the values specified by each <TT>:writer</TT>
+	    and <TT>:accessor</TT> slot option.  The value specified
+	    by a <TT>:writer</TT> slot option is just the value of the
+	    slot option.  The value specified by an <TT>:accessor</TT>
+	    slot option is a two element list: the first element is
+	    the symbol <TT>setf</TT>, the second element is the value
+	    of the slot option.  If there are no
+	    <TT>:writer</TT> or <TT>:accessor</TT> slot options, then either the <TT>:writers</TT>
+	    property will not appear or its value will be the empty list.
+	  </P>
+	</LI>
+
+	<LI>
+	  <P>
+	    The value of the <TT>:documentation</TT> property is the value of the
+	    <TT>:documentation</TT> slot option.  If there is
+	    no <TT>:documentation</TT> slot option, then either
+	    the <TT>:documentation</TT> property will not appear or
+	    its value will be false.
+	  </P>
+	</LI>
+
+	<LI>
+	  <P>
+	    All other slot options appear as the values of properties
+	    with the same name as the slot option.  Note that this
+	    includes not only the remaining standard slot options
+	    (<TT>:allocation</TT> and <TT>:type</TT>), but also any
+	    other options and values appearing in the slot
+	    specification.  If one of these slot options appears more
+	    than once, the value of the property will be a list of the
+	    specified values.
+	  </P>
+	</LI>
+
+	<LI>
+	  <P>
+	    An implementation is free to add additional properties to
+	    the canonicalized slot specification provided these are
+	    not symbols accessible in the <TT>common-lisp-user</TT>
+	    package, or exported by any package defined in the ANSI
+	    Common Lisp standard.
+	  </P>
+	</LI>
+      </UL>
+
+      <P>
+	Returning to the correspondence between arguments to the
+	<TT>defclass</TT> macro and the arguments received by
+	the <a href="ensure-class.html">ensure-class</a> function:
+      </P>
+
+      <LI>
+	<P>
+	  The <I>default initargs</I> class option, if it is present in
+	  the <TT>defclass</TT> form, becomes the value of the
+	  <TT>:direct-default-initargs</TT> keyword argument
+	  to <a href="ensure-class.html">ensure-class</a>.  Special
+	  processing of this value is done to properly capture the
+	  lexical scope of the default value forms.  This is done by
+	  converting each default initarg in the class option into
+	  a <I>canonicalized default initarg</I>.  The resulting list
+	  of canonicalized default initargs is the value of
+	  the <TT>:direct-default-initargs</TT> keyword argument to
+	  <a href="ensure-class.html">ensure-class</a>.
+	</P>
+
+	<P>
+	  A canonicalized default initarg is a list of three elements.
+	  The first element is the name; the second is the actual form
+	  itself; and the third is a function of zero arguments which,
+	  when called, returns the result of evaluating the default
+	  value form in its proper lexical environment.
+	</P>
+      </LI>
+
+      <LI>
+	<P>
+	  The <I>metaclass</I> class option, if it is present in
+	  the <TT>defclass</TT> form, becomes the value of
+	  the <TT>:metaclass</TT> keyword argument
+	  to <a href="ensure-class.html">ensure-class</a>.
+	</P>
+      </LI>
+
+      <LI>
+	<P>
+	  The <I>documentation</I> class option, if it is present in
+	  the
+	  <TT>defclass</TT> form, becomes the value of
+	  the <TT>:documentation</TT> keyword argument
+	  to <a href="ensure-class.html">ensure-class</a>.
+	</P>
+      </LI>
+
+      <LI>
+	<P>
+	  Any other class options become the value of keyword
+	  arguments with the same name.  The value of the keyword
+	  argument is the tail of the class option. An error is
+	  signaled if any class option appears more than once in
+	  the <TT>defclass</TT> form.
+	</P>
+      </LI>
+
+    </UL>
+
+    <P>
+      In the call to <a href="ensure-class.html">ensure-class</a>,
+      every element of its arguments appears in the same left-to-right
+      order as the corresponding element of the <TT>defclass</TT>
+      form, except that the order of the properties of canonicalized
+      slot specifications is unspecified.  The values of properties in
+      canonicalized slot specifications do follow this ordering
+      requirement.  Other ordering relationships in the keyword
+      arguments to
+      <a href="ensure-class.html">ensure-class</a> are unspecified.
+    </P>
+
+    <P>
+      The result of the call
+      to <a href="ensure-class.html">ensure-class</a> is returned as
+      the result of evaluating or executing the
+      <TT>defclass</TT> form.
     </P>
 
   </BODY>
