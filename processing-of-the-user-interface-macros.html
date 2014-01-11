@@ -23,7 +23,68 @@
     <H2>Processing of the user interface macros</H2>
 
     <P>
-      This page has not been written yet.
+      A list in which the first element is one of the symbols
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defcla.htm#defclass">defclass</a>,
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defmet.htm#defmethod">defmethod</a>, 
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defgen.htm#defgeneric">defgeneric</a>, 
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defi_4.htm#define-method-combination">define-method-combination</a>, <TT>generic-function</TT>, <TT>generic-flet</TT> or <TT>generic-labels</TT, and which has proper
+      syntax for that macro is called a <I>user interface macro
+      form</I>.  This document provides an extended specification of the
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defcla.htm#defclass">defclass</a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defmet.htm#defmethod">defmethod</a> and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defgen.htm#defgeneric">defgeneric</a> macros.
+    </P>
+
+    <P>
+      The user interface macros <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defcla.htm#defclass">defclass</a>, <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defgen.htm#defgeneric">defgeneric</a> and
+      <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defmet.htm#defmethod">defmethod</a> can be used not only to define metaobjects that
+      are instances of the corresponding standard metaobject class,
+      but also to define metaobjects that are instances of appropriate
+      portable metaobject classes.  To make it possible for portable
+      metaobject classes to properly process the information appearing
+      in the macro form, this document provides a limited
+      specification of the processing of these macro forms.
+    </P>
+
+    <P>
+      User interface macro forms can be <TT>evaluated</TT> or
+      <TT>compiled</TT> and later <TT>executed</TT>.  The effect of
+      evaluating or executing a user interface macro form is specified
+      in terms of calls to specified functions and generic functions
+      which provide the actual behavior of the macro.  The arguments
+      received by these functions and generic functions are derived in
+      a specified way from the macro form.
+    </P>
+
+    <P>
+      Converting a user interface macro form into the arguments to the
+      appropriate functions and generic functions has two major
+      aspects: the conversion of the macro argument syntax into a form
+      more suitable for later processing, and the processing of macro
+      arguments which are forms to be evaluated (including method
+      bodies).
+    </P>
+
+    <P>
+      In the syntax of the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defcla.htm#defclass">defclass</a> macro, the <I>initform</I>
+      and <I>default-initarg-initial-value-form</I> arguments are
+      forms which will be evaluated one or more times after the macro
+      form is evaluated or executed.  Special processing must be done
+      on these arguments to ensure that the lexical scope of the forms
+      is captured properly.  This is done by building a function of
+      zero arguments which, when called, returns the result of
+      evaluating the form in the proper lexical environment.
+    </P>
+
+    <P>
+      In the syntax of the <a href="http://www.lispworks.com/documentation/HyperSpec/Body/m_defmet.htm#defmethod">defmethod</a> macro the <I>form*</I>
+      argument is a list of forms that comprise the body of the method
+      definition.  This list of forms must be processed specially to
+      capture the lexical scope of the macro form.  In addition, the
+      lexical functions available only in the body of methods must be
+      introduced.  To allow this and any other special processing
+      (such as slot access optimization), a specializable protocol is
+      used for processing the body of methods.  This is discussed in
+      <a href="processing-method-bodies.html">
+      the section ``Processing Method Bodies.''</a>
     </P>
 
     <UL>
