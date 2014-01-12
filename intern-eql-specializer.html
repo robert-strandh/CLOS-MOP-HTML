@@ -1,0 +1,42 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="intern-eql-specializer"><I>Function</I>
+  <B>INTERN-EQL-SPECIALIZER</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>intern-eql-specializer</B> 
+<I>object</I>
+=&gt; <I>eql-specializer</I></P>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>object</I> -- An object.</P>
+
+<P><I>eql-specializer</I> -- An <TT>eql</TT> specializer.</P>
+
+<P><B>Description:</B></P>
+
+  <P>
+    This function returns the unique <TT>eql></TT> specializer
+    metaobject for <I>object</I>, creating one if necessary.  Two
+    calls to <TT>intern-eql-specializer</TT> with <TT>eql</TT>
+    arguments will return the same (i.e., <TT>eq</TT>) value.
+  </P>
+
+<P><B>Remarks:</B></P>
+
+  <P>
+    The result of calling
+    <a href="eql-specializer-object.html">eql-specializer-object</a>
+    on the result of a call to <TT>intern-eql-special-izer} is only
+    guaranteed to be <TT>eql</TT> to the original <I>object</I>
+    argument, not necessarily <TT>eq</TT>.
+  </P>
+
+
+</BODY>
+</HTML>
