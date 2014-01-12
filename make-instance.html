@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="make-instance"><I>Generic Function</I> <B>MAKE-INSTANCE</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>make-instance</B>
+  <I>class</I> <TT>&amp;rest</TT> <I>initargs</I>
+  =&gt; <I>instance</I></P>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>class</I> -- A class metaobject or a class name.</P>
+
+<P><I>initargs</I> -- A list of alternating initialization argument
+  names and values.</P>
+
+<P><I>instance</I> -- A newly allocated and initialized instance
+  of <I>class</I>.</P> 
+
+<P><B>Description:</B></P>
+
+  <P>
+    The generic function <TT>make-instance</TT> creates and returns a
+    new instance of the given class.  Its behavior and use is
+    described in the CLOS specification.
+  </P>
+
+\Methodslabel
+
+\Defmeth {make-instance} {({\it class\/} symbol) {\rest} {\it initargs}}
+
+This method simply invokes {\bf make-instance} recursively on the arguments
+{\tt (find-class {\it class\/})} and {\it initargs}.
+
+\Defmeth {make-instance} {({\it class\/} standard-class) {\rest} {\it initargs}}
+\Defmeth {make-instance} {({\it class\/} funcallable-standard-class) {\rest} {\it initargs}}
+
+These methods implement the behavior of {\bf make-instance} described in the
+CLOS specification section named ``Object Creation and Initialization.''
+
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><A HREF="make-instance-symbol.html">
+	<B>make-instance</B>
+	(<I>class</I> symbol) <TT>&amp;rest</TT> <I>initargs</I></A>
+    </td>
+  </tr>
+  <tr>
+    <td><A HREF="make-instance-standard-class.html">
+	<B>make-instance</B>
+	(<I>class</I> standard-class) <TT>&amp;rest</TT> <I>initargs</I></A>
+    </td>
+  </tr>
+  <tr>
+    <td><A HREF="make-instance-funcallable-standard-class.html">
+	<B>make-instance</B>
+	(<I>class</I> funcallable-standard-class) <TT>&amp;rest</TT> <I>initargs</I></A>
+    </td>
+  </tr>
+</table>
+
+<P><B>Comments and remarks:</B></P>
+
+<P>See also
+  <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_mk_ins.htm#make-instance">the
+  entry in the Common Lisp HyperSpec</a> for this function.
+
+</BODY>
+</HTML>
