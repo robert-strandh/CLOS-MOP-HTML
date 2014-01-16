@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="map-dependents"><I>Generic Function</I> <B>MAP-DEPENDENTS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>map-dependents</B>
+  <I>metaobject</I> <I>function</I>
+  =&gt; <I>unspecified</I></P>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>metaobject</I> -- A class or a generic function metaobject.</P>
+
+<P><I>function</I> -- A function which accepts one argument.</P>
+
+<P><I>unspecified</I> -- An unspecified value..</P> 
+
+
+<P><B>Description:</B></P>
+
+  <P>
+    This generic function applies <I>function</I> to each of the
+    dependents of <I>metaobject</I>.  The order in which the
+    dependents are processed is not specified, but <I>function</I> is
+    applied to each dependent once and only once.  If, during the
+    mapping, 
+    <a href="add-dependent.html">add-dependent</a>
+    or 
+    <a href="remove-dependent.html">remove-dependent</a> is called to
+    alter the dependents of <I>metaobject</I>, it is not specified
+    whether the newly added or removed dependent will
+    have <I>function</I> applied to it.
+  </P>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><A HREF="map-dependents-standard-class.html">
+	<B>map-dependents</B>
+	(<I>metaobject</I> standard-class) <I>function</I></A>
+    </td>
+  </tr>
+  <tr>
+    <td><A HREF="map-dependents-funcallable-standard-class.html">
+	<B>map-dependents</B>
+	(<I>metaobject</I> funcallable-standard-class) <I>function</I></A>
+    </td>
+  </tr>
+  <tr>
+    <td><A HREF="map-dependents-standard-generic-function.html">
+	<B>map-dependents</B>
+	(<I>metaobject</I> standard-generic-function) <I>function</I></A>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>
