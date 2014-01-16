@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="method-specializers"><I>Generic Function</I> <B>METHOD-SPECIALIZERS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>method-specializers</B> <I>method</I> 
+=&gt; <I>specializers</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>method</I> -- A method metaobject.</P>
+
+<P><I>specializers</I> -- An list of specializers.</P>
+
+<P><B>Description:</B></P>
+
+<P>
+Returns a list of the specializers of <I> method</I>.  This value is a
+list of specializer metaobjects.  This is the defaulted value of the
+<TT>:specializers</TT> initialization argument that was associated with
+the method during initialization.
+</P>
+
+<P>
+This generic function can be called by the user or the implementation.
+</P>
+
+<P>
+An error is signaled if the argument <I>method</I> is not a method
+metaobject.  An error is also signaled if the method metaobject has
+not been initialized.
+</P>
+
+<P>
+The list returned by this function will not
+be mutated by the implementation.  The results are undefined if a portable
+program allows this list to be mutated.
+</P>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="method-specializers-standard-method.html">
+	<B>method-specializers</B> (<I>method</I> standard-method)</a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>

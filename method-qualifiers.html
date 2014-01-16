@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="method-qualifiers"><I>Generic Function</I> <B>METHOD-QUALIFIERS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>method-qualifiers</B> <I>method</I> 
+=&gt; <I>qualifiers</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>method</I> -- A method metaobject.</P>
+
+<P><I>qualifiers</I> -- An list of qualifiers.</P>
+
+<P><B>Description:</B></P>
+
+<P>
+Returns a (possibly empty) list of the qualifiers of <I>method</I>.
+This value is a list of non-<TT>nil</TT> atoms.  This is the defaulted
+value of the <TT>:qualifiers</TT> initialization argument that was
+associated with the method during initialization.
+</P>
+
+<P>
+This generic function can be called by the user or the implementation.
+</P>
+
+<P>
+An error is signaled if the argument <I>method</I> is not a method
+metaobject.  An error is also signaled if the method metaobject has
+not been initialized.
+</P>
+
+<P>
+The list returned by this function will not
+be mutated by the implementation.  The results are undefined if a portable
+program allows this list to be mutated.
+</P>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="method-qualifiers-standard-method.html">
+	<B>method-qualifiers</B> (<I>method</I> standard-method)</a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>

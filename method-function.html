@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="method-function"><I>Generic Function</I> <B>METHOD-FUNCTION</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>method-function</B> <I>method</I> 
+=&gt; <I>function</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>method</I> -- A method metaobject.</P>
+
+<P><I>function</I> -- A function.</P>
+
+<P><B>Description:</B></P>
+
+<P>
+This generic function returns the method function of <I>method</I>.
+This is the defaulted value of the <TT>:function</TT> initialization
+argument that was associated with the method during initialization.
+</P>
+
+<P>
+This generic function can be called by the user or the implementation.
+</P>
+
+<P>
+An error is signaled if the argument <I>method</I> is not a method
+metaobject.  An error is also signaled if the method metaobject has
+not been initialized.
+</P>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="method-function-standard-method.html">
+	<B>method-function</B> (<I>method</I> standard-method)</a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>

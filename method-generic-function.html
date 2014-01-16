@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="method-generic-function"><I>Generic Function</I> <B>METHOD-GENERIC-FUNCTION</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>method-generic-function</B> <I>method</I> 
+=&gt; <I>generic-function</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>method</I> -- A method metaobject.</P>
+
+<P><I>generic-function</I> -- A generic function.</P>
+
+<P><B>Description:</B></P>
+
+<P>
+Returns the generic function that <I>method</I> is currently connected to, or
+<TT>nil</TT> if it is not currently connected to any generic function.
+This value is either a generic function metaobject or <TT>nil</TT>.
+When a method is first created it is not connected to any generic
+function.  This connection is maintained by the generic functions
+<a href="add-method.html">add-method</a>
+and
+<a href="remove-method.html">remove-method</a>.
+</P>
+
+<P>
+This generic function can be called by the user or the implementation.
+</P>
+
+<P>
+An error is signaled if the argument <I>method</I> is not a method
+metaobject.  An error is also signaled if the method metaobject has
+not been initialized.
+</P>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="method-generic-function-standard-method.html">
+	<B>method-generic-function</B> (<I>method</I> standard-method)</a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>

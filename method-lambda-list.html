@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="method-lambda-list"><I>Generic Function</I> <B>METHOD-LAMBDA-LIST</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>method-lambda-list</B> <I>method</I> 
+=&gt; <I>lambda-list</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>method</I> -- A method metaobject.</P>
+
+<P><I>lambda-list</I> -- An unspecialized lambda list.</P>
+
+<P><B>Description:</B></P>
+
+<P>
+This generic function returns the (unspecialized) lambda list of
+<I>method</I>.  This value is a Common Lisp lambda list.  This is the
+defaulted value of the <TT>:lambda-list</TT> initialization argument
+that was associated with the method during initialization.
+</P>
+
+<P>
+This generic function can be called by the user or the implementation.
+</P>
+
+<P>
+An error is signaled if the argument <I>method</I> is not a method
+metaobject.  An error is also signaled if the method metaobject has
+not been initialized.
+</P>
+
+<P>
+The list returned by this function will not
+be mutated by the implementation.  The results are undefined if a portable
+program allows this list to be mutated.
+</P>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="method-lambda-list-standard-method.html">
+	<B>method-lambda-list</B> (<I>method</I> standard-method)</a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>
