@@ -29,20 +29,6 @@
     described in the CLOS specification.
   </P>
 
-\Methodslabel
-
-\Defmeth {make-instance} {({\it class\/} symbol) {\rest} {\it initargs}}
-
-This method simply invokes {\bf make-instance} recursively on the arguments
-{\tt (find-class {\it class\/})} and {\it initargs}.
-
-\Defmeth {make-instance} {({\it class\/} standard-class) {\rest} {\it initargs}}
-\Defmeth {make-instance} {({\it class\/} funcallable-standard-class) {\rest} {\it initargs}}
-
-These methods implement the behavior of {\bf make-instance} described in the
-CLOS specification section named ``Object Creation and Initialization.''
-
-
 <P><B>Methods:</B></P>
 
 <table>
