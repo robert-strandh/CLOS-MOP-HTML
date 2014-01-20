@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A TYPE="slot-definition-type"><I>Generic Function</I> <B>SLOT-DEFINITION-TYPE</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>slot-definition-type</B> <I>slot</I> 
+=&gt; <I>type</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>slot</I> -- A slot definition metaobject.</P>
+
+<P><I>type</I> -- A type specifier.</P>
+
+<P><B>Description:</B></P>
+
+<P>
+Returns the type of {\it slot}.  This is a type specifier name.  This
+is the defaulted value of the <TT>:type</TT> initialization argument
+that was associated with the slot definition metaobject during
+initialization.
+</P>
+
+<P>
+This generic function can be called by the user or the implementation.
+</P>
+
+<P>
+An error is signaled if the argument <I>slot</I> is not a slot
+definition metaobject.  An error is also signaled if the slot
+definition metaobject has not been initialized.
+</P>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="slot-definition-type-standard-slot-definition.html">
+	<B>slot-definition-type</B> (<I>slot</I> standard-slot-definition)</a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>

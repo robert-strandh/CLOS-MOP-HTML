@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="slot-definition-initargs"><I>Generic Function</I> <B>SLOT-DEFINITION-INITARGS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>slot-definition-initargs</B> <I>slot</I> 
+=&gt; <I>initargs</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>slot</I> -- A slot definition metaobject.</P>
+
+<P><I>initargs</I> -- A list.</P>
+
+<P><B>Description:</B></P>
+
+<P>
+Returns the set of initialization argument keywords for <I>slot</I>.
+This is the defaulted value of the <TT>:initargs</TT> initialization
+argument that was associated with the slot definition metaobject
+during initialization.
+</P>
+
+<P>
+This generic function can be called by the user or the implementation.
+</P>
+
+<P>
+An error is signaled if the argument <I>slot</I> is not a slot
+definition metaobject.  An error is also signaled if the slot
+definition metaobject has not been initialized.
+</P>
+
+<P>
+The list returned by this function will not
+be mutated by the implementation.  The results are undefined if a portable
+program allows this list to be mutated.
+</P>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="slot-definition-initargs-standard-slot-definition.html">
+	<B>slot-definition-initargs</B> (<I>slot</I> standard-slot-definition)</a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>

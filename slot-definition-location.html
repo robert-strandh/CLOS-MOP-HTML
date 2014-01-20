@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="slot-definition-location"><I>Generic Function</I> <B>SLOT-DEFINITION-LOCATION</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>slot-definition-location</B> <I>effective-slot</I> 
+=&gt; <I>location</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>effective-slot-definition</I> -- A effective slot definition metaobject.</P>
+
+<P><I>location</I> -- A location (see below).</P>
+
+<P><B>Description:</B></P>
+
+<P>
+Returns the location of <I>effective-slot-definition<I>.  The meaning and
+interpretation of this value is described in
+<a href="instance-structure-protocol.html">
+the section called ``Instance Structure Protocol.''</a>
+</P>
+
+<P>
+This generic function can be called by the user or the implementation.
+</P>
+
+<P>
+An error is signaled if the argument <I>slot</I> is not a slot
+definition metaobject.  An error is also signaled if the slot
+definition metaobject has not been initialized.
+</P>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="slot-definition-location-standard-effective-slot-definition.html">
+	<B>slot-definition-location</B> (<I>effective-slot-definition</I> standard-effective-slot-definition)</a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>

@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="slot-definition-name"><I>Generic Function</I> <B>SLOT-DEFINITION-NAME</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>slot-definition-name</B> <I>slot</I> 
+=&gt; <I>name</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>slot</I> -- A slot definition metaobject.</P>
+
+<P><I>name</I> -- A symbol.</P>
+
+<P><B>Description:</B></P>
+
+<P>
+Returns the name of <I>slot</I>.  This value is a symbol that can be
+used as a variable name.  This is the value of the <TT>:name</TT>
+initialization argument that was associated with the slot definition
+metaobject during initialization.
+</P>
+
+<P>
+This generic function can be called by the user or the implementation.
+</P>
+
+<P>
+An error is signaled if the argument <I>slot</I> is not a slot
+definition metaobject.  An error is also signaled if the slot
+definition metaobject has not been initialized.
+</P>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="slot-definition-name-standard-slot-definition.html">
+	<B>slot-definition-name</B> (<I>slot</I> standard-slot-definition)</a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>

@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="slot-definition-readers"><I>Generic Function</I> <B>SLOT-DEFINITION-READERS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>slot-definition-readers</B> <I>direct-slot</I> 
+=&gt; <I>readers</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>direct-slot</I> -- A direct slot definition metaobject.</P>
+
+<P><I>readers</I> -- A list of function names.</P>
+
+<P><B>Description:</B></P>
+
+<P>
+Returns a (possibly empty) set of readers of the <I>direct-slot</I>.
+This value is a list of function names.  This is the defaulted value
+of the <TT>:readers</TT> initialization argument that was associated
+with the direct slot definition metaobject during initialization.
+</P>
+
+<P>
+This generic function can be called by the user or the implementation.
+</P>
+
+<P>
+An error is signaled if the argument <I>slot</I> is not a slot
+definition metaobject.  An error is also signaled if the slot
+definition metaobject has not been initialized.
+</P>
+
+<P>
+The list returned by this function will not
+be mutated by the implementation.  The results are undefined if a portable
+program allows this list to be mutated.
+</P>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="slot-definition-readers-standard-direct-slot-definition.html">
+	<B>slot-definition-readers</B> (<I>slot</I> standard-direct-slot-definition)</a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>
