@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="remove-dependent"><I>Generic Function</I> <B>REMOVE-DEPENDENT</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>remove-dependent</B> <I>metaobject</I> <I>dependent</I> =&gt; 
+<I>unspecified</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>metaobject</I> -- A class or a generic function metaobject.</P>
+
+<P><I>dependent</I> -- An object.</P>
+
+<P><B>Description:</B></P>
+
+<p>
+This generic function removes <I>dependent</I> from the dependents of 
+<I>metaobject</I>.  If <I>dependent</I> is not one of the dependents
+of <I>metaobject</I>, no error is signaled.
+</p>
+
+<p>
+The generic function
+<a href="map-dependents.html">map-dependents</a> can be called to
+access the set of dependents of a class or generic function.  The
+generic function
+<a href="add-dependent.html">add-dependent</a>
+can be called to add an object to the set of
+dependents of a class or generic function.  The effect of calling 
+<a href="add-dependent.html">add-dependent</a> or
+<B>remove-dependent</B>
+while a call to 
+<a href="map-dependents.html">map-dependents</a>
+on the same class or generic function is in progress is
+unspecified.
+</p>
+
+<p>
+The situations in which <B>remove-dependent</B> is called are not specified.
+</p>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="remove-dependent-standard-class.html">
+	<B>remove-dependent</B> (<I>class</I> standard-class) 
+	<I>dependent</I></a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="remove-dependent-funcallable-standard-class.html">
+	<B>remove-dependent</B> (<I>class</I> funcallable-standard-class) 
+	<I>dependent</I></a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="remove-dependent-standard-generic-function.html">
+	<B>remove-dependent</B> (<I>generic-function</I> standard-generic-function) 
+	<I>dependent</I></a>
+    </td>
+  </tr>
+</table>
+
+<P><B>Remarks:</B></P>
+
+  <P>
+    See the 
+    <a href="dependent-maintenance-protocol.html">
+      ``Dependent Maintenance Protocol'' section</a> for remarks about the use
+    of this facility.
+  </P>
+
+</BODY>
+</HTML>
