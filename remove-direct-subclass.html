@@ -1,0 +1,46 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="remove-direct-subclass"><I>Generic Function</I> <B>REMOVE-DIRECT-SUBCLASS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>remove-direct-subclass</B> <I>superclass</I> <I>subclass</I> =&gt; 
+<I>unspecified</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>superclass</I> -- A class metaobject.</P>
+
+<P><I>subclass</I> -- A class metaobject.</P>
+
+<P><B>Description:</B></P>
+
+  <P>
+    This generic function is called to maintain a set of backpointers
+    from a class to its direct subclasses.  It removes <I>subclass</I>
+    from the set of direct subclasses of <I>superclass</I>.  No error
+    is signaled if <I>subclass</I> is not in this set.
+  </P>
+
+
+  <p>
+    Whenever a class is reinitialized, this generic function is called
+    once with each deleted direct superclass of the class.
+  </p>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="remove-direct-subclass-class-class.html">
+	<B>remove-direct-subclass</B> (<I>superclass</I> class)
+	(<I>subclass</I> class)</a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>
