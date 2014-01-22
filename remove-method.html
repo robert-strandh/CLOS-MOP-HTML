@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="remove-method"><I>Generic Function</I> <B>REMOVE-METHOD</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>remove-method</B> <I>generic-function</I> <I>method</I> =&gt; 
+<I>generic-function</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>generic-function</I> -- A generic function metaobject.</P>
+
+<P><I>method</I> -- A method metaobject.</P>
+
+<P><B>Description:</B></P>
+
+  <p>
+    This generic function breaks the association between a generic
+    function and one of its methods.
+  </p>
+
+  <p>
+    No error is signaled if the method is not among the methods of the
+    generic function.
+  </p>
+
+  <p>
+    Breaking the association between the method and the generic
+    function proceeds in four steps:
+  </p>
+
+  <ol>
+    <li>remove <I>method</I> from the set returned by 
+      <a href="generic-function-methods.html">generic-function-methods</a>
+      and arrange for
+      <a href="method-generic-function.html">method-generic-function</a>
+      to return <TT>nil</TT>;
+    </li>
+    <li>
+      call <a href="remove-direct-method.html">remove-direct-method</a> for
+      each of the method's specializers;
+    </li>
+    <li>
+      call 
+      <a href="compute-discriminating-function.html">
+	compute-discriminating-function</a>
+      and install its result with 
+      <a href="set-funcallable-instance-function.html">
+	set-funcallable-instance-function</a>; and
+    </li>
+    <li>
+      update the dependents of the generic function.
+    </li>
+  </ol>
+
+<p>
+The generic function <B>remove-method</B> can be called by the user or the
+implementation.
+</p>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="remove-method-standard-generic-function-standard-method.html">
+	<B>remove-method</B> (<I>generic-function</I> standard-generic-function)
+	(<I>method</I> standard-method)</a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>
