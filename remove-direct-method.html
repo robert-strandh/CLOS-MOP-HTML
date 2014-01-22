@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="remove-direct-method"><I>Generic Function</I> <B>REMOVE-DIRECT-METHOD</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>remove-direct-method</B> <I>specializer</I> <I>method</I> =&gt; 
+<I>unspecified</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>specializer</I> -- A specializer metaobject.</P>
+
+<P><I>method</I> -- A method metaobject.</P>
+
+<P><B>Description:</B></P>
+
+<p>
+This generic function is called to maintain a set of backpointers from a
+specializer to the set of methods specialized to it.  If <I>method</I> 
+is in the set it is removed.  If it is not, no error is signaled.
+</p>
+
+<p>
+This set can be accessed as a list by calling the generic function
+<a href="specializer-direct-methods.html">specializer-direct-methods</a>.
+Methods are added to the set by 
+<a href="add-direct-method.html">add-direct-method</a>.
+</p>
+
+<p>
+The generic function <B>remove-direct-method</B> is called by 
+<a href="remove-method.html">remove-method</a>
+whenever a method is removed from a generic function.  It is called once for each
+of the specializers of the method.  Note that in cases where a specializer
+appears more than once in the specializers of a method, this generic function
+will be called more than once with the same specializer as argument.
+</p>
+
+<p>
+The results are undefined if the <I>specializer</I> argument is not one of the
+specializers of the <I>method</I> argument.
+</p>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="remove-direct-method-class.html">
+	<B>remove-direct-method</B> (<I>specializer</I> class)
+	(<I>method</I> method)</a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="remove-direct-method-eql-specializer.html">
+	<B>remove-direct-method</B> (<I>specializer</I> eql-specializer)
+	(<I>method</I> method)</a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>
