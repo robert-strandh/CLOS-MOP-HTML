@@ -1,0 +1,41 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="set-funcallable-instance-function"><I>Function</I>
+  <B>SET-FUNCALLABLE-INSTANCE-FUNCTION</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>set-funcallable-instance-function</B> 
+<I>funcallable-instance</I> <I>function</I>
+=&gt; <I>unspecified</I></P>
+
+
+
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>funcallable-instance</I> -- A funcallable-instance.</P>
+
+<P><I>function</I> -- A function.</P>
+
+<P><I>unspecified</I> -- An unspecified value.</P>
+
+The argument <I>funcallable-instance</I> must have been returned
+by <a href="allocate-instance-funcallable-standard-class.html">
+  allocate-instance (<I>class</I> funcallable-standard-class)</a>.
+
+<P><B>Description:</B></P>
+
+<p>
+This function is called to set or to change the function of a
+funcallable instance.
+After <TT>set-funcallable-instance-function</TT> is called, any
+subsequent calls to <I>funcallable-instance</I> will run the new
+function.
+</p>
+
+</BODY>
+</HTML>
