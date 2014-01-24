@@ -1,0 +1,36 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="class-name"><I>Generic Function</I> <B>(SETF CLASS-NAME)</B>
+
+<P><B>Syntax:</B></P>
+
+<P>(<TT>setf</TT> (<B>class-name</B> <I>class</I>) <I>new-name</I>)
+ =&gt; <I>new-name</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>class</I> -- A class metaobject.</P>
+
+<P><I>new-name</I> -- Any Lisp object.</P>
+
+<P><B>Description:</B></P>
+
+  <P>
+    This function changes the name of <I>class</I> to <I>new-name</I>.
+    This value is usually a symbol, or <TT>nil</TT> if the class has no
+    name.
+  </P>
+
+  <P>
+    This function works by calling
+    <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_reinit.htm#reinitialize-instance">
+      reinitialize-instance</a> with <I>class</I> as its first
+    argument, the symbol <TT>:name</TT> as its second argument and
+    <I>new-name</I> as its third argument.
+    </P>
+
+</BODY>
+</HTML>
