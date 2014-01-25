@@ -1,0 +1,37 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="generic-function-name"><I>Generic Function</I> <B>(SETF GENERIC-FUNCTION-NAME)</B>
+
+<P><B>Syntax:</B></P>
+
+<P>(<TT>setf</TT> (<B>generic-function-name</B> <I>generic-function</I>) <I>new-name</I>)
+ =&gt; <I>new-name</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>generic-function</I> -- A generic function metaobject.</P>
+
+<P><I>new-name</I> -- A function name or <TT>nil</TT>.</P>
+
+<P><B>Description:</B></P>
+
+  <P>
+    This function changes the name of <I>generic-function</I> to
+    <I>new-name</I>.  This value is usually a function name (i.e., a
+    symbol or a list of the form <TT>(setf <I>symbol</I>)</TT>) or 
+    <TT>nil</TT>, if the generic function is to have no name.
+  </P>
+
+  <P>
+    This function works by calling
+    <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_reinit.htm#reinitialize-instance">
+      reinitialize-instance</a> with <I>generic-function</I> as its first
+    argument, the symbol <TT>:name</TT> as its second argument and
+    <I>new-name</I> as its third argument.
+  </P>
+
+</BODY>
+</HTML>
