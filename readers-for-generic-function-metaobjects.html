@@ -1,0 +1,236 @@
+<HTML>
+  <HEAD>
+    <TITLE>Readers for Generic Function Metaobjects</TITLE>
+    <LINK rel="stylesheet" type="text/css" href="clos-mop.css">
+  </HEAD>
+  <BODY>
+
+    <ul class=navigation>
+      <a href="readers-for-class-metaobjects.html" title="Prev">
+	<li class=navigation><img src="prev.png" alt="Prev">
+	</li>
+      </a>
+      <a href="chapter-6.html" title="Up">
+	<li class=navigation><img src="up.png" alt="Up">
+	</li>
+      </a>
+      <a href="readers-for-method-metaobjects.html" title="Next">
+	<li class=navigation><img src="next.png" alt="Next">
+	</li>
+      </a>
+    </ul>
+
+<H3>Readers for Generic Function Metaobjects</H3>
+
+    <P>
+      The reader generic functions which simply return information
+      associated with generic function metaobjects are presented
+      together in this section.
+    </P>
+
+    <P>
+      Each of the reader generic functions for generic function
+      metaobjects has the same syntax, accepting one required argument
+      called <I>generic-function</I>, which must be a generic function
+      metaobject; otherwise, an error is signaled.  An error is also
+      signaled if the generic function metaobject has not been
+      initialized.
+    </P>
+
+    <P>
+      These generic functions can be called by the user or the
+      implementation.
+    </P>
+
+    <P>
+      For any of these generic functions which returns a list, such
+      lists will not be mutated by the implementation.  The results
+      are undefined if a portable program allows such a list to be
+      mutated.
+    </P>
+
+    <P>
+    </P>
+
+
+<H4>Functions</H4>
+
+<table border="1">
+  <tr>
+    <td>
+      Generic Function
+    </td>
+    <td>
+      <a href="generic-function-argument-precedence-order.html">
+	<B>generic-function-argument-precedence-order</B></a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Generic Function
+    </td>
+    <td>
+      <a href="generic-function-declarations.html">
+	<B>generic-function-declarations</B></a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Generic Function
+    </td>
+    <td>
+      <a href="generic-function-lambda-list.html">
+	<B>generic-function-lambda-list</B></a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Generic Function
+    </td>
+    <td>
+      <a href="generic-function-method-class.html">
+	<B>generic-function-method-class</B></a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Generic Function
+    </td>
+    <td>
+      <a href="generic-function-method-combination.html">
+	<B>generic-function-method-combination</B></a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Generic Function
+    </td>
+    <td>
+      <a href="generic-function-methods.html">
+	<B>generic-function-methods</B></a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Generic Function
+    </td>
+    <td>
+      <a href="generic-function-name.html">
+	<B>generic-function-name</B></a>
+    </td>
+  </tr>
+
+</table>
+
+<H4>Methods</H4>
+
+    <P>
+      The specified methods for the generic function metaobject reader
+      generic functions are presented below.
+    </P>
+
+<table border="1">
+  <tr>
+    <td>
+      Method
+    </td>
+    <td><a href="generic-function-argument-precedence-order-standard-generic-function.html">
+	<B>generic-function-argument-precedence-order</B> (<I>generic-function</I> standard-generic-function)</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Method
+    </td>
+    <td><a href="generic-function-declarations-standard-generic-function.html">
+	<B>generic-function-declarations</B> (<I>generic-function</I> standard-generic-function)</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Method
+    </td>
+    <td><a href="generic-function-lambda-list-standard-generic-function.html">
+	<B>generic-function-lambda-list</B> (<I>generic-function</I> standard-generic-function)</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Method
+    </td>
+    <td><a href="generic-function-method-class-standard-generic-function.html">
+	<B>generic-function-method-class</B> (<I>generic-function</I> standard-generic-function)</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Method
+    </td>
+    <td><a href="generic-function-method-combination-standard-generic-function.html">
+	<B>generic-function-method-combination</B> (<I>generic-function</I> standard-generic-function)</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Method
+    </td>
+    <td><a href="generic-function-name-standard-generic-function.html">
+	<B>generic-function-name</B> (<I>generic-function</I> standard-generic-function)</a>
+    </td>
+  </tr>
+</table>
+
+    <P>
+      No behavior is specified for these methods beyond that which is
+      specified for their respective generic functions.
+    </P>
+
+<table border="1">
+  <tr>
+    <td>
+      Method
+    </td>
+    <td><a href="generic-function-methods-standard-generic-function.html">
+	<B>generic-function-methods</B> (<I>generic-function</I> standard-generic-function)</a>
+    </td>
+  </tr>
+
+</table>
+
+    <P>
+      No behavior is specified for this method beyond that which is
+      specified for their respective generic functions.
+    </P>
+
+    <P>
+      The value returned by this method is maintained by
+      <a href="add-method-standard-generic-function-standard-method.html">
+	<TT>add-method</TT> (<I>generic-function</I> standard-generic-function)
+	(<I>method</I> standard-method)</a>
+      and
+      <a href="remove-method-standard-generic-function-standard-method.html">
+	<TT>remove-method</TT> (<I>generic-function</I> standard-generic-function)
+	(<I>method</I> standard-method)</a>.
+    </P>
+
+<H4>Comments and remarks</H4>
+
+    <P>
+      The fourth paragraph of the original text reads like this:
+    </P>
+    <P><I>
+      The list returned by this generic function will not be mutated
+      by the implementation.  The results are undefined if a portable
+      program mutates the list returned by this generic function.
+      </I>
+    </P>
+
+    <P>
+      But we think this is an editing error because there is not a
+      single generic function being referred to, rather several
+      generic functions.  For that reason, we copied a similar
+      paragraph from the previous section in the book.
+    </P>
+
+</BODY>
+</HTML>
