@@ -1,0 +1,321 @@
+<HTML>
+  <HEAD>
+    <TITLE>readers for Class Metaobjects</TITLE>
+    <LINK rel="stylesheet" type="text/css" href="clos-mop.css">
+  </HEAD>
+  <BODY>
+
+    <ul class=navigation>
+      <a href="chapter-6.html" title="Prev">
+	<li class=navigation><img src="prev.png" alt="Prev">
+	</li>
+      </a>
+      <a href="chapter-6.html" title="Up">
+	<li class=navigation><img src="up.png" alt="Up">
+	</li>
+      </a>
+      <a href="readers-for-generic-function-metaobjects.html" title="Next">
+	<li class=navigation><img src="next.png" alt="Next">
+	</li>
+      </a>
+    </ul>
+
+<H3>Readers for Class Metaobjects</H3>
+
+    <P>
+      In this and the immediately following sections, the ``reader''
+      generic functions which simply return information associated
+      with a particular kind of metaobject are presented together.
+      General information is presented first, followed by a
+      description of the purpose of each, and ending with the
+      specified methods for these generic functions.
+    </P>
+
+    <P>
+      The reader generic functions which simply return information
+      associated with class metaobjects are presented together in this
+      section.
+    </P>
+
+    <P>
+      Each of the reader generic functions for class metaobjects has
+      the same syntax, accepting one required argument called
+      <I>class</I>, which must be an class metaobject; otherwise, an error
+      is signaled.  An error is also signaled if the class metaobject
+      has not been initialized.
+    </P>
+
+    <P>
+      These generic functions can be called by the user or the
+      implementation.
+    </P>
+
+    <P>
+      For any of these generic functions which returns a list, such
+      lists will not be mutated by the implementation.  The results
+      are undefined if a portable program allows such a list to be
+      mutated.
+    </P>
+
+
+<H4>Functions</H4>
+
+<table>
+  <tr>
+    <td>
+      Generic Function
+    </td>
+    <td>
+      <a href="class-default-initargs.html"><B>class-default-initargs</B></a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Generic Function
+    </td>
+    <td>
+      <a href="class-direct-default-initargs.html"><B>class-direct-default-initargs</B></a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Generic Function
+    </td>
+    <td>
+      <a href="class-direct-slots.html"><B>class-direct-slots</B></a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Generic Function
+    </td>
+    <td>
+      <a href="class-direct-subclasses.html"><B>class-direct-subclasses</B></a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Generic Function
+    </td>
+    <td>
+      <a href="class-direct-superclasses.html"><B>class-direct-superclasses</B></a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Generic Function
+    </td>
+    <td>
+      <a href="class-finalized-p.html"><B>class-finalized-p</B></a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Generic Function
+    </td>
+    <td>
+      <a href="class-name.html"><B>class-name</B></a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Generic Function
+    </td>
+    <td>
+      <a href="class-precedence-list.html"><B>class-precedence-list</B></a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Generic Function
+    </td>
+    <td>
+      <a href="class-prototype.html"><B>class-prototype</B></a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Generic Function
+    </td>
+    <td>
+      <a href="class-slots.html"><B>class-slots</B></a>
+    </td>
+  </tr>
+
+</table>
+
+<H4>Methods</H4>
+
+    <P>
+      The specified methods for the class metaobject reader generic
+      functions are presented below.
+    </P>
+
+    <P>
+      Each entry in the table indicates a method on one of the reader
+      generic functions, specialized to a specified class.  The number
+      in each entry is a reference to the full description of the
+      method.  The full descriptions appear after the table.
+    </P>
+
+<table border="1">
+  <tr>
+    <td></td>
+    <td>
+      <TT>standard-class and</TT>
+    </td>
+    <td>
+      <TT>forward-referenced-class</TT>
+    </td>
+    <td>
+      <TT>built-in-class</TT>
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+      <TT>funcallable-standard-class</TT>
+    </td>
+    <td>
+    </td>
+    <td>
+    </td>
+  </tr>
+  <tr>
+    <td><TT>class-default-initargs</TT></td>
+    <td>2</td><td>3</td><td>4</td>
+  </tr>
+  <tr>
+    <td><TT>class-direct-default-initargs</TT></td>
+    <td>1</td><td>4</td><td>4</td>
+  </tr>
+  <tr>
+    <td><TT>class-direct-slots</TT></td>
+    <td>1</td><td>4</td><td>4</td>
+  </tr>
+  <tr>
+    <td><TT>class-direct-subclasses</TT></td>
+    <td>9</td><td>9</td><td>7</td>
+  </tr>
+  <tr>
+    <td><TT>class-direct-superclasses</TT></td>
+    <td>1</td><td>4</td><td>7</td>
+  </tr>
+  <tr>
+    <td><TT>class-finalized-p</TT></td>
+    <td>2</td><td>6</td><td>5</td>
+  </tr>
+  <tr>
+    <td><TT>class-name</TT></td>
+    <td>1</td><td>1</td><td>8</td>
+  </tr>
+  <tr>
+    <td><TT>class-precedence-list</TT></td>
+    <td>2</td><td>3</td><td>7</td>
+  </tr>
+  <tr>
+    <td><TT>class-prototype</TT></td>
+    <td>10</td><td>10</td><td>10</td>
+  </tr>
+  <tr>
+    <td><TT>class-slots</TT></td>
+    <td>2</td><td>3</td><td>4</td>
+  </tr>
+</table>
+
+<OL>
+  <LI>
+    <P>
+      This method returns the value which was associated with the
+      class metaobject during initialization or reinitialization.
+    </P>
+  </LI>
+  <LI>
+    <P>
+      This method returns the value associated with the class
+      metaobject by 
+      <A HREF="finalize-inheritance-standard-class.html">
+	<TT>finalize-inheritance</TT>
+	(<I>class</I> standard-class)</A>
+      or
+      <A HREF="finalize-inheritance-funcallable-standard-class.html">
+	<TT>finalize-inheritance</TT>
+	(<I>class</I> funcallable-standard-class)</A>.
+    </P>
+  </LI>
+  <LI>
+    <P>
+      This method signals an error.
+    </P>
+  </LI>
+  <LI>
+    <P>
+      This method returns the empty list.
+    </P>
+  </LI>
+  <LI>
+    <P>
+      This method returns true.
+    </P>
+  </LI>
+  <LI>
+    <P>
+      This method returns false.
+    </P>
+  </LI>
+  <LI>
+    <P>
+      This method returns a value derived from the information in
+      <a href="table-class-inheritance.html">this table</a>, except that
+      implementation-specific modifications are permitted as described
+      in 
+      <a href="implementation-and-user-specialization.html">
+	section ``Implementation and User Specialization.''</a>
+    </P>
+  </LI>
+  <LI>
+    <P>
+      This method returns the name of the built-in class.
+    </P>
+  </LI>
+  <LI>
+    <P>
+      This methods returns a value which is maintained by
+      <a href="add-direct-subclass-class-class.html">
+	<TT>add-direct-subclass</TT> (<I>superclass</I> class)
+	(<I>subclass</I> class)</a>
+      and 
+      <a href="remove-direct-subclass-class-class.html">
+	<TT>remove-direct-subclass</TT> (<I>superclass</I> class)
+      (<I>subclass</I> class)</a> 
+      This method can be overridden only if those methods are
+      overridden as well. 
+    </P>
+  </LI>
+  <LI>
+    <P>
+      No behavior is specified for this method beyond that specified
+      for the generic function.
+    </P>
+  </LI>
+</OL>
+
+<H4>Comments and remarks</H4>
+
+    <P>
+      It is not clear what is meant by the phrase "Each entry in the
+      table indicates a method on one of the reader generic functions"
+      above.  It clearly does not mean that each number represents one
+      method, because the same number appears in different rows of the
+      table.    One interpretation is that there are exactly 30
+      methods, but this can not be the case because the specification
+      does not mention a common superclass for <TT>standard-class</TT>
+      and <TT>funcallable-standard-class</TT>, so there can not be a
+      single method for the two.  Another interpretation, then, is
+      that there are exactly 40 methods.  However, in other parts of
+      the document, there is mention of a single method specialized
+      for <TT>class</TT> that does not correspond to the table above.  
+    </P>
+
+</BODY>
+</HTML>
