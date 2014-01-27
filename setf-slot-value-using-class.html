@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="setf-slot-value-using-class"><I>Generic Function</I>
+  <B>(SETF SLOT-VALUE-USING-CLASS)</B>
+
+<P><B>Syntax:</B></P>
+
+<P>(<TT>setf</TT> (<B>slot-value-using-class</B>
+  <I>class</I> <I>object</I> <I>slot</I>)
+  <I>new-value</I>)
+=&gt; <I>new-value</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>class</I> -- A class metaobject.
+It is the class of the <I>object</I> argument.</P>
+
+<P><I>object</I> -- An object.</P>
+
+<P><I>slot</I> -- An effective slot definition metaobject.</P>
+
+<P><I>new-value</I> -- An object.</P>
+
+<P><B>Description:</B></P>
+
+  <P>
+    The generic function <TT>(setf slot-value-using-class)</TT>
+    implements the behavior of the
+    <a href="setf-slot-value">(setf slot-value)</a>
+    function. It is called by
+    <a href="setf-slot-value">(setf slot-value)</a> with the class
+    of <I>object</I> as its second argument and the pertinent
+    effective slot definition metaobject as its fourth argument.
+  </P>
+
+  <P>
+    The generic function <TT>(setf slot-value-using-class)</TT> sets
+    the value contained in the given slot of the given object to the
+    given new value; any previous value is lost.
+  </P>
+
+  <P>
+    The results are undefined if the <I>class</I> argument is not the
+    class of the <I>object</I> argument, or if the <I>slot</I>
+    argument does not appear among the set of effective slots
+    associated with the <I>class</I> argument.
+  </P>    
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="setf-slot-value-using-class-standard-class-standard-effective-slot-definition.html">
+	<B>(setf slot-value-using-class)</B>
+	<I>new-value</I>
+	(<I>class</I> standard-class)
+	(<I>slot</I> standard-effective-slot-definition)</a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="setf-slot-value-using-class-funcallable-standard-class-standard-effective-slot-definition.html">
+	<B>(setf slot-value-using-class)</B>
+	<I>new-value</I>
+	(<I>class</I> funcallable-standard-class)
+	(<I>slot</I> standard-effective-slot-definition)</a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="setf-slot-value-using-class-built-in-class.html">
+	<B>(setf slot-value-using-class)</B>
+	<I>new-value</I>
+	(<I>class</I> built-in-class)
+	(<I>slot</I> standard-effective-slot-definition)</a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>
