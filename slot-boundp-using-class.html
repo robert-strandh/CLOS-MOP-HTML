@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="slot-boundp-using-class"><I>Generic Function</I> <B>SLOT-BOUNDP-USING-CLASS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>slot-boundp-using-class</B> <I>class</I> <I>object</I> <I>slot</I>
+=&gt; <I>generalized-boolean</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>class</I> -- A class metaobject.  It is the class of
+the <I>object</I> argument.</P>
+
+<P><I>object</I> -- An object.</P>
+
+<P><I>slot</I> -- An effective slot definition metaobject.</P>
+
+<P><I>generlized-boolean</I> -- A generalized boolean.</P>
+
+<P><B>Description:</B></P>
+
+  <P>
+    This generic function implements the behavior of the
+    <a href="slot-boundp.html">slot-boundp</a> function.  It is called
+    by <a href="slot-boundp.html">slot-boundp</a> with the class
+    of <I>object</I> as its first argument and the pertinent effective
+    slot definition metaobject as its third argument.
+  </P>
+
+  <p>
+    The generic function <TT>slot-boundp-using-class</TT> tests
+    whether a specific slot in an instance is bound.
+  </p>
+
+  <P>
+    The results are undefined if the <I>class</I> argument is not the
+    class of the <I>object</I> argument, or if the <I>slot</I>
+    argument does not appear among the set of effective slots
+    associated with the <I>class</I> argument.
+  </P>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="slot-boundp-using-class-standard-class-standard-effective-slot-definition.html">
+	<B>slot-boundp-using-class</B>
+	(<I>class</I> standard-class) 
+	<I>object</I>
+	(<I>slot</I> standard-effective-slot-definition)</a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="slot-boundp-using-class-funcallable-standard-class-standard-effective-slot-definition.html">
+	<B>slot-boundp-using-class</B>
+	(<I>class</I> funcallable-standard-class) 
+	<I>object</I>
+	(<I>slot</I> standard-effective-slot-definition)</a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="slot-boundp-using-class-built-in-class.html">
+	<B>slot-boundp-using-class</B>
+	(<I>class</I> built-in-class) 
+	<I>object</I>
+	<I>slot</I></a>
+    </td>
+  </tr>
+</table>
+
+<P><B>Comments and remarks:</B></P>
+
+  <P>
+    In cases where the class metaobject class does not distinguish
+    unbound slots, true should be returned.
+  </P>
+</BODY>
+</HTML>
