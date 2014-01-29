@@ -1,0 +1,36 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="slot-makunbound-using-class"><I>Method</I> <B>SLOT-MAKUNBOUND-USING-CLASS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>slot-makunbound-using-class</B>
+  (<I>class</I> funcallable-standard-class)
+  <I>object</I>
+  (<I>slot</I> standard-effective-slot-definition)</P>
+
+<P><B>Description:</B></P>
+
+<p>
+This is a method on the generic
+function <a href="slot-makunbound-using-class.html">slot-makunbound-using-class</a>. 
+</p>
+
+  <p>
+    This method implements the full behavior of this generic function
+    for slots with allocation <TT>:instance</TT> and <TT>:class</TT>.
+    If the supplied slot has an allocation other than <TT>:instance</TT>
+    or <TT>:class</TT> an error is signaled.
+  </p>
+
+  <P>
+    Overriding this method is permitted, but may require overriding
+    other methods in the standard implementation of the slot access
+    protocol.
+  </P>
+
+</BODY>
+</HTML>
