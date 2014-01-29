@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="slot-value-using-class"><I>Generic Function</I> <B>SLOT-VALUE-USING-CLASS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>slot-value-using-class</B> <I>class</I> <I>object</I> <I>slot</I>
+=&gt; <I>value</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>class</I> -- A class metaobject.  It is the class of
+the <I>object</I> argument.</P>
+
+<P><I>object</I> -- An object.</P>
+
+<P><I>slot</I> -- An effective slot definition metaobject.</P>
+
+<P><I>value</I> -- An object.</P>
+
+<P><B>Description:</B></P>
+
+  <P>
+    This generic function implements the behavior of the
+    <a href="slot-value.html">slot-value</a> function.  It is called
+    by <a href="slot-value.html">slot-value</a> with the class
+    of <I>object</I> as its first argument and the pertinent effective
+    slot definition metaobject as its third argument.
+  </P>
+
+  <p>
+    The generic function <TT>slot-value-using-class</TT> returns the
+    value contained in the given slot of the given object.  If the
+    slot is unbound
+    <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_slt_un.htm#slot-unbound">
+      slot-unbound</a> is called.
+  </p>
+
+  <P>
+    The results are undefined if the <I>class</I> argument is not the
+    class of the <I>object</I> argument, or if the <I>slot</I>
+    argument does not appear among the set of effective slots
+    associated with the <I>class</I> argument.
+  </P>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="slot-value-using-class-standard-class-standard-effective-slot-definition.html">
+	<B>slot-value-using-class</B>
+	(<I>class</I> standard-class) 
+	<I>object</I>
+	(<I>slot</I> standard-effective-slot-definition)</a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="slot-value-using-class-funcallable-standard-class-standard-effective-slot-definition.html">
+	<B>slot-value-using-class</B>
+	(<I>class</I> funcallable-standard-class) 
+	<I>object</I>
+	(<I>slot</I> standard-effective-slot-definition)</a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="slot-value-using-class-built-in-class.html">
+	<B>slot-value-using-class</B>
+	(<I>class</I> built-in-class) 
+	<I>object</I>
+	<I>slot</I></a>
+    </td>
+  </tr>
+</table>
+
+<P><B>Comments and remarks:</B></P>
+
+  <P>
+    In cases where the class metaobject class does not distinguish
+    unbound slots, true should be returned.
+  </P>
+</BODY>
+</HTML>
