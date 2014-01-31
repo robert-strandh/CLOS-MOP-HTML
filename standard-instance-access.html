@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="standard-instance-access"><I>Function</I>
+  <B>STANDARD-INSTANCE-ACCESS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>standard-instance-access</B> 
+<I>instance</I> <I>location</I>
+=&gt; <I>object</I></P>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>instance</I> -- An object.</P>
+
+<P><I>location</I> -- A slot location.</P>
+
+<P><I>object</I> -- An object.</P>
+
+<P><B>Description:</B></P>
+
+  <P>
+    This function is called to provide direct access to a slot in an
+    instance.  By usurping the normal slot lookup protocol, this
+    function is intended to provide highly optimized access to the
+    slots associated with an instance.
+  </P>
+
+  <P>
+    The following restrictions apply to the use of this function:
+  </P>
+
+  <UL>
+    <LI>
+      <P>
+	The <I>instance</I> argument must be a standard instance (it
+	must have been returned by
+	<a href="allocate-instance-standard-class.html">
+	  allocate-instance (<I>class</I> standard-class)</a>).
+      </P>
+    </LI>
+    <LI>
+      <P>
+	The <I>instance</I> argument cannot be an non-updated
+	obsolete instance.
+      </P>
+    </LI>
+    <LI>
+      <P>
+	The <I>location</I> argument must be a location of one of the
+	directly accessible slots of the instance's class.
+      </P>
+    </LI>
+    <LI>
+      <P>
+	The slot must be bound.
+      </P>
+    </LI>
+  </UL>
+
+  <P>
+    The results are undefined if any of these restrictions are not
+    met.
+  </P>
+
+</BODY>
+</HTML>
