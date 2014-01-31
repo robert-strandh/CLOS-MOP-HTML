@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="specializer-direct-methods"><I>Generic Function</I> <B>SPECIALIZER-DIRECT-METHODS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>specializer-direct-methods</B> <I>specializer</I> 
+=&gt; <I>methods</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>specializer</I> -- A specializer metaobject.</P>
+
+<P><I>methods</I> -- A possibly empty list of
+method metaobjects.</P>
+
+<P><B>Description:</B></P>
+
+  <p>
+    This generic function returns the possibly empty set of those
+    methods, connected to generic functions, which have
+    <I>specializer</I> as a specializer.  The elements of this set are
+    method metaobjects.  This value is maintained by the generic
+    functions
+    <a href="add-direct-method.html">add-direct-method</a> and
+    <a href="remove-direct-method.html">remove-direct-method</a>.
+</p>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="specializer-direct-methods-class.html">
+	<B>specializer-direct-methods</B> (<I>specializer</I> class)</a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="specializer-direct-methods-eql-specializer.html">
+	<B>specializer-direct-methods</B> (<I>specializer</I> eql-specializer)</a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>
