@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="update-dependent"><I>Generic Function</I> <B>UPDATE-DEPENDENT</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>update-dependent</B>
+  <I>metaobject</I> <I>dependent</I> &amp;<TT>rest</TT> <I>initargs</I>
+  =&gt; <I>unspecified</I></P>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>metaobject</I> -- A class or generic function metaobject.
+It is the metaobject being reinitialized or otherwise modified.</P>
+
+<P><I>dependent</I> -- An object.
+It is the dependent being updated.</P>
+
+<P><I>initargs</I> -- A list of the initialization arguments for
+the metaobject redefinition.</P>
+
+<P><I>unspecified</I> -- The return value is unspecified.</P>
+
+<P><B>Description:</B></P>
+
+  <P>
+    This generic function is called to update a dependent of
+    <I>metaobject</I>.
+  </P>
+
+  <P>
+    When a class or a generic function is reinitialized each of its
+    dependents is updated.  The <I>initargs</I> argument to
+    <TT>update-dependent</TT> is the set of initialization arguments
+    received by
+    <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_reinit.htm#reinitialize-instance">
+      reinitialize-instance</a>.
+  </P>
+
+  <P>
+    When a method is added to a generic function, each of the generic
+    function's dependents is updated.  The <I>initargs</I> argument
+    is a list of two elements: the symbol <TT>add-method</TT>, and the
+    method that was added.
+  </P>
+
+  <P>
+    When a method is removed from a generic function, each of the
+    generic function's dependents is updated.  The <I>initargs</I>
+    argument is a list of two elements: the symbol
+    <TT>remove-method</TT>, and the method that was removed.
+  </P>
+
+  <P>
+    In each case,
+    <a href="map-dependents.html">map-dependents</a> is used to call
+    <TT>update-dependent</TT> on each of the dependents.  So, for example, the
+    update of a generic function's dependents when a method is added
+    could be performed by the following code:
+  </P>
+
+  <PRE>
+    (map-dependents <I>generic-function</I>
+                    #'(lambda (dep)
+                        (update-dependent <I>generic-function</I>
+                                          dep
+                                          'add-method
+                                          <I>new-method</I>)))
+  </PRE>
+
+<P><B>Methods:</B></P>
+
+  <P>
+    There are no specified methods on this generic function.
+  </P>
+
+<P><B>Comments and remarks:</B></P>
+
+  <P>
+    See the 
+    <a href="dependent-maintenance-protocol.html">
+      ``Dependent Maintenance Protocol'' section</a> for remarks about
+    the use of this facility.
+  </P>
+
+
+</BODY>
+</HTML>
+
+
+
+
