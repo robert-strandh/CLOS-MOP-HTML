@@ -59,9 +59,15 @@ some path, following direct superclasses, from the
 class <I>C<sub>1</sub></I> to the class <I>C<sub>2</sub></I> which
 includes <I>I</I>. </li>
 
-<li> A method is <I>specialized</I> a class if and only if that
-class is in the list of specializers associated with the method; and the
-method is in the list of methods associated with some generic function.
+<li> A method is <I>specialized</I> for a class if and only if
+  <UL>
+    <LI> that class is in the list of specializers associated with the
+      method; and
+    </LI>
+    <LI> the method is in the list of methods associated with some
+      generic function.
+    </LI>
+  </UL>
 
 <li> In a given implementation, a specified method is said to have been
 <I>promoted</I> if and only if the specializers of the method, 
