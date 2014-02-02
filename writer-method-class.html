@@ -1,0 +1,62 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="writer-method-class"><I>Generic Function</I> <B>WRITER-METHOD-CLASS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>writer-method-class</B> <I>class</I> <I>direct-slot</I>
+  <TT>&amp;rest</TT> <I>initargs</I>
+=&gt; <I>writer-method-class</I>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>class</I> -- A class metaobject.</P>
+
+<P><I>direct-slot</I> -- A direct slot definition metaobject.</P>
+
+<P><I>initargs</I> -- A suite of alternating initialization 
+argument names and values.</P>
+
+<P><I>writer-method-class</I> -- A class metaobject.</P>
+
+<P><B>Description:</B></P>
+
+  <P>
+    This generic function is called to determine the class of writer
+    methods created during class initialization and reinitialization.
+    The result must be a subclass of
+    <a href="class-standard-writer-method.html">standard-writer-method</a>.
+  </P>
+
+  <P>
+    The <I>initargs</I> argument must be the same as will be passed to
+    <a href="make-instance.html">make-instance</a> to create the
+    writer method.  The <I>initargs</I> must include
+    <TT>:slot-definition</TT> with <I>slot-definition</I> as its
+    value.
+  </P>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><a href="writer-method-class-standard-class-standard-direct-slot-definition.html">
+	<B>writer-method-class</B> (<I>class</I> standard-class)
+	(<I>direct-slot</I> standard-direct-slot-definition)
+      <TT>&amp;rest</TT> <I>initargs</I></a>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="writer-method-class-funcallable-standard-class-standard-direct-slot-definition.html">
+	<B>writer-method-class</B> (<I>class</I> funcallable-standard-class)
+	(<I>direct-slot</I> standard-direct-slot-definition)
+      <TT>&amp;rest</TT> <I>initargs</I></a>
+    </td>
+  </tr>
+</table>
+
+</BODY>
+</HTML>
