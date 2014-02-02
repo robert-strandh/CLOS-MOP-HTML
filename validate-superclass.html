@@ -1,0 +1,62 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="validate-superclass"><I>Generic Function</I> <B>VALIDATE-SUPERCLASS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>validate-superclass</B>
+  <I>class</I> <I>superclass</I>
+  =&gt; <I>generalized-boolean</I></P>
+
+<P><B>Arguments and values:</B></P>
+
+<P><I>class</I> -- A class metaobject.</P>
+
+<P><I>superclass</I> -- A class metaobject.</P>
+
+<P><I>generalized-boolean</I> -- A generalized boolean.</P>
+
+<P><B>Description:</B></P>
+
+  <P>
+    This generic function is called to determine whether the class
+    <I>superclass</I> is suitable for use as a superclass of
+    <I>class</I>.
+  </P>
+
+  <P>
+    This generic function can be be called by the implementation or
+    user code.  It is called during class metaobject initialization
+    and reinitialization, before the direct superclasses are stored.
+    If this generic function returns false, the initialization or
+    reinitialization will signal an error.
+  </P>
+
+<P><B>Methods:</B></P>
+
+<table>
+  <tr>
+    <td><A HREF="validate-superclass-class-class.html">
+	<B>validate-superclass</B>
+	(<I>class</I> class) (<I>superclass</I> class)</A>
+    </td>
+  </tr>
+</table>
+
+<P><B>Comments and Remarks:</B></P>
+
+  <P>
+    Defining a method on <TT>validate-superclass</TT> requires
+    detailed knowledge of of the internal protocol followed by each of
+    the two class metaobject classes.  A method
+    on <TT>validate-superclass</TT> which returns true for two
+    different class metaobject classes declares that they are
+    compatible.
+  </P>
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+</HEAD>
+<BODY>
+<HR>
+<A NAME="validate-superclass"><I>Method</I> <B>VALIDATE-SUPERCLASS</B>
+
+<P><B>Syntax:</B></P>
+
+<P><B>validate-superclass</B> (<I>class</I> class) (<I>superclass</I> class)</P>
+
+<P><B>Description:</B></P>
+
+<p>
+This is a method on the generic
+function <a href="validate-superclass.html">validate-superclass</a>. 
+</p>
+
+
+  <P>
+    This method returns true in three situations:
+  </P>
+
+  <OL type="i">
+    <LI>
+      <P>
+	If the <I>superclass</I> argument is the class named <TT>t</TT>,
+      </P>
+    </LI>
+    <LI>
+      <P>
+	if the class of the <I>class</I> argument is the same as the class
+	of the <I>superclass</I> argument, or
+      </P>
+    </LI>
+    <LI>
+      <P>
+	if the classes one of the arguments is
+	<a href="class-standard-class.html">standard-class</a> and
+	the class of the other is
+	<a href="class-funcallable-standard-class.html">
+	  funcallable-standard-class</a>.
+      </P>
+    </LI>
+  </OL>
+
+  <P>
+    In all other cases, this method returns false.
+  </P>
+
+  <P>
+    This method can be overridden.
+  </P>
+
+</BODY>
+</HTML>
