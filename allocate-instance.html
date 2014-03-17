@@ -62,9 +62,25 @@ before the new instance is allocated.
 <P><B>Comments and remarks:</B></P>
 
 <P>
-See also the 
-<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_alloca.htm#allocate-instance">
-description of this function in the Common Lisp HyperSpec</a>.
+  See also the 
+  <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_alloca.htm#allocate-instance">
+    description of this function in the Common Lisp HyperSpec</a>.
 </P>
+
+<P>
+  The description above suggests that <TT>allocate-instance</TT>
+  checks to see whether the class is finalized and if not, calls 
+  <a href="finalize-inheritance.html">finalize-inheritance</a>.
+  However, the <I>initargs</I> passed to <TT>allocate-instance</TT>
+  should be the defaulted initargs, and computing those initargs
+  requires the class to be finalized.  Therefore, 
+  <a href="finalize-inheritance.html">finalize-inheritance</a> must be
+  called <I>before</I> <TT>allocate-instance</TT> is called.  Peeking
+  at PCL source confirms that 
+  <a href="finalize-inheritance.html">finalize-inheritance</a> is
+  called from <a href="make-instance.html">make-instance</a>
+  before <TT>allocate-instance</TT> is called. 
+</P>
+
 </BODY>
 </HTML>
