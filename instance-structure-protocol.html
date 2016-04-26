@@ -153,9 +153,9 @@ controls only instances of the class itself.
 
 <pre>
 (defclass ordered-class (standard-class)
-     ((slot-order :initform ()
-                  :initarg :slot-order
-                  :reader class-slot-order)))
+  ((slot-order :initform ()
+               :initarg :slot-order
+               :reader class-slot-order)))
 
 (defmethod compute-slots ((class ordered-class))
   (let ((order (class-slot-order class)))
