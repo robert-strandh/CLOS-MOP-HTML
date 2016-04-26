@@ -162,7 +162,7 @@ controls only instances of the class itself.
     (sort (copy-list (call-next-method))
           #'(lambda (a b)
               (< (position (slot-definition-name a) order)
-                 (position (slot-definition-name a) order))))))
+                 (position (slot-definition-name b) order))))))
 </pre>
 
 <p>
