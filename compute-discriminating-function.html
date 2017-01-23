@@ -114,5 +114,20 @@ result installed, by
   </tr>
 </table>
 
+<P><B>Remarks:</B></P>
+
+  <P>
+    Since client code is not allowed to define methods
+    on <tt>compute-applicable-methods</tt> specialized
+    to <tt>standard-generic-function</tt>, it can be argued that
+    for <tt>standard-generic-function</tt>, <tt>compute-applicable-methods</tt>
+    does not have to be called.  By relaxing the description
+    of <tt>compute-discriminating-function</tt> this way, the
+    implementation may also cache results
+    when <tt>compute-applicable-methods-using-classes</tt>
+    returns <tt>nil</tt> in its second argument.
+    -- Robert Strandh 2017-01-23.
+  </P>
+
 </BODY>
 </HTML>
