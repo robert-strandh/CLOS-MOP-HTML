@@ -125,8 +125,16 @@ result installed, by
     of <tt>compute-discriminating-function</tt> this way, the
     implementation may also cache results
     when <tt>compute-applicable-methods-using-classes</tt>
-    returns <tt>nil</tt> in its second argument.
-    -- Robert Strandh 2017-01-23.
+    returns <tt>nil</tt> in its second argument.  More generally,
+    whenever some behavior is defined for generic functions when called
+    with only standard classes, since client code is not allowed to
+    alter this behavior in any way, the implementation is often free
+    to choose whatever appropriate implementation technique that has
+    the same affect as the one specified.  Notice, however, that any
+    behavior that diverges from what is specified, must not be
+    inherited by client-defined subclasses.  Only when arguments are
+    direct instances of specified classes can the implementation
+    arbitrarily choose some other technique. -- Robert Strandh 2017-01-23.
   </P>
 
 </BODY>
