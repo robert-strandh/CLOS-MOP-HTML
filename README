@@ -9,7 +9,11 @@ as the copies are complete and unmodified.
 
 Since I wanted a more useful document, and in particular I wanted a
 document in which references to "The CLOS specification" were turned
-in to hypertext links, I decided to create a new HTML version.
+in to hypertext links, I decided to create a new HTML version.  This
+version respects the desire of the authors of "The Art of the
+Metaobject Protocol" so that you have the same rights to this HTML
+version as the authors granted with respect to chapters 5 and 6 of the
+book.
 
 As it turns out, the modifications I want are hard to accomplish
 automatically, which is why I am creating this HTML version "manually"
