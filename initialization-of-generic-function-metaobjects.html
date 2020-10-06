@@ -181,7 +181,8 @@ metaobject.
 
 <LI>
 <p>
-The <TT>:method-class</TT> argument is a class metaobject.
+The <TT>:method-class</TT> argument is a class metaobject. (But see
+the note at the end of this page. [RS])
 </p>
 
 <p>
@@ -338,3 +339,17 @@ the initialization behavior described above has been completed.</LI>
 <p>
 The results are undefined if any of these restrictions are violated.
 </p>
+
+    <P><B>Note:</B></P>
+
+    <P>
+      Nowhere in the chain of functions that initialize
+      generic-function metaobjects is any defaulting behavior for
+      method-combination metaobjects defined.  One possible solution
+      to this dilemma is to implement that defaulting behavior here,
+      so that if the <TT>:method-combination</TT> keyword argument is
+      not supplied then, it defaults to the <TT>standard</TT> method
+      combination. [RS]
+    </P>
+  </BODY>
+</HTML>
