@@ -135,5 +135,22 @@ result installed, by
     arbitrarily choose some other technique. -- Robert Strandh 2017-01-23.
   </P>
 
+  <P>
+    This page seems to suggest that <tt>compute-effective-method</tt>
+    needs to be called by the discriminating function each time the
+    generic function is invoked.  It would still be possible to avoid
+    such calls for standard generic functions by the same rule as in
+    the previous remark.  But invoking a non-standard generic function
+    would be too slow then.  And page 126 in the AMOP book suggests
+    that the result of
+    calling <tt>compute-effective-method-function</tt> (a function
+    that does not exist in the specification, and was replaced
+    by <tt>compute-effective-method</tt>) could be cached.  It would
+    seem reasonable, then, for an implementation to be allowed to
+    cache the result of calling <tt>compute-effective-method</tt>
+    whenever it is allowed to cache the result of
+    calling <tt>compute-applicable-methods-using-classes</tt>.
+  </P>
+
 </BODY>
 </HTML>
