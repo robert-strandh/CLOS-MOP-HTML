@@ -94,7 +94,7 @@ initialization arguments, but whether it is done this way is not specified.
 Implementations are free to define default initialization arguments for
 specified generic function metaobject classes.  Portable programs are free
 to define default initialization arguments for portable subclasses of the
-class <a href="generic-function.html">generic-function</a>.
+class <a href="inheritance-structure.html">generic-function</a>.
 </p>
 
 <p>
@@ -185,12 +185,12 @@ The <TT>:method-class</TT> argument is a class metaobject.
 </p>
 
 <p>
-An error is signaled if this value is not a subclass of the class <a href="method.html">method</a>.
+An error is signaled if this value is not a subclass of the class <a href="inheritance-structure.html">method</a>.
 </p>
 
 <p>
 When the generic function is being initialized, and this argument is not
-supplied, it defaults to the class <a href="standard-method.html">standard-method</a>.
+supplied, it defaults to the class <a href="inheritance-structure.html">standard-method</a>.
 </p>
 </LI>
 
@@ -304,7 +304,7 @@ and <a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_shared.htm#
 shared-initialize</a>.  These
 restrictions apply only to methods on these generic functions for
 which the first specializer is a subclass of the
-class <a href="generic-function.html">generic-function</a>.  Other
+class <a href="inheritance-structure.html">generic-function</a>.  Other
 portable methods on these generic functions are not affected by these
 restrictions.
 </p>
